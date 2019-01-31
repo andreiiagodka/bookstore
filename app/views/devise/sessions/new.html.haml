@@ -1,0 +1,32 @@
+%main.container.general-main-wrap
+  .text-center
+    %h3.general-login-title Log In
+    %a.general-login-icon{href: "#"}
+      %i.fa.fa-facebook-official
+    %p.general-login-text or
+  .general-form.field
+    = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+      .form-group.mb-30
+        %label.control-label.input-label{for: "email"} Enter Email
+        %br/
+        = f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control', id: 'email', placeholder: "Enter Email"
+      .form-group.mb-30
+        %label.control-label.input-label{for: "password"} Password
+        %br/
+        = f.password_field :password, autocomplete: "current-password", class: 'form-control', id: 'password', placeholder: "Password"
+        %br/
+        = link_to "Forgot password?", new_user_password_path, class: 'help-block in-gold-500'
+      - if devise_mapping.rememberable?
+        .form-group.checkbox.text-center.mb-30
+          %label.checkbox-label
+            = f.check_box :remember_me, hidden: "true" , class: 'checkbox-input'
+            %span.checkbox-icon
+              %i.fa.fa-check
+            %span.checkbox-text Remember me
+      .text-center
+        .actions
+          = f.submit 'Log In', class: 'btn btn-default mb-20'
+  .text-center
+    %p.general-sign-text.text-center
+      Have an account?
+      = link_to "Sign up", new_user_registration_path, class: 'in-gold-500'
