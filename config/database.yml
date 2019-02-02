@@ -8,7 +8,7 @@ development:
   host: localhost
   database: bookstore_development
   username: ruby_psql
-  password: <%= Rails.application.credentials.DEVELOPMENT_DATABASE_PASSWORD %>
+  password: <%= Rails.application.credentials[Rails.env.to_sym][:database_password] %>
 
 test:
   <<: *default
