@@ -16,4 +16,9 @@ require 'faker'
   )
   book.authors << Author.all.shuffle.first
   book.categories << Category.all.shuffle.first
+  cover = "#{rand(1..17)}.jpg";
+  book.cover.attach(
+    io: File.open(Rails.root.join('app', 'assets', 'images', 'covers', cover)),
+    filename: cover
+  )
 }
