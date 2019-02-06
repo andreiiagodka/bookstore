@@ -1,7 +1,7 @@
 %main.container
   #slider.carousel.slide{'data-ride': "carousel"}
     %ol.carousel-indicators
-      - PagesController::LATEST_BOOKS_QUANTITY.times do |index|
+      - @latest_books.count.times do |index|
         %li{'class': "#{'active' if index.zero?}", 'data-target': "#slider", 'data-slide-to': "#{index}"}
     .carousel-inner{role: "listbox"}
       - @latest_books.each_with_index do |book, index|
@@ -19,7 +19,8 @@
                 %p.lead.small
                   = book.authors_joined_by_comma
                 .general-align
-                  %button.btn Buy Now
+                  %button.btn
+                    = t('btn.buy_now')
     %a.left.carousel-control{href: "#slider", role: "button", 'data-slide': "prev"}
       %span.icon-prev{'aria-hidden': "true"}
       %span.sr-only
@@ -28,12 +29,16 @@
       %span.sr-only
 .container
   .jumbotron.text-center.mb-0
-    %h2.h1 Welcome to our amazing Bookstore!
+    %h2.h1
+      = t('home.welcome')
     .mb-res-50
-      %p We pore through hundreds of new books each month and select the five best we can find to share with our members.
-    %button.btn.btn-default Get Started
+      %p
+        = t('home.about_us')
+    %button.btn.btn-default
+      = t('btn.get_started')
   .mb-35
-    %h3 Best Sellers
+    %h3
+      = t('home.best_sellers')
     .row
       - @best_sellers.each do |book|
         .col-sm-6.col-md-3
@@ -49,7 +54,7 @@
           .mb-35
             .clearfix
               %p.pull-right.font-16.in-gold-500
-                = book.price
+                = t('book.price', price: book.price)
               %p.title.mr-55
                 = book.name
             %span.divider-sm

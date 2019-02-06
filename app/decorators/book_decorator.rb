@@ -1,4 +1,8 @@
 class BookDecorator < Draper::Decorator
+  COVERS_DIR = 'covers/'
+  DEFAULT_COVER = 'default.jpg'
+  DEFAULT_COVER_CLASS = 'general-thumbnail-img'
+
   delegate_all
 
   def authors_joined_by_comma
@@ -11,9 +15,9 @@ class BookDecorator < Draper::Decorator
 
  def cover_image(type)
    if cover.attached?
-     h.image_tag cover_type(type), class: 'img-shadow general-thumbnail-img'
+     h.image_tag cover_type(type), class: "img-shadow #{DEFAULT_COVER_CLASS}"
    else
-     h.image_tag 'covers/default.jpg', class: 'general-thumbnail-img'
+     h.image_tag COVERS_DIR . DEFAULT_COVER, class: DEFAULT_COVER_CLASS
    end
  end
 
