@@ -8,7 +8,7 @@ require 'faker'
   book = Book.create(
     name: Faker::Book.title,
     price: Faker::Number.decimal(2),
-    description: Faker::Lorem.paragraph,
+    description: Faker::Lorem.paragraphs,
     publication_year: Faker::Number.between(2000, Time.now.year),
     height: Faker::Number.decimal(2),
     width: Faker::Number.decimal(2),

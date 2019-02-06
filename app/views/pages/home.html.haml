@@ -1,0 +1,57 @@
+%main.container
+  #slider.carousel.slide{'data-ride': "carousel"}
+    %ol.carousel-indicators
+      - PagesController::LATEST_BOOKS_QUANTITY.times do |index|
+        %li{'class': "#{'active' if index.zero?}", 'data-target': "#slider", 'data-slide-to': "#{index}"}
+    .carousel-inner{role: "listbox"}
+      - @latest_books.each_with_index do |book, index|
+        %div{ class: "item #{'active' if index.zero?}" }
+          .row
+            .col-sm-5
+              .general-img-wrap
+                = book.cover_image(:large)
+            .col-sm-7
+              .mb-60
+                %h1
+                  = book.name
+                %p.lead
+                  = book.short_description
+                %p.lead.small
+                  = book.authors_joined_by_comma
+                .general-align
+                  %button.btn Buy Now
+    %a.left.carousel-control{href: "#slider", role: "button", 'data-slide': "prev"}
+      %span.icon-prev{'aria-hidden': "true"}
+      %span.sr-only
+    %a.right.carousel-control{href: "#slider", role: "button", 'data-slide': "next"}
+      %span.icon-next{'aria-hidden': "true"}
+      %span.sr-only
+.container
+  .jumbotron.text-center.mb-0
+    %h2.h1 Welcome to our amazing Bookstore!
+    .mb-res-50
+      %p We pore through hundreds of new books each month and select the five best we can find to share with our members.
+    %button.btn.btn-default Get Started
+  .mb-35
+    %h3 Best Sellers
+    .row
+      - @best_sellers.each do |book|
+        .col-sm-6.col-md-3
+          .general-thumb-wrap
+            .thumbnail.general-thumbnail
+              = book.cover_image(:small)
+              .thumb-hover
+                .general-thumb-link-wrap
+                  %a.thumb-hover-link{href: "#"}
+                    %i.fa.fa-eye.thumb-icon{'aria-hidden': "true"}
+                  %a.thumb-hover-link{href: "#"}
+                    %i.fa.fa-shopping-cart.thumb-icon
+          .mb-35
+            .clearfix
+              %p.pull-right.font-16.in-gold-500
+                = book.price
+              %p.title.mr-55
+                = book.name
+            %span.divider-sm
+            %p.lead.small
+              = book.authors_joined_by_comma

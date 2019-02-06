@@ -9,4 +9,8 @@ class Book < ApplicationRecord
   def cover_w160
     return self.cover.variant(resize: '160').processed
   end
+
+  def cover_w250_h310
+    return self.cover.variant(resize: '250x310').processed
+  end
 end
