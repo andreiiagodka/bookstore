@@ -9,9 +9,13 @@ class BookDecorator < Draper::Decorator
     authors.map(&:name).join(', ')
   end
 
+  def short_name
+    name[0..25]
+  end
+
   def short_description
    description[0..150]
- end
+  end
 
  def cover_image(type)
    if cover.attached?

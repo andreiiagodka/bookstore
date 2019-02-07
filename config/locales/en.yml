@@ -1,8 +1,22 @@
 en:
+  layout:
+    project_title: Bookstore
+    home: Home
+    shop: Shop
+    orders: orders
+    settings: Settings
+    my_account: My account
+    log_in: Log in
+    log_out: Log out
+    sign_in: Sign in
+    email: support@bookstore.com
+    phone: (555)-555-5555
   home:
     welcome: Welcome to our amazing Bookstore!
     about_us: We pore through hundreds of new books each month and select the five best we can find to share with our members.
     best_sellers: Best Sellers
+  catalog:
+    title: Catalog
   btn:
     get_started: Get Started
     buy_now: Buy Now

@@ -8,6 +8,7 @@ gem 'omniauth-facebook'
 gem 'faker', require: false
 gem 'mini_magick'
 gem 'draper'
+gem 'rectify'
 gem 'rails', '~> 5.2.2'
 gem 'pg'
 gem 'puma', '~> 3.11'

@@ -6,52 +6,52 @@
         %span.icon-bar
         %span.icon-bar
         %span.icon-bar
-      %a.navbar-brand Bookstore
-      %a.shop-link.pull-right.visible-xs{href: "#"}
-        %span.shop-icon
-          %span.shop-quantity 3
+      = link_to t('layout.project_title'), root_path, class: 'navbar-brand'
     %a.shop-link.pull-right.hidden-xs{href: "#"}
       %span.shop-icon
-        %span.shop-quantity 3
+        %span.shop-quantity
     #navbar.navbar-collapse.collapse.pl-30{'aria-expanded': "false"}
       .visible-xs
         %button.close{type: "button", 'aria-label': "Close"}
           %span{'aria-hidden': "true"} &times;
         %ul.nav.navbar-nav
           %li
-            %a{href: "#"} Home
+            = link_to t('layout.home'), root_path, class: 'navbar-brand'
           %li
-            %a{type: "button", 'data-toggle': "collapse", href: "#menu", 'aria-expanded': "false", 'aria-controls': "menu"} Shop
+            %a{type: "button", 'data-toggle': "collapse", href: "#menu", 'aria-expanded': "false", 'aria-controls': "menu"}
+              = t('layout.shop')
             %ul#menu.collapse.list-unstyled.pl-30.mb-10{'aria-expanded': "false"}
-              %li
-                %a.collapse-link{href: "#"} Mobile development
-              %li
-                %a.collapse-link{href: "#"} Photo
-              %li
-                %a.collapse-link{href: "#"} Web design
-          %li
-            %a{href: "#"} My account
+              = presenter.categories_dropdown_list(css_class: 'collapse-link')
+          - if user_signed_in?
+            %li
+              %a{href: "#"}
+                = t('layout.my_account')
+            %li
+              %a{href: "#"}
+                = t('layout.log_out')
+          - else
+            %li
+              = link_to t('layout.log_in'), new_user_session_path
+            %li
+              = link_to t('layout.sign_in'), new_user_registration_path
       .hidden-xs
         %ul.nav.navbar-nav
           %li
-            %a{href: "#"} Home
+            = link_to t('layout.home'), root_path, class: 'navbar-brand'
           %li.dropdown
-            %a.dropdown-toggle{href: "#", 'data-toggle': "dropdown", role: "button", 'aria-haspopup': "true", 'aria-expanded': "false"} Shop
+            %a.dropdown-toggle{href: "#", 'data-toggle': "dropdown", role: "button", 'aria-haspopup': "true", 'aria-expanded': "false"}
+              = t('layout.shop')
             %ul.dropdown-menu
-              %li
-                %a{href: "#"} Mobile development
-              %li
-                %a{href: "#"} Photo
-              %li
-                %a{href: "#"} Web design
-              %li.divider{role: "separator"}
-              %li
-                %a{href: "#"} Log out
+              = presenter.categories_dropdown_list
           - if user_signed_in?
             %li
-              %a{href: "#"} My account
+              %a{href: "#"}
+                = t('layout.my_account')
+            %li
+              %a{href: "#"}
+                = t('layout.log_out')
           - else
             %li
-              = link_to "Log in", new_user_session_path
+              = link_to t('layout.log_in'), new_user_session_path
             %li
-              = link_to "Sign up", new_user_registration_path
+              = link_to t('layout.sign_in'), new_user_registration_path
