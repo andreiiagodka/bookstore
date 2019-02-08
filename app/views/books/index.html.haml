@@ -17,22 +17,8 @@
           %li
             %a{href: "#"} Price: Hight to low
     %ul.list-inline.pt-10.mb-25.mr-240
-      %li.mr-35
-        %a.filter-link{href: "#"}
-          All
-          %span.badge.general-badge 135
-      %li.mr-35
-        %a.filter-link{href: "#"}
-          Mobile Development
-          %span.badge.general-badge 135
-      %li.mr-35
-        %a.filter-link{href: "#"}
-          Photo
-          %span.badge.general-badge 135
-      %li.mr-35
-        %a.filter-link{href: "#"}
-          Web Design
-          %span.badge.general-badge 135
+      = @book_presenter.all_with_counter
+      = @category_presenter.list_with_counters
   .dropdowns.mb-25.visible-xs
     %p.lead.small.mb-10 Filter by category
     .dropdown
@@ -65,4 +51,4 @@
   .mb-120
     = render partial: 'books/partials/book', collection: @books, as: :book
   .text-center
-    %button.btn.btn-primary View More
+    = pagy_nav(@pagy)

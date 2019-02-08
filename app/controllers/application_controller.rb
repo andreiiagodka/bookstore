@@ -1,11 +1,11 @@
 class ApplicationController < ActionController::Base
   include Rectify::ControllerHelpers
 
-  before_action :create_categories_dropdown
+  before_action :initialize_category_presenter
 
   private
 
-  def create_categories_dropdown
-    present CategoriesDropdownPresenter.new(categories: Category.all)
+  def initialize_category_presenter
+    @category_presenter = CategoryPresenter.new(categories: Category.all).attach_controller(self)
   end
 end

@@ -17,6 +17,7 @@ en:
     best_sellers: Best Sellers
   catalog:
     title: Catalog
+    all: All
   btn:
     get_started: Get Started
     buy_now: Buy Now
