@@ -21,7 +21,9 @@
             %a{type: "button", 'data-toggle': "collapse", href: "#menu", 'aria-expanded': "false", 'aria-controls': "menu"}
               = t('layout.shop')
             %ul#menu.collapse.list-unstyled.pl-30.mb-10{'aria-expanded': "false"}
-              = @category_presenter.list(css_class: 'collapse-link')
+              - @categories.each do |category|
+                %li
+                  = link_to category.name, categories_path(id: category), css: 'collapse-link'
           - if user_signed_in?
             %li
               %a{href: "#"}
@@ -42,7 +44,9 @@
             %a.dropdown-toggle{href: "#", 'data-toggle': "dropdown", role: "button", 'aria-haspopup': "true", 'aria-expanded': "false"}
               = t('layout.shop')
             %ul.dropdown-menu
-              = @category_presenter.list
+              - @categories.each do |category|
+                %li
+                  = link_to category.name, categories_path(id: category)
           - if user_signed_in?
             %li
               %a{href: "#"}

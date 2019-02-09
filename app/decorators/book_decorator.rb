@@ -17,7 +17,7 @@ class BookDecorator < Draper::Decorator
    description[0..150]
   end
 
- def cover_image(type)
+ def image(type)
    if cover.attached?
      h.image_tag cover_type(type), class: "img-shadow #{DEFAULT_COVER_CLASS}"
    else

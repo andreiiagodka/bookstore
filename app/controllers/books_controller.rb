@@ -1,14 +1,19 @@
 class BooksController < ApplicationController
+  BOOKS_PER_PAGE = 12
+
   include Rectify::ControllerHelpers
+  include Pagy::Backend
+
+  decorates_assigned :books
 
   def index
-    initialize_book_presenter
-    @books = Book.limit(12).decorate
+    intialize_book_presenter
+    @pagy, @books = pagy(Book.all, items: BOOKS_PER_PAGE)
   end
 
   private
 
-  def initialize_book_presenter
-    @book_presenter = BookPresenter.new(books: Book.all).attach_controller(self)
+  def intialize_book_presenter
+    @book_presenter = BookPresenter.new(books: Book.all)
   end
 end

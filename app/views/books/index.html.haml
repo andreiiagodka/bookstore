@@ -17,8 +17,11 @@
           %li
             %a{href: "#"} Price: Hight to low
     %ul.list-inline.pt-10.mb-25.mr-240
-      = @book_presenter.all_with_counter
-      = @category_presenter.list_with_counters
+      = render partial: 'books/partials/category_list_item',
+        locals: {path: books_path, name: t('catalog.all'), books_quantity: @book_presenter.total_quantity}
+      - @categories.each do |category|
+        = render partial: 'books/partials/category_list_item',
+          locals: {path: categories_path(id: category), name: category.name, books_quantity: category.books_count}
   .dropdowns.mb-25.visible-xs
     %p.lead.small.mb-10 Filter by category
     .dropdown
@@ -49,6 +52,6 @@
         %li
           %a{href: "#"} Price: Hight to low
   .mb-120
-    = render partial: 'books/partials/book', collection: @books, as: :book
+    = render partial: 'books/partials/book', collection: books, as: :book
   .text-center
-    = pagy_nav(@pagy)
+    = pagy_nav_bootstrap(@pagy).html_safe

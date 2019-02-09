@@ -4,12 +4,12 @@
       - @latest_books.count.times do |index|
         %li{'class': "#{'active' if index.zero?}", 'data-target': "#slider", 'data-slide-to': "#{index}"}
     .carousel-inner{role: "listbox"}
-      - @latest_books.each_with_index do |book, index|
+      - latest_books.each_with_index do |book, index|
         %div{ class: "item #{'active' if index.zero?}" }
           .row
             .col-sm-5
               .general-img-wrap
-                = book.cover_image(:large)
+                = book.image(:large)
             .col-sm-7
               .mb-60
                 %h1
@@ -39,4 +39,4 @@
     %h3
       = t('home.best_sellers')
     .row
-      = render partial: 'books/partials/book', collection: @best_sellers, as: :book
+      = render partial: 'books/partials/book', collection: best_sellers, as: :book
