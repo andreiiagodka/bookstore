@@ -1,7 +1,7 @@
 class Book < ApplicationRecord
   has_one_attached :cover
 
-  FILTERS = {
+  ORDER_FILTERS = {
     created_at_desc: 'Newest first',
     popularity_desc: 'Popular first',
     name_asc: 'Title A-Z',
@@ -9,7 +9,7 @@ class Book < ApplicationRecord
     price_asc: 'Price: Low to high',
     price_desc: 'Price: High to low'
   }.freeze
-  DEFAULT_FILTER = :created_at_desc
+  DEFAULT_ORDER_FILTER = :created_at_desc
 
   has_many :book_authors, dependent: :destroy
   has_many :authors, through: :book_authors
@@ -24,11 +24,12 @@ class Book < ApplicationRecord
     return self.cover.variant(resize: '250x310!').processed
   end
 
+  scope :by_order_filter, -> (order_filter) { public_send(order_filter) }
+
   scope :created_at_desc, -> { order('created_at desc') }
   scope :popularity_desc, -> { order('created_at desc') }
   scope :name_asc, -> { order('name') }
   scope :name_desc, -> { order('name desc') }
   scope :price_asc, -> { order('price') }
   scope :price_desc, -> { order('price desc') }
-  scope :order_by_filter, -> (filter) { public_send(filter) }
 end

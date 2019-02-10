@@ -3,16 +3,13 @@
     = t('catalog.title')
   .hidden-xs.clearfix
     .dropdowns.pull-right
-      = render partial: 'books/partials/filters_list'
-    %ul.list-inline.pt-10.mb-25.mr-240
-      = render partial: 'books/partials/category_list_item',
-        locals: {path: books_path, name: t('catalog.all'), books_quantity: @book_presenter.total_quantity}
-      - @categories.each do |category|
-        = render partial: 'books/partials/category_list_item',
-          locals: {path: categories_path(id: category), name: category.name, books_quantity: category.books_count}
+      .dropdown.width-240
+        = render partial: 'books/partials/filters_list'
+    = render partial: 'books/partials/categories_list'
   .dropdowns.mb-25.visible-xs
     = render partial: 'books/partials/filters_list'
   .mb-120
-    = render partial: 'books/partials/book', collection: books, as: :book
+    .row
+      = render partial: 'books/partials/book', collection: selected_books, as: :book
   .text-center
     = pagy_nav_bootstrap(@pagy).html_safe
