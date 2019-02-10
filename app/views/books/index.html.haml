@@ -5,17 +5,12 @@
     .dropdowns.pull-right
       .dropdown.width-240
         %a.dropdown-toggle.lead.small{href: "#", 'data-toggle': "dropdown", role: "button", 'aria-haspopup': "true", 'aria-expanded': "false"}
-          Newest first
+          = Book::FILTERS[@filter.to_sym]
           %i.fa.fa-angle-down.dropdown-icon.pull-right
         %ul.dropdown-menu
-          %li
-            %a{href: "#"} Newest first
-          %li
-            %a{href: "#"} Popular first
-          %li
-            %a{href: "#"} Price: Low to hight
-          %li
-            %a{href: "#"} Price: Hight to low
+          - Book::FILTERS.each do |filter_attribute, filter_name|
+            %li
+              = link_to filter_name, @page_presenter.current_url(filter: filter_attribute)
     %ul.list-inline.pt-10.mb-25.mr-240
       = render partial: 'books/partials/category_list_item',
         locals: {path: books_path, name: t('catalog.all'), books_quantity: @book_presenter.total_quantity}
@@ -23,25 +18,9 @@
         = render partial: 'books/partials/category_list_item',
           locals: {path: categories_path(id: category), name: category.name, books_quantity: category.books_count}
   .dropdowns.mb-25.visible-xs
-    %p.lead.small.mb-10 Filter by category
-    .dropdown
-      %a.dropdown-toggle.lead.small{href: "#", 'data-toggle': "dropdown", role: "button", 'aria-haspopup': "true", 'aria-expanded': "false"}
-        Newest first
-        %i.fa.fa-angle-down.dropdown-icon.pull-right
-      %ul.dropdown-menu
-        %li
-          %a{href: "#"} Newest first
-        %li
-          %a{href: "#"} Popular first
-        %li
-          %a{href: "#"} Price: Low to hight
-        %li
-          %a{href: "#"} Price: Hight to low
-    %p.lead.small.mb-10 Sort by
-    .dropdown
-      %a.dropdown-toggle.lead.small{href: "#", 'data-toggle': "dropdown", role: "button", 'aria-haspopup': "true", 'aria-expanded': "false"}
-        Newest first
-        %i.fa.fa-angle-down.dropdown-icon.pull-right
+    %a.dropdown-toggle.lead.small{href: "#", 'data-toggle': "dropdown", role: "button", 'aria-haspopup': "true", 'aria-expanded': "false"}
+      = Book::FILTERS[Book::DEFAULT_FILTER]
+      %i.fa.fa-angle-down.dropdown-icon.pull-right
       %ul.dropdown-menu
         %li
           %a{href: "#"} Newest first
