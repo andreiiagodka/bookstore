@@ -18,8 +18,16 @@ en:
   catalog:
     title: Catalog
     all: All
+  book:
+    back: Back to results
+    price: "€ %{price}"
+    description: Description
+    read_more: Read more
+    publication_year: Year of publication
+    dimensions: Dimensions
+    dimensions_params: "H:%{height} x W:%{width} x D:%{depth}"
+    materials: Materials
   btn:
     get_started: Get Started
     buy_now: Buy Now
-  book:
-    price: "€ %{price}"
+    add_to_cart: Add to Cart

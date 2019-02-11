@@ -4,7 +4,7 @@
       = book.image(:small)
       .thumb-hover
         .general-thumb-link-wrap
-          %a.thumb-hover-link{href: "#"}
+          = link_to book_path(id: book), class: 'thumb-hover-link' do
             %i.fa.fa-eye.thumb-icon{'aria-hidden': "true"}
           %a.thumb-hover-link{href: "#"}
             %i.fa.fa-shopping-cart.thumb-icon

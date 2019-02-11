@@ -7,11 +7,15 @@ class BooksController < ApplicationController
   before_action :set_scope
   before_action :set_order_filter
 
-  decorates_assigned :selected_books
+  decorates_assigned :selected_books, :book
 
   def index
     intialize_book_presenter
     @pagy, @selected_books = pagy(@books.by_order_filter(@order_filter), items: BOOKS_PER_PAGE)
+  end
+
+  def show
+    @book = Book.find_by(id: params[:id])
   end
 
   private
