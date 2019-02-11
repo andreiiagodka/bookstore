@@ -13,8 +13,9 @@ require 'faker'
     height: Faker::Number.decimal(2),
     width: Faker::Number.decimal(2),
     depth: Faker::Number.decimal(2),
+    material: Faker::Science.element
   )
-  book.authors << Author.all.shuffle.first
+  book.authors << Author.all.shuffle.first(rand(1..3))
   book.categories << Category.all.shuffle.first
   cover = "#{rand(1..17)}.jpg";
   book.cover.attach(

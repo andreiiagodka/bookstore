@@ -1,5 +1,5 @@
 %main.container
- = link_to @back, class: 'general-back-link' do
+ = link_to @page_presenter.previous_url, class: 'general-back-link' do
   %i.fa.fa-long-arrow-left.mr-15
    = t('book.back')
  .row
@@ -54,8 +54,9 @@
     .general-info-wrap.divider-lg
      .clearfix
       %p.pull-left
-       = t('book.materials')
-      %p.lead.small.pull-right Hardcove, glossy paper
+       = t('book.material')
+      %p.lead.small.pull-right
+       = book.material
  .mb-80
   %h3 Write a Review
   %p.general-info-text Score

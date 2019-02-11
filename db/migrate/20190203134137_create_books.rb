@@ -8,6 +8,7 @@ class CreateBooks < ActiveRecord::Migration[5.2]
       t.float :height
       t.float :width
       t.float :depth
+      t.string :material
 
       t.timestamps
     end
