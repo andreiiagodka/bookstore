@@ -31,6 +31,10 @@ en:
     reviews: Reviews (%{count})
     verified_reviewer: Verified Reviewer
     write_review: Write a Review
+    title: Title
+    review: Review
+    post: Post
+    success_msg: Thanks for Review. It will be published as soon as Admin will approve it.
   btn:
     get_started: Get Started
     buy_now: Buy Now

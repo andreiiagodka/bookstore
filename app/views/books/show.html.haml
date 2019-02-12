@@ -57,26 +57,4 @@
        = t('book.material')
       %p.lead.small.pull-right
        = book.material
- .mb-80
-  %h3
-   = t('review.write_review')
-  %p.general-info-text
-   = t('book.score')
-  .mb-15
-   %i.fa.fa-star.rate-empty
-   %i.fa.fa-star.rate-empty
-   %i.fa.fa-star.rate-empty
-   %i.fa.fa-star.rate-empty
-   %i.fa.fa-star.rate-empty
-  %form.row
-   .col-md-8
-    .mb-40
-     .form-group
-      %label.control-label.input-label.in-grey-600{for: "title"} Title
-      %input#title.form-control{name:"title", type: "text"}
-     .form-group
-      %label.control-label.input-label.in-grey-600{for: "review"} Review
-      %textarea#review.form-control{name:"review", type: "text"}
-    .text-right
-     %button.btn.disabled.mb-20 Post
- = render partial: 'books/partials/reviews'
+ = render 'reviews/book_reviews'
