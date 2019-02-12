@@ -15,6 +15,7 @@ class Book < ApplicationRecord
   has_many :authors, through: :book_authors
   has_many :book_categories, dependent: :destroy
   has_many :categories, through: :book_categories
+  has_many :reviews, dependent: :destroy
 
   def cover_w160
     return self.cover.variant(resize: '160').processed

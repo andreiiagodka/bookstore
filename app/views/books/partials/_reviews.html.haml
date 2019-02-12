@@ -1,0 +1,24 @@
+.mb-80
+ %h3.in-gold-500.mb-25
+  = t('review.reviews', count: book.reviews.count)
+  - book.reviews.each do |review|
+   .general-message-wrap.divider-lg
+   .clearfix
+    %span.img-circle.logo-size.inlide-block.pull-left.logo-empty
+     = review.user.email_capital_letter
+    .ml-70
+     %div
+      .general-message-date.hidden-xs
+       = review.slash_date_format
+      .max-240
+       .general-message-verified.pull-right
+        = t('review.verified_reviewer')
+       .general-message-name
+        = review.user.email
+     .mb-15
+      - review.score.times do
+       %i.fa.fa-star.rate-star
+      - (Review::SCORE.max - review.score).times do
+       %i.fa.fa-star.rate-star.rate-empty
+     %p
+      = review.body

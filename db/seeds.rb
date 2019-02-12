@@ -22,4 +22,12 @@ require 'faker'
     io: File.open(Rails.root.join('app', 'assets', 'images', 'covers', cover)),
     filename: cover
   )
+  rand(1..3).times {
+    review = book.reviews.create(
+      title: Faker::Lorem.word,
+      body: Faker::Lorem.sentence,
+      score: Faker::Number.between(1, 5),
+      user_id: User.all.shuffle.first.id
+    )
+  }
 }

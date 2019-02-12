@@ -27,6 +27,10 @@ en:
     dimensions: Dimensions
     dimensions_params: "H:%{height} x W:%{width} x D:%{depth}"
     material: Material
+  review:
+    reviews: Reviews (%{count})
+    verified_reviewer: Verified Reviewer
+    write_review: Write a Review
   btn:
     get_started: Get Started
     buy_now: Buy Now

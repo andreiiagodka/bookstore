@@ -5,6 +5,8 @@ class BookDecorator < Draper::Decorator
 
   delegate_all
 
+  decorates_association :reviews
+
   def authors_joined_by_comma
     authors.map(&:name).join(', ')
   end
