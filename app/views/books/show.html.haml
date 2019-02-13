@@ -9,12 +9,8 @@
      %img.img-responsive
       = book.cover_image(:cart)
     .images.clearfix
-     %a.img-link{href: "#"}
-      %img{src: "https://www.smashingmagazine.com/wp-content/uploads/2015/09/smashing-book-5-2-large.jpg"}
-     %a.img-link{href: "#"}
-      %img{src: "https://www.smashingmagazine.com/wp-content/uploads/2015/09/smashing-book-5-2-large.jpg"}
-     %a.img-link{href: "#"}
-      %img{src: "https://www.smashingmagazine.com/wp-content/uploads/2015/09/smashing-book-5-2-large.jpg"}
+     - (0...book.images.count).each do |image|
+      = image_tag book.secondary_image_w171_h120(image), class: 'img-link'
   .col-sm-6
    %h1.mt-res-0
     = book.name

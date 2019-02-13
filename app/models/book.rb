@@ -30,6 +30,10 @@ class Book < ApplicationRecord
     return self.cover.variant(resize: '555x380!').processed
   end
 
+  def secondary_image_w171_h120 input
+    return self.images[input].variant(resize: '171x120!').processed
+  end
+
   scope :by_order_filter, -> (order_filter) { public_send(order_filter) }
 
   scope :created_at_desc, -> { order('created_at desc') }
