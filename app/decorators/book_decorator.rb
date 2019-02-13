@@ -19,7 +19,7 @@ class BookDecorator < Draper::Decorator
    description[0..150]
   end
 
- def image(type)
+ def cover_image(type)
    if cover.attached?
      h.image_tag cover_type(type), class: "img-shadow #{DEFAULT_COVER_CLASS}"
    else
@@ -31,8 +31,9 @@ class BookDecorator < Draper::Decorator
 
  def cover_type(type)
    case type
-   when :large then cover_w250_h310
-   when :small then cover_w160
+   when :cart then cover_w555_h380
+   when :slider then cover_w250_h310
+   when :box then cover_w160
    end
  end
 

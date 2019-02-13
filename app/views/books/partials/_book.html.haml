@@ -1,7 +1,7 @@
 .col-sm-6.col-md-3
   .general-thumb-wrap
     .thumbnail.general-thumbnail
-      = book.image(:small)
+      = book.cover_image(:box)
       .thumb-hover
         .general-thumb-link-wrap
           = link_to book_path(id: book), class: 'thumb-hover-link' do

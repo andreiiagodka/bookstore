@@ -21,5 +21,7 @@
        %i.fa.fa-star.rate-star
       - (Review::SCORE.max - review.score).times do
        %i.fa.fa-star.rate-star.rate-empty
+     %h4
+      = review.title
      %p
       = review.body

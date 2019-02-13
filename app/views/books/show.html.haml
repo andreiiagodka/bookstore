@@ -6,7 +6,8 @@
   .col-sm-6
    .product-gallery
     .mb-20
-     %img.img-responsive{src: "https://www.bramstein.com/static/smashing-book-5-photo-stack.9d5d114e3e.jpg"}
+     %img.img-responsive
+      = book.cover_image(:cart)
     .images.clearfix
      %a.img-link{href: "#"}
       %img{src: "https://www.smashingmagazine.com/wp-content/uploads/2015/09/smashing-book-5-2-large.jpg"}

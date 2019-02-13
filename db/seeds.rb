@@ -22,6 +22,13 @@ require 'faker'
     io: File.open(Rails.root.join('app', 'assets', 'images', 'covers', cover)),
     filename: cover
   )
+  (1..17).to_a.shuffle.first(3).each do |image_number|
+    image = "#{image_number}.jpg"
+    book.images.attach(
+      io: File.open(Rails.root.join('app', 'assets', 'images', 'covers', image)),
+      filename: image
+    )
+  end
   rand(1..3).times {
     review = book.reviews.create(
       title: Faker::Lorem.word,

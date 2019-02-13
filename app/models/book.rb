@@ -1,5 +1,6 @@
 class Book < ApplicationRecord
   has_one_attached :cover
+  has_many_attached :images
 
   ORDER_FILTERS = {
     created_at_desc: 'Newest first',
@@ -23,6 +24,10 @@ class Book < ApplicationRecord
 
   def cover_w250_h310
     return self.cover.variant(resize: '250x310!').processed
+  end
+
+  def cover_w555_h380
+    return self.cover.variant(resize: '555x380!').processed
   end
 
   scope :by_order_filter, -> (order_filter) { public_send(order_filter) }
