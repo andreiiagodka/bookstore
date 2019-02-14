@@ -30,7 +30,7 @@ require 'faker'
     )
   end
   rand(1..3).times {
-    review = book.reviews.create(
+    book.reviews.create(
       title: Faker::Lorem.word,
       body: Faker::Lorem.sentence,
       score: Faker::Number.between(1, 5),

@@ -7,7 +7,7 @@
    .product-gallery
     .mb-20
      %img.img-responsive
-      = book.cover_image(:cart)
+      = book.cover_image(:main)
     .images.clearfix
      - (0...book.images.count).each do |image|
       = image_tag book.secondary_image_w171_h120(image), class: 'img-link'
@@ -17,19 +17,21 @@
    %p.lead.small
     = book.authors_joined_by_comma
    .row
-    .col-xs-12.col-md-4
-     %p.h1.in-gold-500.mt-10
-      = t('book.price', price: book.price)
-    .col-xs-5.col-md-3
-     .input-group.general-position
-      %a.input-link{href: "#"}
-       %i.fa.fa-minus.line-height-40
-      %input.form-control.quantity-input{type: "text"}
-      %a.input-link{href: "#"}
-       %i.fa.fa-plus.line-height-40
-    .col-xs-7.col-md-5
-     %button.btn.btn-default.pull-right.general-position
-      = t('btn.add_to_cart')
+    = simple_form_for(root_path, method: :post) do |f|
+     .col-xs-12.col-md-4
+      %p.h1.in-gold-500.mt-10
+       = t('book.price', price: book.price)
+     .col-xs-5.col-md-3
+      .input-group.general-position
+       %a.input-link.btn-minus-js
+        %i.fa.fa-minus.line-height-40
+       = f.number_field :quantity, value: 1, class: 'form-control quantity-input book-quantity-js'
+       %a.input-link.btn-plus-js
+        %i.fa.fa-plus.line-height-40
+     .col-xs-7.col-md-5
+      %button.btn.btn-default.pull-right.general-position
+       = t('btn.add_to_cart')
+   .row
     .general-info-wrap.divider-lg
      %p
       = t('book.description')

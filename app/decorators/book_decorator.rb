@@ -31,7 +31,7 @@ class BookDecorator < Draper::Decorator
 
  def cover_type(type)
    case type
-   when :cart then cover_w555_h380
+   when :main then cover_w555_h380
    when :slider then cover_w250_h310
    when :box then cover_w160
    end
