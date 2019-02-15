@@ -19,6 +19,14 @@ class BookDecorator < Draper::Decorator
    description[0..150]
   end
 
+  def medium_description
+   description[0..250]
+  end
+
+  def end_of_description
+    description[250..-1]
+  end
+
  def cover_image(type)
    if cover.attached?
      h.image_tag cover_type(type), class: "img-shadow #{DEFAULT_COVER_CLASS}"

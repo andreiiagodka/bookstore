@@ -27,6 +27,7 @@ en:
     dimensions: Dimensions
     dimensions_params: "H:%{height} x W:%{width} x D:%{depth}"
     material: Material
+    dots: . . .
   review:
     reviews: Reviews (%{count})
     verified_reviewer: Verified Reviewer
