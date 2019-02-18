@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
 
   before_action :categories
   before_action :initialize_page_presenter
+  before_action :initialize_order_presenter
 
   helper_method :current_order
 
@@ -14,6 +15,10 @@ class ApplicationController < ActionController::Base
 
   def initialize_page_presenter
     @page_presenter = PagePresenter.new(request: request).attach_controller(self)
+  end
+
+  def initialize_order_presenter
+    @order_presenter = OrderPresenter.new.attach_controller(self)
   end
 
   def current_order

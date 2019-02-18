@@ -6,5 +6,6 @@ Rails.application.routes.draw do
   resources :books, only: [:index, :show]
   resources :categories
   resources :reviews, only: :create
+  resources :orders
   resources :order_books
 end
