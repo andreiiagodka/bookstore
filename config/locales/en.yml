@@ -36,6 +36,8 @@ en:
     review: Review
     post: Post
     success_msg: Thanks for Review. It will be published as soon as Admin will approve it.
+  order_book:
+    success_msg: "'%{book_title}' was added to cart."
   btn:
     get_started: Get Started
     buy_now: Buy Now

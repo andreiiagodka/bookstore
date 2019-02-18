@@ -17,7 +17,7 @@
    %p.lead.small
     = book.authors_joined_by_comma
    .row
-    = simple_form_for(root_path, method: :post) do |f|
+    = simple_form_for(current_order.order_books.new, remote: true, method: :post) do |f|
      .col-xs-12.col-md-4
       %p.h1.in-gold-500.mt-10
        = t('book.price', price: book.price)
@@ -26,6 +26,7 @@
        %a.input-link.btn-minus-js
         %i.fa.fa-minus.line-height-40
        = f.number_field :quantity, value: 1, class: 'form-control quantity-input book-quantity-js'
+       = f.hidden_field :book_id, value: book.id
        %a.input-link.btn-plus-js
         %i.fa.fa-plus.line-height-40
      .col-xs-7.col-md-5
