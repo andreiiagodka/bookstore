@@ -42,14 +42,14 @@
                   = t('order.summary.coupon')
               %td
                 %p.font-16
-                  = t('book.price', price: order.coupon ? order.count_discount : 0)
+                  = t('book.price', price: order.count_discount)
             %tr
               %td
                 %strong.font-18
                   = t('order.summary.order_total')
               %td
                 %strong.font-18
-                  = t('book.price', price: order.total_price)
+                  = t('book.price', price: order.count_total_price)
           %button.btn.btn-default.mb-20.visible-xs-inline-block
             = t('order.checkout')
   %button.btn.btn-default.mb-20.hidden-xs.center-block

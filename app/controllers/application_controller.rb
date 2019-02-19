@@ -26,5 +26,4 @@ class ApplicationController < ActionController::Base
 
     Order.find_by(id: session[:order_id])
   end
-
 end

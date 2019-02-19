@@ -54,7 +54,9 @@ en:
       coupon: "Coupon:"
       order_total: "Order Total:"
   order_book:
-    success_msg: "'%{book_title}' was added to cart."
+    success_msg:
+      add: "'%{book_title}' was added to cart."
+      delete: Book was deleted from cart!
   btn:
     get_started: Get Started
     buy_now: Buy Now
