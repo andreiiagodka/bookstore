@@ -38,3 +38,5 @@ require 'faker'
     )
   }
 }
+
+10.times { |index| Coupon.create(code: index.to_s * 4) }

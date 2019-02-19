@@ -36,9 +36,27 @@ en:
     review: Review
     post: Post
     success_msg: Thanks for Review. It will be published as soon as Admin will approve it.
+  order:
+    checkout: Checkout
+    cart:
+      cart: Cart
+      product: Product
+      price: Price
+      quantity: Quantity
+      subtotal: Subtotal
+    coupon:
+      enter_code: Enter Your Coupon Code
+      success_msg: Coupon used successfully!
+      danger_msg: Already used or invalid coupon code.
+    summary:
+      order_summary: Order Summary
+      subtotal: "Subtotal:"
+      coupon: "Coupon:"
+      order_total: "Order Total:"
   order_book:
     success_msg: "'%{book_title}' was added to cart."
   btn:
     get_started: Get Started
     buy_now: Buy Now
     add_to_cart: Add to Cart
+    apply_coupon: Apply Coupon

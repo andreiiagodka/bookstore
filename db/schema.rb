@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_16_230240) do
+ActiveRecord::Schema.define(version: 2019_02_18_220537) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,7 +62,7 @@ ActiveRecord::Schema.define(version: 2019_02_16_230240) do
 
   create_table "books", force: :cascade do |t|
     t.string "name"
-    t.float "price"
+    t.decimal "price", precision: 12, scale: 2
     t.text "description"
     t.integer "publication_year"
     t.float "height"
@@ -79,9 +79,19 @@ ActiveRecord::Schema.define(version: 2019_02_16_230240) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "coupons", force: :cascade do |t|
+    t.string "code"
+    t.integer "discount_percent", default: 10
+    t.string "status"
+    t.bigint "order_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["order_id"], name: "index_coupons_on_order_id"
+  end
+
   create_table "order_books", force: :cascade do |t|
     t.integer "quantity", default: 0
-    t.float "subtotal_price", default: 0.0
+    t.decimal "subtotal_price", precision: 12, scale: 2, default: "0.0"
     t.bigint "order_id"
     t.bigint "book_id"
     t.datetime "created_at", null: false
@@ -91,7 +101,7 @@ ActiveRecord::Schema.define(version: 2019_02_16_230240) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.float "total_price", default: 0.0
+    t.decimal "total_price", precision: 12, scale: 2, default: "0.0"
     t.string "status"
     t.bigint "user_id"
     t.datetime "created_at", null: false
@@ -137,6 +147,7 @@ ActiveRecord::Schema.define(version: 2019_02_16_230240) do
   add_foreign_key "book_authors", "books"
   add_foreign_key "book_categories", "books"
   add_foreign_key "book_categories", "categories"
+  add_foreign_key "coupons", "orders"
   add_foreign_key "order_books", "books"
   add_foreign_key "order_books", "orders"
   add_foreign_key "orders", "users"

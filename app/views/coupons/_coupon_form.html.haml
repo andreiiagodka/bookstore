@@ -1,0 +1,9 @@
+= simple_form_for(:coupon, url: coupon_path(:coupon), method: :put, remote: true) do |f|
+  .col-sm-4
+    .input-group.general-input-group
+      %label.input-label
+        = t('order.coupon.enter_code')
+      = f.text_field :code, class: 'form-control mb-30', placeholder: t('order.coupon.enter_code')
+      = f.hidden_field :order_id, value: @order.id
+      %div
+        = f.button :submit, t('btn.apply_coupon'), class: 'btn btn-primary mr-5 mb-15'
