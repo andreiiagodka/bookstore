@@ -1,48 +1,58 @@
 class BookDecorator < Draper::Decorator
-  COVERS_DIR = 'covers/'
-  DEFAULT_COVER = 'default.jpg'
-  DEFAULT_COVER_CLASS = 'general-thumbnail-img'
+  include BookImage
 
   delegate_all
 
   decorates_association :reviews
+
+  RANGES = {
+    name: {
+      short: 0..25
+    },
+    description: {
+      short: 0..150,
+      medium: 0..250,
+      end: 250..-1
+    }
+  }.freeze
 
   def authors_joined_by_comma
     authors.map(&:name).join(', ')
   end
 
   def short_name
-    name[0..25]
+    name[RANGES[:name][:short]]
   end
 
   def short_description
-   description[0..150]
+   description[RANGES[:description][:short]]
   end
 
   def medium_description
-   description[0..250]
+   description[RANGES[:description][:medium]]
   end
 
   def end_of_description
-    description[250..-1]
+    description[RANGES[:description][:end]]
   end
 
- def cover_image(type)
-   if cover.attached?
-     h.image_tag cover_type(type), class: "img-shadow #{DEFAULT_COVER_CLASS}"
-   else
-     h.image_tag COVERS_DIR . DEFAULT_COVER, class: DEFAULT_COVER_CLASS
-   end
- end
+  def cover_image(type, shadow: true)
+    h.image_tag get_cover_image(type), class: get_class_list(shadow)
+  end
 
- private
+  def main_cover
+    cover.variant(resize: "#{BOOK_IMAGE_SIZES[:main_cover]}!").processed
+  end
 
- def cover_type(type)
-   case type
-   when :main then cover_w555_h380
-   when :slider then cover_w250_h310
-   when :box then cover_w160
-   end
- end
+  def slider_cover
+    cover.variant(resize: "#{BOOK_IMAGE_SIZES[:slider_cover]}!").processed
+  end
 
+  def cart_cover
+    cover.variant(resize: "#{BOOK_IMAGE_SIZES[:cart_cover]}!").processed
+  end
+
+  def image(input)
+    images[input].variant(resize: "#{BOOK_IMAGE_SIZES[:image]}!").processed
+  end
 end

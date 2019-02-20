@@ -9,8 +9,8 @@
      %img.img-responsive
       = book.cover_image(:main)
     .images.clearfix
-     - (0...book.images.count).each do |image|
-      = image_tag book.secondary_image_w171_h120(image), class: 'img-link'
+     - (0...book.images.count).each do |image_index|
+      = image_tag book.image(image_index), class: 'img-link'
   .col-sm-6
    %h1.mt-res-0
     = book.name

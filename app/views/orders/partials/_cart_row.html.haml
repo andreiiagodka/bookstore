@@ -3,7 +3,7 @@
     .general-img-wrap-table
       %img.cart-img-shadow.pull-left
         = link_to book_path(order_book.book) do
-          = order_book.book.decorate.cover_image(:box)
+          = order_book.book.decorate.cover_image(:cart)
   %td
     %p.title
       = link_to order_book.book.name, book_path(order_book.book)
