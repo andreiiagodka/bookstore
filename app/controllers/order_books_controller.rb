@@ -9,13 +9,13 @@ class OrderBooksController < ApplicationController
       item.quantity += order_book_params[:quantity].to_i
       item.subtotal_price += count_subtotal_price
     end
-    order_book.save ? flash[:success] = t('order_book.success_msg.add', book_title: @book.name)
+    order_book.save ? flash[:success] = t('message.success.order_book.create', book_title: @book.name)
                     : flash[:danger] = order_book.errors.full_messages.to_sentence
     redirect_to @page_presenter.previous_url
   end
 
   def destroy
-    OrderBook.find_by(id: params[:id]).destroy ? flash[:success] = t('order_book.success_msg.delete')
+    OrderBook.find_by(id: params[:id]).destroy ? flash[:success] = t('message.success.order_book.delete', book_title: order_book.book.name)
                                                : flash[:danger] = order_book.errors.full_messages.to_sentence
     redirect_to @page_presenter.previous_url
   end

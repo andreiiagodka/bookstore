@@ -7,7 +7,7 @@
    .product-gallery
     .mb-20
      %img.img-responsive
-      = book.cover_image(:main)
+      = book.cover_image(:main, shadow: false)
     .images.clearfix
      - (0...book.images.count).each do |image_index|
       = image_tag book.image(image_index), class: 'img-link'
@@ -31,7 +31,7 @@
         %i.fa.fa-plus.line-height-40
      .col-xs-7.col-md-5
       %button.btn.btn-default.pull-right.general-position
-       = t('btn.add_to_cart')
+       = t('button.add_to_cart')
    .row
     .general-info-wrap.divider-lg
      %p

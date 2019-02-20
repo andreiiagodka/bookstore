@@ -35,7 +35,6 @@ en:
     title: Title
     review: Review
     post: Post
-    success_msg: Thanks for Review. It will be published as soon as Admin will approve it.
   order:
     checkout: Checkout
     cart:
@@ -46,19 +45,26 @@ en:
       subtotal: Subtotal
     coupon:
       enter_code: Enter Your Coupon Code
-      success_msg: Coupon used successfully!
-      danger_msg: Already used or invalid coupon code.
     summary:
       order_summary: Order Summary
       subtotal: "Subtotal:"
       coupon: "Coupon:"
       order_total: "Order Total:"
   order_book:
-    success_msg:
-      add: "'%{book_title}' was added to cart."
-      delete: Book was deleted from cart!
-  btn:
+  button:
     get_started: Get Started
     buy_now: Buy Now
     add_to_cart: Add to Cart
     apply_coupon: Apply Coupon
+  message:
+    success:
+      review:
+        create: Thanks for Review! It will be published as soon as Admin will approve it.
+      coupon:
+        use: Coupon used successfully!
+      order_book:
+        create: "'%{book_title}' was added to cart!"
+        delete: "'%{book_title}' was deleted from cart!"
+    error:
+      coupon:
+        used: Already used or invalid coupon code.
