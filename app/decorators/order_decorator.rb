@@ -12,4 +12,8 @@ class OrderDecorator < Draper::Decorator
   def count_discount
     coupon ? (count_subtotal_price/coupon.discount_percent).round : 0
   end
+
+  def count_books_quantity
+    order_books.count
+  end
 end
