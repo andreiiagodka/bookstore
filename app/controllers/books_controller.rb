@@ -3,6 +3,7 @@ class BooksController < ApplicationController
 
   include Rectify::ControllerHelpers
   include Pagy::Backend
+  include FiltersHelper
 
   before_action :set_scope
   before_action :set_order_filter
@@ -25,7 +26,7 @@ class BooksController < ApplicationController
   end
 
   def set_order_filter
-    @order_filter = Book::ORDER_FILTERS.include?(params[:filter]&.to_sym) ? params[:filter] : Book::DEFAULT_ORDER_FILTER
+    @order_filter = BOOK_ORDER_FILTERS.include?(params[:filter]&.to_sym) ? params[:filter] : DEFAULT_BOOK_ORDER_FILTER
   end
 
   def intialize_book_presenter

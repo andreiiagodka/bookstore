@@ -1,7 +1,7 @@
 class CategoryDecorator < Draper::Decorator
   delegate_all
 
-  def books_count
+  def count_books
     books.count
   end
 end

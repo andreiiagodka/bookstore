@@ -2,16 +2,6 @@ class Book < ApplicationRecord
   has_one_attached :cover
   has_many_attached :images
 
-  ORDER_FILTERS = {
-    created_at_desc: 'Newest first',
-    popularity_desc: 'Popular first',
-    name_asc: 'Title A-Z',
-    name_desc: 'Title Z-A',
-    price_asc: 'Price: Low to high',
-    price_desc: 'Price: High to low'
-  }.freeze
-  DEFAULT_ORDER_FILTER = :created_at_desc
-
   has_many :book_authors, dependent: :destroy
   has_many :authors, through: :book_authors
   has_many :book_categories, dependent: :destroy

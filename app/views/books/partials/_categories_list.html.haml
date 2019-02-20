@@ -10,4 +10,4 @@
       = link_to @page_presenter.current_url(category_id: category), class: 'filter-link' do
         = category.name
         %span.badge.general-badge
-          = category.books_count
+          = category.count_books
