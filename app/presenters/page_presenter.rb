@@ -6,4 +6,8 @@ class PagePresenter < Rectify::Presenter
   def previous_url
     request.referer ? request.referer : root_path
   end
+
+  def get_categories
+    Category.all.decorate
+  end
 end

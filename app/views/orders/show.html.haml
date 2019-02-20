@@ -1,56 +1,57 @@
 %main.container.general-main-wrap
   %h1.general-title-margin
     = t('order.cart.cart')
-  .visible-xs
-    = render partial: 'orders/partials/mobile_cart_row', collection: order.order_books, as: :order_book
-  .hidden-xs
-    %table.table.table-hover
-      %tr.no-hover
-        %th.col-pic.pl-0
-          %span.in-grey-600
-            = t('order.cart.product')
-        %th.col-title
-        %th.col-price
-          %span.in-grey-600
-            = t('order.cart.price')
-        %th.col-quantity
-          %span.in-grey-600
-            = t('order.cart.quantity')
-        %th.col-total
-          %span.in-grey-600
-            = t('order.cart.subtotal')
-        %th.col-close
-        = render partial: 'orders/partials/cart_row', collection: order.order_books, as: :order_book
-  .general-order-wrap
-    .row
-      = render partial: 'coupons/coupon_form'
-      .col-sm-8
-        .res-mr-200.text-center.general-text-right
-          %p.in-gold-500.font-18
-            = t('order.summary.order_summary')
-          %table.general-summary-table.general-summary-table-right.general-text-right
-            %tr
-              %td
-                %p.font-16
-                  = t('order.summary.subtotal')
-              %td
-                %p.font-16
-                  = t('book.price', price: order.count_subtotal_price)
-            %tr
-              %td
-                %p.font-16
-                  = t('order.summary.coupon')
-              %td
-                %p.font-16
-                  = t('book.price', price: order.count_discount)
-            %tr
-              %td
-                %strong.font-18
-                  = t('order.summary.order_total')
-              %td
-                %strong.font-18
-                  = t('book.price', price: order.count_total_price)
-          %button.btn.btn-default.mb-20.visible-xs-inline-block
-            = t('order.checkout')
-  %button.btn.btn-default.mb-20.hidden-xs.center-block
-    = t('order.checkout')
+  - if @order.order_books.exists?
+    .visible-xs
+      = render partial: 'orders/partials/mobile_cart_row', collection: order.order_books, as: :order_book
+    .hidden-xs
+      %table.table.table-hover
+        %tr.no-hover
+          %th.col-pic.pl-0
+            %span.in-grey-600
+              = t('order.cart.product')
+          %th.col-title
+          %th.col-price
+            %span.in-grey-600
+              = t('order.cart.price')
+          %th.col-quantity
+            %span.in-grey-600
+              = t('order.cart.quantity')
+          %th.col-total
+            %span.in-grey-600
+              = t('order.cart.subtotal')
+          %th.col-close
+          = render partial: 'orders/partials/cart_row', collection: order.order_books, as: :order_book
+    .general-order-wrap
+      .row
+        = render partial: 'coupons/coupon_form'
+        .col-sm-8
+          .res-mr-200.text-center.general-text-right
+            %p.in-gold-500.font-18
+              = t('order.summary.order_summary')
+            %table.general-summary-table.general-summary-table-right.general-text-right
+              %tr
+                %td
+                  %p.font-16
+                    = t('order.summary.subtotal')
+                %td
+                  %p.font-16
+                    = t('book.price', price: order.count_subtotal_price)
+              %tr
+                %td
+                  %p.font-16
+                    = t('order.summary.coupon')
+                %td
+                  %p.font-16
+                    = t('book.price', price: order.count_discount)
+              %tr
+                %td
+                  %strong.font-18
+                    = t('order.summary.order_total')
+                %td
+                  %strong.font-18
+                    = t('book.price', price: order.count_total_price)
+            %button.btn.btn-default.mb-20.visible-xs-inline-block
+              = t('order.checkout')
+    %button.btn.btn-default.mb-20.hidden-xs.center-block
+      = t('order.checkout')

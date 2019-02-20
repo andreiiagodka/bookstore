@@ -1,6 +1,6 @@
 .input-group
-  %a.input-link.btn-minus-js
+  = link_to order_book_path(id: order_book, quantity: :decrement), class: 'input-link', method: :patch do
     %i.fa.fa-minus.line-height-40
-  %input.form-control.quantity-input.book-quantity-js{value: quantity}
-  %a.input-link.btn-plus-js
+  %input.form-control.quantity-input{value: order_book.quantity}
+  = link_to order_book_path(id: order_book, quantity: :increment), class: 'input-link', method: :patch do
     %i.fa.fa-plus.line-height-40

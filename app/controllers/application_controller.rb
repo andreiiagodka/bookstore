@@ -3,7 +3,6 @@ class ApplicationController < ActionController::Base
 
   before_action :initialize_page_presenter
 
-  helper_method :get_categories
   helper_method :current_order
 
   private
@@ -12,13 +11,9 @@ class ApplicationController < ActionController::Base
     @page_presenter = PagePresenter.new(request: request).attach_controller(self)
   end
 
-  def get_categories
-    Category.all.decorate
-  end
-
   def current_order
     session[:order_id] = Order.create.id unless session[:order_id]
 
-    Order.find_by(id: session[:order_id]).decorate
+    Order.find_by(id: session[:order_id])
   end
 end

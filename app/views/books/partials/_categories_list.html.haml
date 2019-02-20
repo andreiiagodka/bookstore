@@ -1,5 +1,5 @@
 %ul.list-inline.pt-10.mb-25.mr-240
-  - get_categories.each_with_index do |category, index|
+  - @page_presenter.get_categories.each_with_index do |category, index|
     - if index == 0
       %li.mr-35
         = link_to books_path(filter: params[:filter]), class: 'filter-link' do

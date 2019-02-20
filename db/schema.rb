@@ -91,7 +91,6 @@ ActiveRecord::Schema.define(version: 2019_02_18_220537) do
 
   create_table "order_books", force: :cascade do |t|
     t.integer "quantity", default: 0
-    t.decimal "subtotal_price", precision: 12, scale: 2, default: "0.0"
     t.bigint "order_id"
     t.bigint "book_id"
     t.datetime "created_at", null: false
@@ -101,7 +100,6 @@ ActiveRecord::Schema.define(version: 2019_02_18_220537) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.decimal "total_price", precision: 12, scale: 2, default: "0.0"
     t.string "status"
     t.bigint "user_id"
     t.datetime "created_at", null: false

@@ -19,11 +19,11 @@
         %span.in-grey-600
           = t('cart.quantity')
       %td
-        = render partial: 'orders/partials/quantity_field', locals: {quantity: order_book.quantity}
+        = render partial: 'orders/partials/quantity_field', locals: {order_book: order_book}
     %tr
       %td
         %span.in-grey-600
           = t('cart.subtotal')
       %td
         %span.font-16.in-gold-500
-          = t('book.price', price: order_book.subtotal_price)
+          = t('book.price', price: order_book.count_subtotal_price)

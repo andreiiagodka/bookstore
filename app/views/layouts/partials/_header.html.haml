@@ -11,7 +11,7 @@
       .cart_link
         %span.shop-icon
           %span.shop-quantity
-            = current_order.count_books_quantity
+            = current_order.decorate.count_books_quantity
     #navbar.navbar-collapse.collapse.pl-30{'aria-expanded': "false"}
       .visible-xs
         %button.close{type: "button", 'aria-label': "Close"}
@@ -23,7 +23,7 @@
             %a{type: "button", 'data-toggle': "collapse", href: "#menu", 'aria-expanded': "false", 'aria-controls': "menu"}
               = t('layout.shop')
             %ul#menu.collapse.list-unstyled.pl-30.mb-10{'aria-expanded': "false"}
-              - get_categories.each do |category|
+              - @page_presenter.get_categories.each do |category|
                 %li
                   = link_to category.name, categories_path(id: category), css: 'collapse-link'
           - if user_signed_in?
@@ -48,7 +48,7 @@
             %ul.dropdown-menu
               %li
                 = link_to t('catalog.all'), books_path
-              - get_categories.each do |category|
+              - @page_presenter.get_categories.each do |category|
                 %li
                   = link_to category.name, books_path(category_id: category)
           - if user_signed_in?

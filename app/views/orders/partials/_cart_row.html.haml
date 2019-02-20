@@ -11,10 +11,10 @@
     %span.font-16.in-gold-500
       = t('book.price', price: order_book.book.price)
   %td
-    = render 'orders/partials/quantity_field', quantity: order_book.quantity
+    = render 'orders/partials/quantity_field', order_book: order_book
   %td
     %span.font-16.in-gold-500
-      = t('book.price', price: order_book.subtotal_price)
+      = t('book.price', price: order_book.count_subtotal_price)
   %td
     = link_to order_book_path(order_book), remote: true, method: :delete, class: 'close general-cart-close' do
       %span{'aria-hidden': "true"} &times;
