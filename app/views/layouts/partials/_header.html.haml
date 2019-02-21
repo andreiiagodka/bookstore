@@ -7,11 +7,11 @@
         %span.icon-bar
         %span.icon-bar
       = link_to t('layout.project_title'), root_path, class: 'navbar-brand'
-    = link_to order_path(current_order), class: 'shop-link pull-right hidden-xs' do
+    = link_to order_path(get_current_order), class: 'shop-link pull-right hidden-xs' do
       .cart_link
         %span.shop-icon
           %span.shop-quantity
-            = current_order.decorate.count_books_quantity
+            = get_current_order.decorate.count_books_quantity
     #navbar.navbar-collapse.collapse.pl-30{'aria-expanded': "false"}
       .visible-xs
         %button.close{type: "button", 'aria-label': "Close"}

@@ -2,6 +2,6 @@ class OrdersController < ApplicationController
   decorates_assigned :order
 
   def show
-    @order = current_order
+    @order = get_current_order
   end
 end
