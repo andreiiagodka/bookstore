@@ -8,6 +8,6 @@ class PagePresenter < Rectify::Presenter
   end
 
   def get_categories
-    Category.all.decorate
+    @categories ||= Category.all.decorate
   end
 end

@@ -1,5 +1,5 @@
 %a.dropdown-toggle.lead.small{href: "#", 'data-toggle': "dropdown", role: "button", 'aria-haspopup': "true", 'aria-expanded': "false"}
-  = FiltersHelper::BOOK_ORDER_FILTERS[@order_filter.to_sym]
+  = FiltersHelper::BOOK_ORDER_FILTERS[@filtering_order.to_sym]
   %i.fa.fa-angle-down.dropdown-icon.pull-right
 %ul.dropdown-menu
   - FiltersHelper::BOOK_ORDER_FILTERS.each do |filter_attribute, filter_name|

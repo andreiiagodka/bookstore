@@ -1,32 +1,27 @@
 class BooksController < ApplicationController
+  load_and_authorize_resource
+
   BOOKS_PER_PAGE = 12
 
   include Rectify::ControllerHelpers
   include Pagy::Backend
   include FiltersHelper
 
-  before_action :set_scope
-  before_action :set_order_filter
+  before_action :set_filtering_order, only: [:index]
+  before_action :intialize_book_presenter, only: [:index]
 
   decorates_assigned :selected_books, :book
 
   def index
-    intialize_book_presenter
-    @pagy, @selected_books = pagy(@books.by_order_filter(@order_filter), items: BOOKS_PER_PAGE)
+    @pagy, @selected_books = pagy(@books.by_filtering_order(@filtering_order), items: BOOKS_PER_PAGE)
   end
 
-  def show
-    @book = Book.find_by(id: params[:id])
-  end
+  def show; end
 
   private
 
-  def set_scope
-    @books = params[:category_id] ? Category::find_by(id: params[:category_id]).books : Book.all
-  end
-
-  def set_order_filter
-    @order_filter = BOOK_ORDER_FILTERS.include?(params[:filter]&.to_sym) ? params[:filter] : DEFAULT_BOOK_ORDER_FILTER
+  def set_filtering_order
+    @filtering_order = BooksFilteringOrderService.new(params[:filter]).call
   end
 
   def intialize_book_presenter

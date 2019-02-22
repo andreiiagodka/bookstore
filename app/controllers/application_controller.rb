@@ -11,4 +11,8 @@ class ApplicationController < ActionController::Base
   def initialize_page_presenter
     @page_presenter = PagePresenter.new(request: request).attach_controller(self)
   end
+
+  def current_ability
+    @current_ability ||= Ability.new(current_user)
+  end
 end
