@@ -63,8 +63,8 @@ en:
       coupon:
         use: Coupon used successfully!
       order_book:
-        create: "'%{book_title}' was added to cart!"
-        delete: "'%{book_title}' was deleted from cart!"
+        create: Book was added to cart!
+        delete: Book was deleted from cart!
     error:
       coupon:
         used: Already used or invalid coupon code.

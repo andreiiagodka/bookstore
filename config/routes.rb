@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   root 'pages#home'
 
   resources :books, only: [:index, :show]
-  resources :categories
+  resources :categories do
+    resources :books, only: :index
+  end
   resources :reviews, only: :create
   resources :orders
   resources :order_books

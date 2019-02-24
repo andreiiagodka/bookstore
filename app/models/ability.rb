@@ -5,10 +5,10 @@ class Ability
     user ||= User.new
 
     if user.persisted?
-
-    else
-      can :manage, Book 
+      can :create, Review
     end
 
+    can :manage, Book
+    can :manage, OrderBook
   end
 end

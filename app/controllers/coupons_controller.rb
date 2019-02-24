@@ -1,14 +1,9 @@
 class CouponsController < ApplicationController
   before_action :get_coupon
-  before_action :get_order
 
   def update
-    flash[:danger] = t('message.error.coupon.used') unless @coupon
-    if @coupon
-      @coupon.update(order_id: @order.id) ? flash[:success] = t('message.success.coupon.use')
-                                          : flash[:danger] = @coupon.errors.full_messages.to_sentence
-      @coupon.deactivate!
-    end
+    @coupon ? attach_order_to_coupon : flash[:danger] = t('message.error.coupon.used')
+
     return redirect_to @page_presenter.previous_url
   end
 
@@ -19,7 +14,16 @@ class CouponsController < ApplicationController
   end
 
   def get_coupon
-    @coupon = Coupon.active.find_by(code: coupon_params[:code])
+    @coupon = Coupon::GetActiveCouponService.new(coupon_params[:code]).call
+  end
+
+  def attach_order_to_coupon
+    if @coupon.update(order_id: get_order.id)
+      flash[:success] = t('message.success.coupon.use')
+    else
+      flash[:danger] = @coupon.errors.full_messages.to_sentence
+    end
+    @coupon.deactivate!
   end
 
   def get_order

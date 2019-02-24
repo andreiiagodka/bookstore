@@ -1,7 +1,13 @@
 class ReviewsController < ApplicationController
+  load_and_authorize_resource
+
   def create
-    review = Review.new(review_params)
-    review.save ? flash[:success] = t('message.success.review.create') : flash[:danger] = review.errors.full_messages.to_sentence
+    if @review.save
+      flash[:success] = t('message.success.review.create')
+    else
+      flash[:danger] = review.errors.full_messages.to_sentence
+    end
+
     redirect_to @page_presenter.previous_url
   end
 
