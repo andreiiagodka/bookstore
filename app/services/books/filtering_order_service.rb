@@ -1,4 +1,4 @@
-class Book::FilteringOrderService
+class Books::FilteringOrderService
   include FilteringOrder
 
   def initialize(filter)

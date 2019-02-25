@@ -21,11 +21,11 @@ class BooksController < ApplicationController
   private
 
   def get_category_books
-    @scoped_books = Book::CategoryBooksService.new(@books, params[:category_id]).call
+    @scoped_books = Books::CategoryBooksService.new(@books, params[:category_id]).call
   end
 
   def set_filtering_order
-    @filtering_order = Book::FilteringOrderService.new(params[:filter]).call
+    @filtering_order = Books::FilteringOrderService.new(params[:filter]).call
   end
 
   def intialize_book_presenter

@@ -4,7 +4,7 @@ class OrderBooksController < ApplicationController
   before_action :get_order, only: :create
 
   def create
-    order_book = OrderBook::CreateOrUpdateService.new(@order, order_book_params).call
+    order_book = OrderBooks::CreateOrUpdateService.new(@order, order_book_params).call
     if order_book.save
       flash[:success] = t('message.success.order_book.create')
     else
@@ -15,7 +15,7 @@ class OrderBooksController < ApplicationController
   end
 
   def update
-    OrderBook::ChangeBookQuantityService.new(@order_book, params[:quantity_action]).call
+    OrderBooks::ChangeBookQuantityService.new(@order_book, params[:quantity_action]).call
 
     redirect_to @page_presenter.previous_url
   end

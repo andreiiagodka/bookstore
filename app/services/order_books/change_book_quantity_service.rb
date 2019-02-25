@@ -1,4 +1,4 @@
-class OrderBook::ChangeBookQuantityService
+class OrderBooks::ChangeBookQuantityService
   QUANTITY_ACTION = {
     increment: 'increment',
     decrement: 'decrement'

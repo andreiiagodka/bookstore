@@ -1,4 +1,4 @@
-class OrderBook::CreateOrUpdateService
+class OrderBooks::CreateOrUpdateService
   def initialize(order, params)
     @order = order
     @params = params

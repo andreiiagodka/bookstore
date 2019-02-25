@@ -1,4 +1,4 @@
-class Coupon::GetActiveCouponService
+class Coupons::GetActiveCouponService
   def initialize(code)
     @code = code
   end

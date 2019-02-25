@@ -1,4 +1,4 @@
-class Book::CategoryBooksService
+class Books::CategoryBooksService
   def initialize(books, category_id)
     @books = books
     @category_id = category_id

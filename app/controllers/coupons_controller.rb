@@ -14,7 +14,7 @@ class CouponsController < ApplicationController
   end
 
   def get_coupon
-    @coupon = Coupon::GetActiveCouponService.new(coupon_params[:code]).call
+    @coupon = Coupons::GetActiveCouponService.new(coupon_params[:code]).call
   end
 
   def attach_order_to_coupon
