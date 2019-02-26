@@ -11,4 +11,5 @@ Rails.application.routes.draw do
   resources :orders
   resources :order_books
   resources :coupons
+  resources :checkout
 end

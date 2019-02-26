@@ -53,5 +53,6 @@
                     = t('book.price', price: order.count_total_price)
             %button.btn.btn-default.mb-20.visible-xs-inline-block
               = t('order.checkout')
-    %button.btn.btn-default.mb-20.hidden-xs.center-block
-      = t('order.checkout')
+    = link_to checkout_path(:login, destination: 'login') do
+      %button.btn.btn-default.mb-20.hidden-xs.center-block
+        = t('order.checkout')

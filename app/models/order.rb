@@ -7,12 +7,6 @@ class Order < ApplicationRecord
   has_many :order_books, dependent: :destroy
   has_many :books, through: :order_books
 
-  scope :in_progress, -> { where status: 0 }
-  scope :in_queue,    -> { where status: 1 }
-  scope :in_delivery, -> { where status: 2 }
-  scope :delivered,   -> { where status: 3 }
-  scope :canceled,    -> { where status: 4 }
-
   enum status: {
     in_progress: 0,
     in_queue: 1,

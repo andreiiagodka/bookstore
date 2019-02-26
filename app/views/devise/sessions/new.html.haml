@@ -1,35 +1,33 @@
 %main.container.general-main-wrap
   .text-center
-    %h3.general-login-title Log In
+    %h3.general-login-title
+      = t('devise.log_in')
     %a.general-login-icon{href: "#"}
-      - if devise_mapping.omniauthable?
-        - resource_class.omniauth_providers.each do |provider|
-          = link_to user_facebook_omniauth_authorize_path do
-            %i.fa.fa-facebook-official.fa-lg
-    %p.general-login-text or
+      = link_to user_facebook_omniauth_authorize_path do
+        %i.fa.fa-facebook-official.fa-lg
+    %p.general-login-text
+      = t('devise.or')
   .general-form.field
     = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
       .form-group.mb-30
-        %label.control-label.input-label{for: "email"} Enter Email
-        %br/
-        = f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control', id: 'email', placeholder: "Enter Email"
+        = f.label :email, t('devise.email'), class: 'control-label input-label'
+        = f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control', id: 'email', placeholder: t('devise.email')
       .form-group.mb-30
-        %label.control-label.input-label{for: "password"} Password
-        %br/
-        = f.password_field :password, autocomplete: "current-password", class: 'form-control', id: 'password', placeholder: "Password"
-        %br/
-        = link_to "Forgot password?", new_user_password_path, class: 'help-block in-gold-500'
+        = f.label :email, t('devise.password'), class: 'control-label input-label'
+        = f.password_field :password, autocomplete: "current-password", class: 'form-control', id: 'password', placeholder: t('devise.password')
+        = link_to t('devise.forgot_password'), new_user_password_path, class: 'help-block in-gold-500'
       - if devise_mapping.rememberable?
         .form-group.checkbox.text-center.mb-30
           %label.checkbox-label
             = f.check_box :remember_me, hidden: "true" , class: 'checkbox-input'
             %span.checkbox-icon
               %i.fa.fa-check
-            %span.checkbox-text Remember me
+            %span.checkbox-text
+              = t('devise.remember_me')
       .text-center
         .actions
-          = f.submit 'Log In', class: 'btn btn-default mb-20'
+          = f.submit t('devise.log_in'), class: 'btn btn-default mb-20'
   .text-center
     %p.general-sign-text.text-center
-      Dont have an account?
-      = link_to "Sign up", new_user_registration_path, class: 'in-gold-500'
+      = t('devise.dont_have_account')
+      = link_to t('devise.sign_up'), new_user_registration_path, class: 'in-gold-500'
