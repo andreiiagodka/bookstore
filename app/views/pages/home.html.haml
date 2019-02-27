@@ -19,8 +19,9 @@
                 %p.lead.small
                   = book.authors_joined_by_comma
                 .general-align
-                  %button.btn
-                    = t('button.buy_now')
+                  = link_to order_books_path(order_book: {book_id: book.id, quantity: 1}), remote: true, method: :post do
+                    %button.btn
+                      = t('button.buy_now')
     %a.left.carousel-control{href: "#slider", role: "button", 'data-slide': "prev"}
       %span.icon-prev{'aria-hidden': "true"}
       %span.sr-only

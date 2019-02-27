@@ -50,23 +50,40 @@ en:
       subtotal: "Subtotal:"
       coupon: "Coupon:"
       order_total: "Order Total:"
-  order_book:
+  checkout:
+    title: Checkout
+    authentication:
+      returning_customer: Returning Customer
+      log_in_with_password: Log In with Password
+      new_customer: New Customer
+      quick_register: Quik Register
+      quick_register_description: You’ll be able to create password later
   button:
     get_started: Get Started
     buy_now: Buy Now
     add_to_cart: Add to Cart
     apply_coupon: Apply Coupon
+    send_password_instructions: Send password instructions
+    change_password: Change password
+    continue_to_checkout: Continue to Checkout
   devise:
     log_in: Log In
     sign_up: Sign up
     or: or
-    email: Email
-    password: Password
-    confirm_password: Confirm Password
+    email: Enter Email
+    password: Enter Password
+    confirm_password: Enter Confirm Password
+    new_password: Enter New password
+    confirm_new_password: Enter Confirm New Password
     forgot_password: Forgot password?
     remember_me: Remember me
     dont_have_account: Dont have an account?
     have_account: Do you have an account?
+    forgot_password: Forgot your password?
+    forgot_password_description: We'll email you instructions on how to reset it
+    cancel: Cancel
+    change_password: Change your password
+    go_back: Go back
   message:
     success:
       review:

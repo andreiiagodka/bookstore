@@ -1,17 +1,20 @@
 %main.container.general-main-wrap
   .text-center.mb-25
-    %h2 Change your password
+    %h2
+      = t('devise.change_password')
   .general-form.field
     = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f|
       = devise_error_messages!
       = f.hidden_field :reset_password_token
       .form-group.mb-30
-        %label.control-label.input-label{for: "new_password"} New password
+        %label.control-label.input-label{for: "new_password"}
+          = t('devise.new_password')
         = f.password_field :password, autofocus: true, autocomplete: "new_password", class: 'form-control', id: 'new_password'
       .form-group.mb-30
-        %label.control-label.input-label{for: "password_confirmation"} Confirm new password
+        %label.control-label.input-label{for: "password_confirmation"}
+          = t('devise.confirm_new_password')
         = f.password_field :password_confirmation, autocomplete: "off", class: 'form-control', id: 'password_confirmation'
       .text-center
         .actions
-          = f.submit "Change my password", class: 'btn btn-default mb-20'
-        = link_to 'Go back', url_for(:back), class: "in-gold-500"
+          = f.submit t('devise.change_password'), class: 'btn btn-default mb-20'
+        = link_to t('devise.go_back'), url_for(:back), class: "in-gold-500"

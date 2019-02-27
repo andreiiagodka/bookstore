@@ -1,13 +1,15 @@
 %main.container.general-main-wrap
   .text-center
-    %h1.mb-30 Forgot your password?
-    %p.general-password-text We'll email you instructions on how to reset it
+    %h1.mb-30
+      = t('devise.forgot_password')
+    %p.general-password-text
+      = t('devise.forgot_password_description')
   .general-form.field
     = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
       = devise_error_messages!
       .form-group.mb-30
-        = f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control', id: 'email', placeholder: "Enter your Email"
+        = f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control', id: 'email', placeholder: t('devise.email')
       .text-center
         .actions
-          = f.submit "Send password instructions", class: 'btn btn-default mb-20'
-        = link_to 'Cancel', url_for(:back), class: "in-gold-500"
+          = f.submit t('button.send_password_instructions'), class: 'btn btn-default mb-20'
+        = link_to t('devise.cancel'), url_for(:back), class: "in-gold-500"
