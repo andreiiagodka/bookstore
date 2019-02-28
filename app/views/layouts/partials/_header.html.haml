@@ -34,7 +34,7 @@
                 %li
                   = link_to t('layout.orders')
                 %li
-                  = link_to t('layout.settings'), user_settings_path(current_user)
+                  = link_to t('layout.settings'), edit_user_registration_path
                 .divider
                 %li
                   = link_to t('layout.log_out'), destroy_user_session_path, method: 'delete'
@@ -64,7 +64,7 @@
                 %li
                   = link_to t('layout.orders')
                 %li
-                  = link_to t('layout.settings'), user_settings_path(current_user)
+                  = link_to t('layout.settings'), edit_user_registration_path
                 .divider
                 %li
                   = link_to t('layout.log_out'), destroy_user_session_path, method: 'delete'
