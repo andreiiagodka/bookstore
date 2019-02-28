@@ -23,7 +23,7 @@ class CouponsController < ApplicationController
     else
       flash[:danger] = @coupon.errors.full_messages.to_sentence
     end
-    @coupon.deactivate!
+    Coupons::DeactivateCouponService.new(@acoupon).call
   end
 
   def get_order

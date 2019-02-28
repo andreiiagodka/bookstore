@@ -5,16 +5,6 @@ class Coupon < ApplicationRecord
 
   validates :order_id, uniqueness: true, allow_nil: true
 
-  scope :active,   -> { where status: 'active' }
-  scope :inactive, -> { where status: 'inactive' }
-
-
-  aasm :status, column: :status do
-    state :active, initial: true
-    state :inactive
-
-    event :deactivate do
-      transitions to: :inactive
-    end
-  end
+  scope :active,   -> { where active: true }
+  scope :inactive, -> { where active: false }
 end

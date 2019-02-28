@@ -28,11 +28,16 @@
                   = link_to category.name, categories_path(id: category), css: 'collapse-link'
           - if user_signed_in?
             %li
-              %a{href: "#"}
+              %a{type: "button", 'data-toggle': "collapse", href: "#account", 'aria-expanded': "false", 'aria-controls': "account"}
                 = t('layout.my_account')
-            %li
-              %a{href: "#"}
-                = t('layout.log_out')
+              %ul#account.collapse.list-unstyled.pl-30.mb-10{'aria-expanded': "false"}
+                %li
+                  = link_to t('layout.orders')
+                %li
+                  = link_to t('layout.settings'), user_settings_path(current_user)
+                .divider
+                %li
+                  = link_to t('layout.log_out'), destroy_user_session_path, method: 'delete'
           - else
             %li
               = link_to t('layout.log_in'), new_user_session_path
@@ -53,11 +58,16 @@
                   = link_to category.name, category_books_path(category_id: category)
           - if user_signed_in?
             %li
-              %a{href: "#"}
+              %a.dropdown-toggle{href: "#", 'data-toggle': "dropdown", role: "button", 'aria-haspopup': "true", 'aria-expanded': "false"}
                 = t('layout.my_account')
-            %li
-              %a{href: "#"}
-                = t('layout.log_out')
+              %ul.dropdown-menu
+                %li
+                  = link_to t('layout.orders')
+                %li
+                  = link_to t('layout.settings'), user_settings_path(current_user)
+                .divider
+                %li
+                  = link_to t('layout.log_out'), destroy_user_session_path, method: 'delete'
           - else
             %li
               = link_to t('layout.log_in'), new_user_session_path

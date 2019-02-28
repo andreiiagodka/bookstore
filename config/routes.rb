@@ -7,6 +7,9 @@ Rails.application.routes.draw do
   resources :categories do
     resources :books, only: :index
   end
+  resources :users do
+    resources :settings, only: :index
+  end
   resources :reviews, only: :create
   resources :orders
   resources :order_books

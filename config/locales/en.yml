@@ -3,12 +3,12 @@ en:
     project_title: Bookstore
     home: Home
     shop: Shop
-    orders: orders
-    settings: Settings
     my_account: My account
+    orders: Orders
+    settings: Settings
     log_in: Log in
-    log_out: Log out
     sign_in: Sign in
+    log_out: Log out
     email: support@bookstore.com
     phone: (555)-555-5555
   home:
