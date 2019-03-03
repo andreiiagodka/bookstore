@@ -7,10 +7,15 @@ en:
     orders: Orders
     settings: Settings
     log_in: Log in
-    sign_in: Sign in
+    sign_up: Sign up
     log_out: Log out
     email: support@bookstore.com
     phone: (555)-555-5555
+  user:
+    address: Address
+    privacy: Privacy
+    billing_address: Billing Address
+    shipping_address: Shipping Address
   home:
     welcome: Welcome to our amazing Bookstore!
     about_us: We pore through hundreds of new books each month and select the five best we can find to share with our members.
@@ -75,8 +80,7 @@ en:
     email: Enter Email
     password: Enter Password
     confirm_password: Enter Confirm Password
-    new_password: Enter New password
-    confirm_new_password: Enter Confirm New Password
+    current_password: Enter Current Password
     forgot_password: Forgot password?
     remember_me: Remember me
     dont_have_account: Dont have an account?
@@ -92,6 +96,9 @@ en:
       remove_account: Remove Account
   message:
     success:
+      user:
+        update: Confirm email change or Log in again!
+        destroy: Your account was successfully deleted!
       review:
         create: Thanks for Review! It will be published as soon as Admin will approve it.
       coupon:
@@ -100,5 +107,7 @@ en:
         create: Book was added to cart!
         delete: Book was deleted from cart!
     error:
+      user:
+        current_password: is not correct
       coupon:
         used: Already used or invalid coupon code.

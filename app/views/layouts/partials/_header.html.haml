@@ -34,7 +34,7 @@
                 %li
                   = link_to t('layout.orders')
                 %li
-                  = link_to t('layout.settings'), edit_user_registration_path
+                  = link_to t('layout.settings'), user_path(current_user)
                 .divider
                 %li
                   = link_to t('layout.log_out'), destroy_user_session_path, method: 'delete'
@@ -42,7 +42,7 @@
             %li
               = link_to t('layout.log_in'), new_user_session_path
             %li
-              = link_to t('layout.sign_in'), new_user_registration_path
+              = link_to t('layout.sign_up'), new_user_registration_path
       .hidden-xs
         %ul.nav.navbar-nav
           %li
@@ -64,7 +64,7 @@
                 %li
                   = link_to t('layout.orders')
                 %li
-                  = link_to t('layout.settings'), edit_user_registration_path
+                  = link_to t('layout.settings'), user_path(current_user)
                 .divider
                 %li
                   = link_to t('layout.log_out'), destroy_user_session_path, method: 'delete'
@@ -72,4 +72,4 @@
             %li
               = link_to t('layout.log_in'), new_user_session_path
             %li
-              = link_to t('layout.sign_in'), new_user_registration_path
+              = link_to t('layout.sign_up'), new_user_registration_path

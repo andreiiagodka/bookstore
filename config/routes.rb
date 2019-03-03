@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks',
-                                    registrations: 'users/registrations' }
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
 
   root 'pages#home'
 
@@ -13,4 +12,5 @@ Rails.application.routes.draw do
   resources :order_books
   resources :coupons
   resources :checkout
+  resources :users
 end
