@@ -20,6 +20,6 @@ class User < ApplicationRecord
   private
 
   def create_addresses
-    Address.types.keys.each { |type| self.addresses.create.public_send(type + '!') }
+    Address.casts.keys.each { |cast| self.addresses.create.public_send(cast + '!') } if self.confirmed?
   end
 end

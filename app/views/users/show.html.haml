@@ -14,15 +14,25 @@
           .row
             .col-md-5
               %h3.general-subtitle.mt-0
-                = t('user.billing_address')
+                = t('address.cast.billing')
             .col-md-5.col-md-offset-1
               %h3.general-subtitle.mt-0
-                = t('user.shipping_address')
+                = t('address.cast.shipping')
         .row
           .col-md-5.mb-40
-            = render 'users/partials/address_block', subtitle: t('user.billing_address')
+            = simple_form_for @user.addresses.billing.first do |form|
+              .visible-xs.visible-sm
+                %h3.general-subtitle.mt-0
+                = t('address.cast.billing')
+              = render 'users/partials/address_block', f: form, cast: :billing
+              = form.button :submit, t('button.save'), class:"btn btn-default btn"
           .col-md-5.col-md-offset-1.mb-25
-            = render 'users/partials/address_block', subtitle: t('user.shipping_address')
+            = simple_form_for @user.addresses.shipping.first do |form|
+              .visible-xs.visible-sm
+                %h3.general-subtitle.mt-0
+                = t('address.cast.shipping')
+              = render 'users/partials/address_block', f: form, cast: :shipping
+              = form.button :submit, t('button.save'), class:"btn btn-default btn"
     #privacy.tab-pane.fade{role: "tabpanel"}
       .row.mb-60
         = render 'users/partials/email_block'

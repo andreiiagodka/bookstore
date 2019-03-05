@@ -14,8 +14,17 @@ en:
   user:
     address: Address
     privacy: Privacy
-    billing_address: Billing Address
-    shipping_address: Shipping Address
+  address:
+    cast:
+      billing: Billing Address
+      shipping: Shipping Address
+    first_name: First Name
+    last_name: Last Name
+    address: Address
+    country: Country
+    city: City
+    zip: Zip
+    phone: Phone
   home:
     welcome: Welcome to our amazing Bookstore!
     about_us: We pore through hundreds of new books each month and select the five best we can find to share with our members.

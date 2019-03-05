@@ -1,27 +1,29 @@
-.visible-xs.visible-sm
-  %h3.general-subtitle.mt-0
-  = subtitle
-.form-group.has-error
-  %label.control-label.input-label{for: "firstName"} First Name
-  %input#firstName.form-control{name:"fname", type: "text", placeholder: "First Name"}
-  %span.help-block asd
-.form-group
-  %label.control-label.input-label{for: "lastName"} Last Name
-  %input#lastName.form-control{name:"lname", type: "text", placeholder: "Last Name"}
-.form-group
-  %label.control-label.input-label{for: "address"} Address
-  %input#address.form-control{name: "address", type: "text", placeholder: "Address"}
-.form-group
-  %label.control-label.input-label{for: "city"} City
-  %input#city.form-control{name: "city", type: "text", placeholder: "City"}
-.form-group
-  %label.control-label.input-label{for: "zip"} Zip
-  %input#zip.form-control{name: "zip", type: "text", placeholder: "Zip"}
-.form-group
-  %label.control-label.input-label{for: "сountry"} Country
-  %input#country.form-control{name: "country", type: "text", placeholder: "Select a country"}
-.form-group.mb-60
-  %label.control-label.input-label{for: "phone"} Phone
-  %input#phone.form-control{name: "phone", type: "tel", placeholder: "Example +355 66 123 4567"}
-.text-center.general-text-align
-  %button.btn.disabled Save
+= f.hidden_field :cast, value: cast
+.form-group{class: (@page_presenter.set_error_class(@user, :first_name))}
+  = f.label :first_name, t('address.first_name'), class: 'control-label input-label'
+  = f.text_field :first_name, class: 'form-control', placeholder: t('address.first_name'), required: true
+  = render 'users/partials/errors_list', errors: @page_presenter.get_param_errors(@user, :first_name)
+.form-group{class: (@page_presenter.set_error_class(@user, :last_name))}
+  = f.label :last_name, t('address.last_name'), class: 'control-label input-label'
+  = f.text_field :last_name, class: 'form-control', placeholder: t('address.last_name'), required: true
+  = render 'users/partials/errors_list', errors: @page_presenter.get_param_errors(@user, :last_name)
+.form-group{class: (@page_presenter.set_error_class(@user, :country))}
+  = f.label :country, t('address.country'), class: 'control-label input-label'
+  = f.text_field :country, class: 'form-control', placeholder: t('address.country'), required: true
+  = render 'users/partials/errors_list', errors: @page_presenter.get_param_errors(@user, :country)
+.form-group{class: (@page_presenter.set_error_class(@user, :city))}
+  = f.label :city, t('address.city'), class: 'control-label input-label'
+  = f.text_field :city, class: 'form-control', placeholder: t('address.city'), required: true
+  = render 'users/partials/errors_list', errors: @page_presenter.get_param_errors(@user, :city)
+.form-group{class: (@page_presenter.set_error_class(@user, :address))}
+  = f.label :address, t('address.address'), class: 'control-label input-label'
+  = f.text_field :address, class: 'form-control', placeholder: t('address.address'), required: true
+  = render 'users/partials/errors_list', errors: @page_presenter.get_param_errors(@user, :address)
+.form-group{class: (@page_presenter.set_error_class(@user, :zip))}
+  = f.label :zip, t('address.zip'), class: 'control-label input-label'
+  = f.text_field :zip, class: 'form-control', placeholder: t('address.zip'), required: true
+  = render 'users/partials/errors_list', errors: @page_presenter.get_param_errors(@user, :zip)
+.form-group.mb-60{class: (@page_presenter.set_error_class(@user, :phone))}
+  = f.label :phone, t('address.phone'), class: 'control-label input-label'
+  = f.number_field :phone, class: 'form-control', placeholder: t('address.phone'), required: true
+  = render 'users/partials/errors_list', errors: @page_presenter.get_param_errors(@user, :phone)
