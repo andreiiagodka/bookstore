@@ -6,15 +6,12 @@
           %li
             = link_to t('layout.home'), root_path, class: 'navbar-link'
           %li
-            %a.nav-link{href: "#"}
-              = t('layout.shop')
+            = link_to t('layout.shop'), books_path, class: 'navbar-link'
         - if user_signed_in?
           %li
-            %a.nav-link{href: "#"}
-              = t('layout.orders')
+            = link_to t('layout.orders'), orders_path, class: 'navbar-link'
           %li
-            %a.nav-link{href: "#"}
-              = t('layout.settings')
+            = link_to t('layout.settings'), user_path(current_user), class: 'navbar-link'
       .col-sm-3
         %p.general-nav-mail
           = t('layout.email')

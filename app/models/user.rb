@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  after_save :create_addresses
+  validates :email, presence: true
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable,
@@ -15,11 +15,5 @@ class User < ApplicationRecord
      user.email = auth.info.email
      user.password = Devise.friendly_token[0,20]
    end
-  end
-
-  private
-
-  def create_addresses
-    Address.casts.keys.each { |cast| self.addresses.create.public_send(cast + '!') } if self.confirmed?
   end
 end

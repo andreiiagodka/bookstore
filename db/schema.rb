@@ -39,10 +39,10 @@ ActiveRecord::Schema.define(version: 2019_03_03_235325) do
   create_table "addresses", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
-    t.string "address"
-    t.string "city"
-    t.string "zip"
     t.string "country"
+    t.string "city"
+    t.string "address"
+    t.string "zip"
     t.string "phone"
     t.integer "cast"
     t.datetime "created_at", null: false

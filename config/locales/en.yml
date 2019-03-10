@@ -12,6 +12,7 @@ en:
     email: support@bookstore.com
     phone: (555)-555-5555
   user:
+    settings: Settings
     address: Address
     privacy: Privacy
   address:
@@ -108,6 +109,9 @@ en:
       user:
         update: Confirm email change or Log in again!
         destroy: Your account was successfully deleted!
+      address:
+        create: "%{type} address was created successfully!"
+        update: "%{type} address was updated successfully!"
       review:
         create: Thanks for Review! It will be published as soon as Admin will approve it.
       coupon:
@@ -118,5 +122,10 @@ en:
     error:
       user:
         current_password: is not correct
+      address:
+        text_field: Must consist of only a-z and A-Z characters without special symbols
+        address_field: Must consist of a-z, A-Z, 0-9,’,’, ‘-’, ‘ ’ only, no special symbols
+        zip_field: Must consist of 0-9 only,’-’ no special symbols
+        phone_field: Plus (+) at the beginning, must consist of 0-9 only no special symbols
       coupon:
         used: Already used or invalid coupon code.

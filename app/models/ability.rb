@@ -7,6 +7,7 @@ class Ability
     if user.persisted?
       can :create, Review
       can :manage, User
+      can :manage, Address
     end
 
     can :manage, Book

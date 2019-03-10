@@ -8,16 +8,17 @@ class UsersController < ApplicationController
   def update
     if update_user_data
       flash[:success] = t('message.success.user.update')
-      redirect_to root_path and return
+      redirect_to root_path
+    else
+      render :show
     end
 
-    render action: :show
   end
 
   def destroy
     flash[:success] = t('message.success.user.destroy') if @user.destroy
 
-    redirect_to root_path and return
+    redirect_to root_path
   end
 
   private

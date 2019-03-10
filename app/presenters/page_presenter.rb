@@ -10,7 +10,7 @@ class PagePresenter < Rectify::Presenter
   end
 
   def get_categories
-    @categories ||= Category.all.decorate
+    @get_categories ||= Category.all.decorate
   end
 
   def temporary_password

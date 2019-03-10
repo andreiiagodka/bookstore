@@ -13,5 +13,5 @@ Rails.application.routes.draw do
   resources :coupons
   resources :checkout
   resources :users
-  resources :address
+  resources :addresses
 end
