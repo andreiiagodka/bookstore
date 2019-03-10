@@ -19,18 +19,7 @@
             %h3.general-subtitle.mt-0
               = t('address.cast.shipping')
       .row
-        .col-md-5.mb-40
-          = simple_form_for @user.addresses.billing.first_or_initialize, validate: true do |form|
-            .visible-xs.visible-sm
-              %h3.general-subtitle.mt-0
-              = t('address.cast.billing')
-            = render 'users/partials/address_block', f: form, cast: :billing
-        .col-md-5.col-md-offset-1.mb-25
-          = simple_form_for @user.addresses.shipping.first_or_initialize, validate: true do |form|
-            .visible-xs.visible-sm
-              %h3.general-subtitle.mt-0
-              = t('address.cast.shipping')
-            = render 'users/partials/address_block', f: form, cast: :shipping
+        = render 'addresses/partials/block'
     #privacy.tab-pane.fade{role: "tabpanel"}
       .row.mb-60
         = render 'users/partials/email_block'
