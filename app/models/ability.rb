@@ -11,6 +11,7 @@ class Ability
     end
 
     can :manage, Book
+    can :manage, Order
     can :manage, OrderBook
   end
 end

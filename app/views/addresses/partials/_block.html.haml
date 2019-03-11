@@ -4,9 +4,11 @@
       %h3.general-subtitle.mt-0
       = t('address.cast.billing')
     = render 'addresses/partials/form', f: form, cast: :billing
+    = f.button :submit, t('button.save'), class:"btn btn-default btn"
 .col-md-5.col-md-offset-1.mb-25
   = simple_form_for @user.addresses.shipping.first_or_initialize, validate: true do |form|
     .visible-xs.visible-sm
       %h3.general-subtitle.mt-0
       = t('address.cast.shipping')
     = render 'addresses/partials/form', f: form, cast: :shipping
+    = f.button :submit, t('button.save'), class:"btn btn-default btn"

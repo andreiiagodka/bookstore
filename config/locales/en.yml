@@ -26,6 +26,8 @@ en:
     city: City
     zip: Zip
     phone: Phone
+    all_fields_requried: All fields are required
+    use_billing: Use Billing Adress
   home:
     welcome: Welcome to our amazing Bookstore!
     about_us: We pore through hundreds of new books each month and select the five best we can find to share with our members.
