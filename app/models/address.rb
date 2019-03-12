@@ -1,6 +1,8 @@
 class Address < ApplicationRecord
   has_many :user_addresses, dependent: :destroy
   has_many :user, through: :user_addresses
+  has_many :order_addresses, dependent: :destroy
+  has_many :order, through: :order_addresses
 
   FORMATS = {
     text: /\A[a-zA-Z]*\z/,

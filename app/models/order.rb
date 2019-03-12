@@ -6,6 +6,8 @@ class Order < ApplicationRecord
   has_one :coupon, dependent: :destroy
   has_many :order_books, dependent: :destroy
   has_many :books, through: :order_books
+  has_many :order_addresses, dependent: :destroy
+  has_many :addresses, through: :order_addresses
 
   enum status: {
     in_progress: 0,

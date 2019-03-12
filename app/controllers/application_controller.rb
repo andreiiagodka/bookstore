@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
 
   before_action :initialize_page_presenter
 
-  helper_method :get_current_order
+  helper_method :current_order
 
   private
 

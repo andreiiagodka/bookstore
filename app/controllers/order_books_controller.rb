@@ -37,6 +37,6 @@ class OrderBooksController < ApplicationController
   end
 
   def get_order
-    @order ||= get_current_order
+    @order ||= current_order
   end
 end

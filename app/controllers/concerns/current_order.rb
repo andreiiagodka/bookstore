@@ -1,7 +1,7 @@
 module CurrentOrder
   extend ActiveSupport::Concern
 
-  def get_current_order
+  def current_order
     session[:order_id] = create_order.id unless session[:order_id]
 
     Order.find_by(id: session[:order_id])

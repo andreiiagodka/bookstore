@@ -7,6 +7,14 @@ class CheckoutController < ApplicationController
     case step
     when :authentication then authentication
     when :addresses then addresses
+    when :delivery then delivery
+    end
+    render_wizard
+  end
+
+  def update
+    case step
+    when :addresses then addresses_update
 
     end
     render_wizard
@@ -19,6 +27,10 @@ class CheckoutController < ApplicationController
   end
 
   def addresses
+    return jump_to(next_step) if Addresses::CheckOrderAddressService.new(current_order).call
+  end
 
+  def addresses_update
+    Addresses::ManageOrderAddressService.new(current_order, params).call
   end
 end
