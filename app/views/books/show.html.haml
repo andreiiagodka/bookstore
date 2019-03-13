@@ -20,7 +20,7 @@
     = simple_form_for(current_order.order_books.new, remote: true, method: :post) do |f|
      .col-xs-12.col-md-4
       %p.h1.in-gold-500.mt-10
-       = t('book.price', price: book.price)
+       = t('price', price: book.price)
      .col-xs-5.col-md-3
       .input-group.general-position
        %a.input-link.btn-minus-js

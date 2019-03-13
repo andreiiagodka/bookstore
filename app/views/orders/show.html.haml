@@ -36,21 +36,21 @@
                     = t('order.summary.subtotal')
                 %td
                   %p.font-16
-                    = t('book.price', price: order.count_subtotal_price)
+                    = t('price', price: order.subtotal_price)
               %tr
                 %td
                   %p.font-16
                     = t('order.summary.coupon')
                 %td
                   %p.font-16
-                    = t('book.price', price: order.count_discount)
+                    = t('price', price: order.discount)
               %tr
                 %td
                   %strong.font-18
                     = t('order.summary.order_total')
                 %td
                   %strong.font-18
-                    = t('book.price', price: order.count_total_price)
+                    = t('price', price: order.total_price)
             %button.btn.btn-default.mb-20.visible-xs-inline-block
               = t('order.checkout')
     = link_to checkout_path(:authentication, destination: 'authentication') do

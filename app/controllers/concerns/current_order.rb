@@ -4,7 +4,7 @@ module CurrentOrder
   def current_order
     session[:order_id] = create_order.id unless session[:order_id]
 
-    Order.find_by(id: session[:order_id])
+    @current_order ||= Order.find_by(id: session[:order_id]).decorate
   end
 
   private

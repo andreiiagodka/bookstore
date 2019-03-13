@@ -13,7 +13,7 @@
           = t('cart.price')
       %td
         %span.font-16.in-gold-500
-          = t('book.price', price: order_book.book.price)
+          = t('price', price: order_book.book.price)
     %tr
       %td.vertical-middle
         %span.in-grey-600
@@ -26,4 +26,4 @@
           = t('cart.subtotal')
       %td
         %span.font-16.in-gold-500
-          = t('book.price', price: order_book.count_subtotal_price)
+          = t('price', price: order_book.subtotal_price)
