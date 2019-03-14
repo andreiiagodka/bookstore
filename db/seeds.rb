@@ -40,3 +40,11 @@ require 'faker'
 }
 
 10.times { |index| Coupon.create(code: index.to_s * 4) }
+
+['Nova Poshta', 'Ukr Poshta', 'Dimex', 'Express Mail', 'FedEx', 'DHL'].each do |name|
+  Delivery.create(
+    name: name,
+    days: Faker::Number.between(1, 14),
+    price: Faker::Number.decimal(2)
+  )
+end

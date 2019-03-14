@@ -1,83 +1,34 @@
 %main.container.general-main-wrap
   = render 'checkout/partials/header'
-  %h3.general-subtitle Credit Card
-  .visible-xs
-    .general-cart-item.divider-lg-bottom
-      %table.table
-        %tr
-          %td.col-half
-            %span.in-grey-600 Method
-          %td.col-half
-            .form-group.radio.mt-0.mb-0
-              %label.radio-label
-                %input.radio-input{type: "radio", hidden: "true"}
-                %span.radio-icon
-                %span.radio-text Delivery Next Day!
-        %tr
-          %td
-            %span.in-grey-600 Days
-          %td
-            %span.font-16.fw-300 3 to 7 days
-        %tr
-          %td
-            %span.in-grey-600 Price
-          %td
-            %span.font-16.in-gold-500 €5.00
-    .general-cart-item.divider-lg-bottom.mb-30
-      %table.table
-        %tr
-          %td.col-half
-            %span.in-grey-600 Method
-          %td.col-half
-            .form-group.radio.mt-0.mb-0
-              %label.radio-label
-                %input.radio-input{type: "radio", hidden: "true"}
-                %span.radio-icon
-                %span.radio-text Delivery Next Day!
-        %tr
-          %td
-            %span.in-grey-600 Days
-          %td
-            %span.font-16.fw-300 3 to 7 days
-        %tr
-          %td
-            %span.in-grey-600 Price
-          %td
-            %span.font-16.in-gold-500 €5.00
-  .hidden-xs.mb-res-50
+  = simple_form_for current_order, url: wizard_path, method: :put do |f|
     %table.table.table-hover
       %thead
         %tr
           %th.col-method
-            %span.in-grey-600.ml-40 Method
+            %span.in-grey-600.ml-40
+              = t('checkout.delivery.service')
           %th
-            %span.in-grey-600 Days
+            %span.in-grey-600
+              = t('checkout.delivery.days')
           %th
-            %span.in-grey-600 Price
+            %span.in-grey-600
+              = t('checkout.delivery.price')
       %tbody
-        %tr
-          %td
-            .form-group.radio.mt-0.mb-0
-              %label.radio-label
-                %input.radio-input{type: "radio", hidden: "true"}
-                %span.radio-icon
-                %span.radio-text Delivery Next Day!
-          %td
-            %span 3 to 7 days
-          %td
-            %span.font-16.in-gold-500 €28.50
-        %tr
-          %td
-            .form-group.radio.mt-0.mb-0
-              %label.radio-label
-                %input.radio-input{type: "radio", hidden: "true"}
-                %span.radio-icon
-                %span.radio-text Delivery Next Day!
-          %td
-            %span 3 to 7 days
-          %td
-            %span.font-16.in-gold-500 €28.50
-  .general-text-align
-  = render 'checkout/partials/addresses/order_summary'
-  .text-center
-    %button.btn.btn-default.mb-20 Save and Continue
+        - @page_presenter.get_deliveries.each do |delivery|
+          %tr
+            %td
+              .form-group.radio.mt-0.mb-0
+                %label.radio-label
+                  %input.radio-input{type: "radio", hidden: "true"}
+                  %span.radio-icon
+                  %span.radio-text
+                    = delivery.name
+            %td
+              %span
+                = t('checkout.delivery.days_quantity', days_quantity: delivery.days)
+            %td
+              %span.font-16.in-gold-500
+                = t('price', price: delivery.price)
+    .general-text-align
+    = render 'checkout/partials/addresses/order_summary'
+    = f.button :submit, 'Save and Continue', class: 'btn center-block mb-20'

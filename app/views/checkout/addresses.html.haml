@@ -7,7 +7,7 @@
           %h3.general-subtitle
             = t('address.cast.billing')
           %p.general-info-text
-            = t('address.all_fields_requried')
+            = t('address.all_fields_required')
         .col-md-5.col-md-offset-1
           %h3.general-subtitle
             = t('address.cast.shipping')
@@ -17,7 +17,7 @@
           %h3.general-subtitle
             = t('address.cast.billing')
           %p.general-info-text
-            = t('address.all_fields_requried')
+            = t('address.all_fields_required')
         = f.simple_fields_for :billing, f.object.addresses.billing.first_or_initialize do |form|
           = render 'addresses/partials/form', f: form, cast: :billing
       .col-md-5.col-md-offset-1.mb-60{id: 'shipping_address_form'}

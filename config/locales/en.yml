@@ -27,7 +27,7 @@ en:
     city: City
     zip: Zip
     phone: Phone
-    all_fields_requried: All fields are required
+    all_fields_required: All fields are required
     use_billing: Use Billing Adress
   home:
     welcome: Welcome to our amazing Bookstore!
@@ -76,6 +76,11 @@ en:
       new_customer: New Customer
       quick_register: Quik Register
       quick_register_description: You’ll be able to create password later
+    delivery:
+      service: Service
+      days: Days
+      price: Price
+      days_quantity: "%{days_quantity} days"
   button:
     get_started: Get Started
     buy_now: Buy Now
