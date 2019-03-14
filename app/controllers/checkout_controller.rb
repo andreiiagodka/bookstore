@@ -17,7 +17,7 @@ class CheckoutController < ApplicationController
     when :addresses then addresses_update
 
     end
-    render_wizard
+    redirect_to next_wizard_path
   end
 
   private
@@ -27,7 +27,11 @@ class CheckoutController < ApplicationController
   end
 
   def addresses
-    return jump_to(next_step) if Addresses::CheckOrderAddressService.new(current_order).call
+    return jump_to(next_step) if Addresses::CheckOrderAddressesService.new(current_order).call
+  end
+
+  def delivery
+
   end
 
   def addresses_update
