@@ -1,11 +1,11 @@
-class Deliveries::ManageOrderDeliveriesService
+class Deliveries::ManageOrderDeliveryService
   def initialize(order, params)
     @order = order
     @params = params
   end
 
   def call
-    @order.delivery ? @order.update(order_delivery_params) : @order.create(order_delivery_params)
+    @order.update(order_delivery_params)
   end
 
   private

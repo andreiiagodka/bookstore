@@ -8,6 +8,7 @@ class CheckoutController < ApplicationController
     when :authentication then authentication
     when :addresses then addresses
     when :delivery then delivery
+    when :payment then payment
     end
     render_wizard
   end
@@ -16,6 +17,7 @@ class CheckoutController < ApplicationController
     case step
     when :addresses then addresses_update
     when :delivery then delivery_update
+    when :payment then payment_update
     end
     redirect_to next_wizard_path
   end
@@ -27,11 +29,15 @@ class CheckoutController < ApplicationController
   end
 
   def addresses
-    return jump_to(next_step) if Addresses::CheckOrderAddressesExistenceService.new(current_order).call
+    # return jump_to(next_step) if Addresses::CheckOrderAddressesExistenceService.new(current_order).call
   end
 
   def delivery
-    return jump_to(next_step) if Addresses::CheckOrderDeliveriesExistenceService.new(current_order).call
+    # return jump_to(next_step) if Deliveries::CheckOrderDeliveryExistenceService.new(current_order).call
+  end
+
+  def payment
+
   end
 
   def addresses_update
@@ -39,7 +45,11 @@ class CheckoutController < ApplicationController
   end
 
   def delivery_update
-    Deliveries::ManageOrderDeliveriesService.new(current_order, order_params).call
+    Deliveries::ManageOrderDeliveryService.new(current_order, order_params).call
+  end
+
+  def payment_update
+
   end
 
   def order_params

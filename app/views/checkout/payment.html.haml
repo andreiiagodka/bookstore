@@ -1,0 +1,25 @@
+%main.container.mb-res-50
+  = render 'checkout/partials/header'
+  %h3.general-subtitle
+    = t('checkout.payment.credit_card')
+  = simple_form_for current_order, url: wizard_path, method: :put, html: {class: 'max-600'} do |f|
+    = f.simple_fields_for :credit_card, f.object.credit_card do |form|
+      .form-group
+        = form.label :number, t('checkout.payment.card_number'), class: 'control-label input-label'
+        = form.text_field :number, class: 'form-control', placeholder: t('checkout.payment.card_number'), required: true
+      .row
+        .col-sm-6
+          .form-group
+            = form.label :name, t('checkout.payment.name_on_card'), class: 'control-label input-label'
+            = form.text_field :name, class: 'form-control', placeholder: t('checkout.payment.name_on_card'), required: true
+        .col-sm-3
+          .form-group
+            = form.label :expire_date, t('checkout.payment.expire_date_format'), class: 'control-label input-label'
+            = form.text_field :expire_date, class: 'form-control', placeholder: t('checkout.payment.expire_date_format'), required: true
+        .col-sm-3
+          .form-group.relative
+            = form.label :cvv, t('checkout.payment.cvv'), class: 'control-label input-label'
+            = form.text_field :cvv, class: 'form-control', placeholder: t('checkout.payment.cvv'), required: true
+            %i.fa.fa-question-circle.general-form-help
+      = render 'checkout/partials/order_summary'
+      = f.button :submit, t('button.save_and_continue'), class: 'btn center-block mb-20'

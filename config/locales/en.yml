@@ -81,6 +81,12 @@ en:
       days: Days
       price: Price
       days_quantity: "%{days_quantity} days"
+    payment:
+      credit_card: Credit Card
+      card_number: Card Number
+      name_on_card: Name on Card
+      expire_date_format: MM / YY
+      cvv: CVV
   button:
     get_started: Get Started
     buy_now: Buy Now
@@ -89,6 +95,7 @@ en:
     send_password_instructions: Send password instructions
     change_password: Change password
     continue_to_checkout: Continue to Checkout
+    save_and_continue: Save and Continue
     save: Save
     remove_account: Please Remove My Account
   devise:
