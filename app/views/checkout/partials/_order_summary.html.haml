@@ -14,13 +14,14 @@
         = t('order.summary.coupon')
     %td
       %p.font-16
-        = t('price', price: current_order.discount)
+        = t('price', price: current_order.discount_price)
   %tr
     %td
       %p.font-16
         = t('order.summary.delivery')
     %td
       %p.font-16
+        = t('price', price: current_order.delivery_price)
   %tr
     %td
       %p.font-16

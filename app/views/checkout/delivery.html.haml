@@ -14,21 +14,21 @@
             %span.in-grey-600
               = t('checkout.delivery.price')
       %tbody
-        - @page_presenter.get_deliveries.each do |delivery|
+        = f.collection_radio_buttons :delivery_id, @page_presenter.get_deliveries.each, :id, :name do |delivery|
           %tr
             %td
               .form-group.radio.mt-0.mb-0
-                %label.radio-label
-                  %input.radio-input{type: "radio", hidden: "true"}
+                = delivery.label(class: 'radio_label') do
+                  = delivery.radio_button(class: 'radio-input', hidden: 'true')
                   %span.radio-icon
                   %span.radio-text
-                    = delivery.name
+                    = delivery.text
             %td
               %span
-                = t('checkout.delivery.days_quantity', days_quantity: delivery.days)
+                = t('checkout.delivery.days_quantity', days_quantity: delivery.object.days)
             %td
               %span.font-16.in-gold-500
-                = t('price', price: delivery.price)
+                = t('price', price: delivery.object.price)
     .general-text-align
-    = render 'checkout/partials/addresses/order_summary'
+    = render 'checkout/partials/order_summary'
     = f.button :submit, 'Save and Continue', class: 'btn center-block mb-20'

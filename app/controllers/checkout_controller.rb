@@ -15,7 +15,7 @@ class CheckoutController < ApplicationController
   def update
     case step
     when :addresses then addresses_update
-
+    when :delivery then delivery_update
     end
     redirect_to next_wizard_path
   end
@@ -27,14 +27,22 @@ class CheckoutController < ApplicationController
   end
 
   def addresses
-    return jump_to(next_step) if Addresses::CheckOrderAddressesService.new(current_order).call
+    return jump_to(next_step) if Addresses::CheckOrderAddressesExistenceService.new(current_order).call
   end
 
   def delivery
-
+    return jump_to(next_step) if Addresses::CheckOrderDeliveriesExistenceService.new(current_order).call
   end
 
   def addresses_update
-    Addresses::ManageOrderAddressService.new(current_order, params).call
+    Addresses::ManageOrderAddressService.new(current_order, order_params).call
+  end
+
+  def delivery_update
+    Deliveries::ManageOrderDeliveriesService.new(current_order, order_params).call
+  end
+
+  def order_params
+    params.require(:order)
   end
 end

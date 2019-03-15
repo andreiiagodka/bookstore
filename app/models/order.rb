@@ -2,14 +2,13 @@ class Order < ApplicationRecord
   include AASM
 
   belongs_to :user, optional: true
+  belongs_to :delivery, optional: true
 
   has_one :coupon, dependent: :destroy
-  has_one :delivery, dependent: :destroy
 
   has_many :order_books, dependent: :destroy
   has_many :books, through: :order_books
-  has_many :order_addresses, dependent: :destroy
-  has_many :addresses, through: :order_addresses
+  has_many :addresses, as: :addressable, dependent: :destroy
 
   enum status: {
     in_progress: 0,

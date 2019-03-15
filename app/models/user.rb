@@ -5,8 +5,7 @@ class User < ApplicationRecord
 
   has_many :reviews, dependent: :destroy
   has_many :orders, dependent: :destroy
-  has_many :user_addresses, dependent: :destroy
-  has_many :addresses, through: :user_addresses
+  has_many :addresses, as: :addressable, dependent: :destroy
 
   def self.from_omniauth(auth)
    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|

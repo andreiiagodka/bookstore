@@ -1,4 +1,4 @@
-class Addresses::CheckOrderAddressesService
+class Addresses::CheckOrderAddressesExistenceService
   def initialize(order)
     @order = order
   end

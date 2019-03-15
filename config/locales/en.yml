@@ -128,6 +128,7 @@ en:
         create: Book was added to cart!
         delete: Book was deleted from cart!
     error:
+      general: Something went wrong!
       user:
         current_password: is not correct
       address:

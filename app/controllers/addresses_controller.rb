@@ -4,15 +4,19 @@ class AddressesController < ApplicationController
   def create
     if Addresses::CreateUserAddressService.new(current_user, address_params).call
       flash[:success] = t('message.success.address.create', type: address_params[:cast].capitalize)
-      redirect_to @page_presenter.previous_url
+    else
+      flash[:danger] = t('message.error.general')
     end
+    redirect_to @page_presenter.previous_url
   end
 
   def update
     if @address.update(address_params)
       flash[:success] = t('message.success.address.update', type: address_params[:cast].capitalize)
-      redirect_to @page_presenter.previous_url
+    else
+      flash[:danger] = t('message.error.general')
     end
+    redirect_to @page_presenter.previous_url
   end
 
   private

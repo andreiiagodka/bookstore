@@ -32,7 +32,7 @@ class Addresses::ManageOrderAddressService
   end
 
   def address_params(cast)
-    @params.require(:order).require(cast).permit(:first_name, :last_name, :country, :city, :address, :zip, :phone)
+    @params.require(cast).permit(:first_name, :last_name, :country, :city, :address, :zip, :phone)
   end
 
   def set_cast
