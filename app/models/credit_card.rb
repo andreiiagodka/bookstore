@@ -6,16 +6,21 @@ class CreditCard < ApplicationRecord
     expire_date: /\A^(0[1-9]|1[0-2])\/?([0-9]{2})$\z/
   }.freeze
 
+  LENGTH = {
+    number: 16,
+    name: 50
+  }.freeze
+
   CVV_RANGE = (3..4).freeze
 
   validates :number, :name, :expire_date, :cvv, presence: true
 
   validates :number,
-            length: { is: 16 },
+            length: { is: LENGTH[:number] },
             numericality: { only_integer: true }
 
   validates :name,
-            length: { maximum: 50 },
+            length: { maximum: LENGTH[:name] },
             format: { with: FORMATS[:name], message: I18n.t('message.error.credit_card.name_field') }
 
   validates :expire_date,

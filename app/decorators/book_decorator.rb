@@ -24,6 +24,10 @@ class BookDecorator < Draper::Decorator
     name[RANGES[:name][:short]]
   end
 
+  def first_sentence_description
+    description.split('.').first
+  end
+
   def short_description
    description[RANGES[:description][:short]]
   end

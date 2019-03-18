@@ -9,6 +9,7 @@ class CheckoutController < ApplicationController
     when :addresses then addresses
     when :delivery then delivery
     when :payment then payment
+    when :confirm then confirm
     end
     render_wizard
   end
@@ -37,6 +38,10 @@ class CheckoutController < ApplicationController
   end
 
   def payment
+
+  end
+
+  def confirm
 
   end
 

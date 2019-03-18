@@ -9,7 +9,7 @@
         %tr.no-hover
           %th.col-pic.pl-0
             %span.in-grey-600
-              = t('order.cart.product')
+              = t('order.cart.book')
           %th.col-title
           %th.col-price
             %span.in-grey-600
@@ -21,6 +21,7 @@
             %span.in-grey-600
               = t('order.cart.subtotal')
           %th.col-close
+        %tbody
           = render partial: 'orders/partials/cart_row', collection: order.order_books, as: :order_book
     .general-order-wrap
       .row

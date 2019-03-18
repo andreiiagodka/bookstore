@@ -1,0 +1,20 @@
+%tr
+  %td
+    .general-img-wrap-table
+      %img.cart-img-shadow.pull-left
+        = link_to book_path(order_book.book) do
+          = order_book.book.decorate.cover_image(:cart)
+  %td
+    %p.title
+      = link_to order_book.book.name, book_path(order_book.book)
+      %p.in-grey-600.fw-300
+        = order_book.book.decorate.first_sentence_description
+  %td
+    %span.font-16.in-gold-500
+      = t('price', price: order_book.book.price)
+  %td
+    %span.ml-30
+      = order_book.quantity
+  %td
+    %span.font-16.in-gold-500
+      = t('price', price: order_book.subtotal_price)
