@@ -87,6 +87,7 @@ en:
       name_on_card: Name on Card
       expire_date_format: MM / YY
       cvv: CVV
+      cvv_hint: 3-digit security code, usually found on the back of your card. American Express cards has 4-digit code, located on the front
   button:
     get_started: Get Started
     buy_now: Buy Now
@@ -145,3 +146,6 @@ en:
         phone_field: Plus (+) at the beginning, must consist of 0-9 only no special symbols
       coupon:
         used: Already used or invalid coupon code.
+      credit_card:
+        name_field: Must consist of a-z, A-Z, no special symbols
+        expire_date_field: Must have a month on the left of a slash /, the year on the right

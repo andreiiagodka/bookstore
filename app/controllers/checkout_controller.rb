@@ -41,7 +41,7 @@ class CheckoutController < ApplicationController
   end
 
   def addresses_update
-    Addresses::ManageOrderAddressService.new(current_order, order_params).call
+    Addresses::ManageOrderAddressService.new(current_order, order_params, params[:use_billing]).call
   end
 
   def delivery_update
@@ -49,7 +49,7 @@ class CheckoutController < ApplicationController
   end
 
   def payment_update
-
+    CreditCards::ManageOrderCreditCardService.new(current_order, order_params).call
   end
 
   def order_params

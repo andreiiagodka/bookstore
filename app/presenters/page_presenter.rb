@@ -17,6 +17,10 @@ class PagePresenter < Rectify::Presenter
     @get_deliveries ||= Delivery.all
   end
 
+  def order_credit_card(order)
+    order.credit_card ? order.credit_card : CreditCard.new
+  end
+
   def temporary_password
     @password ||= Devise.friendly_token
   end

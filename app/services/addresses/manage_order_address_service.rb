@@ -1,7 +1,8 @@
 class Addresses::ManageOrderAddressService
-  def initialize(order, params)
+  def initialize(order, params, use_billing)
     @order = order
     @params = params
+    @use_billing = use_billing
     initialize_addresses
     initialize_addresses_params
   end
@@ -20,7 +21,7 @@ class Addresses::ManageOrderAddressService
 
   def initialize_addresses_params
     @billing_params = address_params(:billing)
-    @shipping_params = address_params(set_cast)
+    @shipping_params = address_params(set_type)
   end
 
   def manage_billing_address
@@ -31,15 +32,11 @@ class Addresses::ManageOrderAddressService
     @shipping.exists? ? @shipping.update(@shipping_params) : @shipping.create(@shipping_params)
   end
 
-  def address_params(cast)
-    @params.require(cast).permit(:first_name, :last_name, :country, :city, :address, :zip, :phone)
+  def address_params(type)
+    @params.require(type).permit(:first_name, :last_name, :country, :city, :address, :zip, :phone)
   end
 
-  def set_cast
-    use_billing? ? :billing : :shipping
-  end
-
-  def use_billing?
-    @params[:use_billing]
+  def set_type
+    @use_billing ? :billing : :shipping
   end
 end
