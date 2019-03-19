@@ -1,6 +1,6 @@
 %main.container.general-main-wrap
   = render 'checkout/partials/header'
-  = simple_form_for current_order, url: wizard_path, method: :put do |f|
+  = simple_form_for @checkout.order, url: wizard_path, method: :put do |f|
     %table.table.table-hover
       %thead
         %tr
@@ -14,7 +14,7 @@
             %span.in-grey-600
               = t('checkout.delivery.price')
       %tbody
-        = f.collection_radio_buttons :delivery_id, @page_presenter.get_deliveries.each, :id, :name do |delivery|
+        = f.collection_radio_buttons :delivery_id, @checkout.deliveries.each, :id, :name do |delivery|
           %tr
             %td
               .form-group.radio.mt-0.mb-0
@@ -30,5 +30,5 @@
               %span.font-16.in-gold-500
                 = t('price', price: delivery.object.price)
     .general-text-align
-    = render 'checkout/partials/order_summary', order: current_order
+    = render 'checkout/partials/order_summary'
     = f.button :submit, t('button.save_and_continue'), class: 'btn btn-default center-block mb-20'

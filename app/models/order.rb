@@ -13,17 +13,17 @@ class Order < ApplicationRecord
 
   enum status: {
     in_progress: 0,
-    in_queue: 1,
-    in_delivery: 2,
-    delivered: 3,
-    canceled: 4
+    completed: 1,
+    canceled: 2,
+    in_delivery: 3,
+    delivered: 4
   }
 
   aasm :status, column: :status, enum: true do
     state :in_progress, initial: true
-    state :in_queue
+    state :completed
+    state :canceled
     state :in_delivery
     state :delivered
-    state :canceled
   end
 end

@@ -6,15 +6,15 @@
     %p.fw-300
       = t('checkout.complete.sent_email_message', email: current_user.email)
   .row.mb-20
-    = render 'checkout/partials/confirm/address_information', type: 'billing', address: current_user.orders.last.addresses.billing.first.decorate
+    = render 'checkout/partials/confirm/address_information', type: 'billing', address: @checkout.billing_address
     .col-sm-9.hidden-xs.text-right
       %p.general-order-number.mb-0
-        = t('checkout.complete.order_number', number: current_user.orders.last.number)
+        = t('checkout.complete.order_number', number: @checkout.order.number)
       %p.general-address.mb-30
-        = current_user.orders.last.decorate.creation_date
+        = @checkout.order.creation_date
   .hidden-xs.divider-lg.pt-20
-    = render 'checkout/partials/products_list', order: current_user.orders.last.decorate
+    = render 'checkout/partials/products_list'
     .general-text-align
-      = render 'checkout/partials/order_summary', order: current_user.orders.last.decorate
+      = render 'checkout/partials/order_summary'
   .text-center
     = link_to t('button.back_to_store'), root_path, class: 'btn btn-default mb-20'

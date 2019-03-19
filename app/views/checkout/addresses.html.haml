@@ -1,6 +1,6 @@
 %main.container
   = render 'checkout/partials/header'
-  = simple_form_for current_order, url: wizard_path, method: :put, validate: true do |f|
+  = simple_form_for @checkout.order, url: wizard_path, method: :put, validate: true do |f|
     .hidden-xs.hidden-sm
       .row
         .col-md-5
@@ -18,10 +18,10 @@
             = t('address.cast.billing')
           %p.general-info-text
             = t('address.all_fields_required')
-        = f.simple_fields_for :billing, f.object.addresses.billing.first_or_initialize do |form|
+        = f.simple_fields_for :billing, @checkout.billing_address do |form|
           = render 'addresses/partials/form', f: form, cast: :billing
       .col-md-5.col-md-offset-1.mb-60{id: 'shipping_address_form'}
-        = f.simple_fields_for :shipping, f.object.addresses.shipping.first_or_initialize do |form|
+        = f.simple_fields_for :shipping, @checkout.shipping_address do |form|
           = render 'addresses/partials/form', f: form, cast: :shipping
         .form-group.checkbox
           %label.checkbox-label
@@ -31,5 +31,5 @@
             %span.checkbox-text
               = t('address.use_billing')
     .general-text-align
-      = render 'checkout/partials/order_summary', order: current_order
+      = render 'checkout/partials/order_summary'
       = f.button :submit, t('button.save_and_continue'), class: 'btn btn-default center-block mb-20'
