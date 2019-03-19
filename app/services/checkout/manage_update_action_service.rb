@@ -23,7 +23,6 @@ class Checkout::ManageUpdateActionService
   end
 
   def confirm
-    Orders::CreateNumberService.new(@order).call
     Orders::ClearCurrentOrderSessionService.new(@session).call
   end
 

@@ -26,7 +26,7 @@ class CheckoutController < ApplicationController
   end
 
   def initialize_checkout_instance
-    @checkout = Checkout::ManageShowActionService.new(step, current_order, current_user)
+    @checkout = Checkout::ManageShowActionService.new(step, current_order)
   end
 
   def authentication

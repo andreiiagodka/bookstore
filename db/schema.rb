@@ -133,6 +133,7 @@ ActiveRecord::Schema.define(version: 2019_03_03_234235) do
   end
 
   create_table "orders", force: :cascade do |t|
+    t.string "number"
     t.integer "status"
     t.bigint "user_id"
     t.bigint "delivery_id"

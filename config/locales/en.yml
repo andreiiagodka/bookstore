@@ -95,7 +95,7 @@ en:
       payment_information: Payment Information
     complete:
       thankful_message: Thank You for your Order!
-      sent_email_message: "An order confirmation has been has been sent to %{email}"
+      sent_email_message: "An order confirmation has been sent to %{email}"
       order_number: "Order %{number}"
   button:
     get_started: Get Started
