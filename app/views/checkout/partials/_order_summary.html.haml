@@ -7,25 +7,25 @@
         = t('order.summary.subtotal')
     %td
       %p.font-16
-        = t('price', price: current_order.subtotal_price)
+        = t('price', price: order.subtotal_price)
   %tr
     %td
       %p.font-16
         = t('order.summary.coupon')
     %td
       %p.font-16
-        = t('price', price: current_order.discount_price)
+        = t('price', price: order.discount_price)
   %tr
     %td
       %p.font-16
         = t('order.summary.delivery')
     %td
       %p.font-16
-        = t('price', price: current_order.delivery_price)
+        = t('price', price: order.delivery_price)
   %tr
     %td
       %p.font-16
         = t('order.summary.order_total')
     %td
       %p.font-16
-        = t('price', price: current_order.total_price)
+        = t('price', price: order.total_price)

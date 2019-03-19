@@ -93,6 +93,10 @@ en:
       edit: Edit
       phone: "Phone %{phone}"
       payment_information: Payment Information
+    complete:
+      thankful_message: Thank You for your Order!
+      sent_email_message: "An order confirmation has been has been sent to %{email}"
+      order_number: "Order %{number}"
   button:
     get_started: Get Started
     buy_now: Buy Now
@@ -105,6 +109,7 @@ en:
     save: Save
     remove_account: Please Remove My Account
     place_order: Place Order
+    back_to_store: Back to Store
   devise:
     log_in: Log In
     sign_up: Sign up

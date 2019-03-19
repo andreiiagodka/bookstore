@@ -1,4 +1,6 @@
 class OrderDecorator < Draper::Decorator
+  CREATION_DATE_FORMAT = '%B %d, %Y'.freeze
+
   delegate_all
 
   decorates_association :order_books
@@ -21,6 +23,10 @@ class OrderDecorator < Draper::Decorator
 
   def books_quantity
     order_books.count
+  end
+
+  def creation_date
+    updated_at.strftime(CREATION_DATE_FORMAT)
   end
 
   private

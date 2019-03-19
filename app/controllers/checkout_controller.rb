@@ -10,6 +10,7 @@ class CheckoutController < ApplicationController
     when :delivery then delivery
     when :payment then payment
     when :confirm then confirm
+    when :complete then complete
     end
     render_wizard
   end
@@ -19,6 +20,7 @@ class CheckoutController < ApplicationController
     when :addresses then addresses_update
     when :delivery then delivery_update
     when :payment then payment_update
+    when :confirm then confirm_update
     end
     redirect_to next_wizard_path
   end
@@ -26,7 +28,10 @@ class CheckoutController < ApplicationController
   private
 
   def authentication
-    return jump_to(next_step) if user_signed_in?
+    if user_signed_in?
+      Orders::AttachUserService.new(current_order, current_user).call
+      return jump_to(next_step)
+    end
   end
 
   def addresses
@@ -45,6 +50,10 @@ class CheckoutController < ApplicationController
 
   end
 
+  def complete
+
+  end
+
   def addresses_update
     Addresses::ManageOrderAddressService.new(current_order, order_params, params[:use_billing]).call
   end
@@ -55,6 +64,11 @@ class CheckoutController < ApplicationController
 
   def payment_update
     CreditCards::ManageOrderCreditCardService.new(current_order, order_params).call
+  end
+
+  def confirm_update
+    Orders::CreateNumberService.new(current_order).call
+    Orders::ClearCurrentOrderSessionService.new(session).call
   end
 
   def order_params

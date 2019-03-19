@@ -1,0 +1,18 @@
+%table.table.table-hover
+  %thead
+    %tr
+      %th
+        %span.in-grey-600
+          = t('order.cart.book')
+      %th.col-method
+      %th
+        %span.in-grey-600
+          = t('order.cart.price')
+      %th
+        %span.in-grey-600
+          = t('order.cart.quantity')
+      %th
+        %span.in-grey-600
+          = t('order.cart.subtotal')
+  %tbody
+    = render partial: 'checkout/partials/confirm/cart_row', collection: order.order_books, as: :order_book
