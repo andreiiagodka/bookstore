@@ -17,22 +17,21 @@ class CheckoutController < ApplicationController
 
   private
 
+  def authentication
+    if user_signed_in?
+      Orders::AttachUserService.new(current_order, current_user).call unless current_order.user
+      return jump_to(next_step)
+    end
+  end
+
   def manage_show_action
-    initialize_checkout_instance.call
+    return jump_to(previous_step) unless Checkout::CheckStepCompletionService.new(current_order, current_user).call(step)
+
+    @checkout = Checkout::ManageShowActionService.new(current_order, current_user)
+    @checkout.call(step)
   end
 
   def manage_update_action
-    Checkout::ManageUpdateActionService.new(step, current_order, params, session).call
-  end
-
-  def initialize_checkout_instance
-    @checkout = Checkout::ManageShowActionService.new(step, current_order)
-  end
-
-  def authentication
-    if user_signed_in?
-      Orders::AttachUserService.new(current_order, current_user).call
-      return jump_to(next_step)
-    end
+    Checkout::ManageUpdateActionService.new(current_order, params, session).call(step)
   end
 end

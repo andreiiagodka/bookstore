@@ -1,10 +1,10 @@
 class OrderBooksController < ApplicationController
   load_and_authorize_resource
 
-  before_action :get_order, only: :create
+  before_action :initialize_current_order_session, only: :create
 
   def create
-    order_book = OrderBooks::CreateOrUpdateService.new(@order, order_book_params).call
+    order_book = OrderBooks::CreateOrUpdateService.new(current_order, order_book_params).call
     if order_book.save
       flash[:success] = t('message.success.order_book.create')
     else
@@ -36,7 +36,7 @@ class OrderBooksController < ApplicationController
     params.require(:order_book).permit(:quantity, :book_id)
   end
 
-  def get_order
-    @order ||= current_order
+  def initialize_current_order_session
+    Orders::InitializeCurrentOrderSessionService.new(current_user, session).call
   end
 end

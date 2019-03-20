@@ -1,14 +1,13 @@
 class Checkout::ManageShowActionService
   attr_reader :order, :billing_address, :shipping_address, :deliveries, :credit_card, :delivery
 
-  def initialize(step, order)
-    @step = step
+  def initialize(order, user)
     @order = order
-    @user = @order.user
+    @user = user
   end
 
-  def call
-    public_send(@step)
+  def call(step)
+    public_send(step)
   end
 
   def addresses

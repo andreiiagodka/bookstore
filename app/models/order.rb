@@ -25,5 +25,9 @@ class Order < ApplicationRecord
     state :canceled
     state :in_delivery
     state :delivered
+
+    event :complete do
+      transitions from: :in_progress, to: :completed
+    end
   end
 end

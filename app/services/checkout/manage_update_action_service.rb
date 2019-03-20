@@ -1,13 +1,12 @@
 class Checkout::ManageUpdateActionService
-  def initialize(step, order, params, session)
-    @step = step
+  def initialize(order, params, session)
     @order = order
     @params = params
     @session = session
   end
 
-  def call
-    public_send(@step)
+  def call(step)
+    public_send(step)
   end
 
   def addresses
@@ -23,6 +22,7 @@ class Checkout::ManageUpdateActionService
   end
 
   def confirm
+    @order.complete!
     Orders::ClearCurrentOrderSessionService.new(@session).call
   end
 
