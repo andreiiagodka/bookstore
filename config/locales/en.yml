@@ -160,3 +160,7 @@ en:
       credit_card:
         name_field: Must consist of a-z, A-Z, no special symbols
         expire_date_field: Must have a month on the left of a slash /, the year on the right
+  mailer:
+    order:
+      subject: Completed Order
+      message: "Your order %{number} has been completed!"

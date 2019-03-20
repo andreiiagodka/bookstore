@@ -23,6 +23,7 @@ class Checkout::ManageUpdateActionService
 
   def confirm
     @order.complete!
+    OrderMailer.completed_order(@order).deliver
     Orders::ClearCurrentOrderSessionService.new(@session).call
   end
 
