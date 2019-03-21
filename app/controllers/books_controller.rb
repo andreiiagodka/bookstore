@@ -8,7 +8,6 @@ class BooksController < ApplicationController
 
   before_action :get_category_books, only: [:index]
   before_action :set_filtering_order, only: [:index]
-  before_action :intialize_book_presenter, only: [:index]
 
   decorates_assigned :selected_books, :book
 
@@ -26,9 +25,5 @@ class BooksController < ApplicationController
 
   def set_filtering_order
     @filtering_order = Books::FilteringOrderService.new(params[:filter]).call
-  end
-
-  def intialize_book_presenter
-    @book_presenter = BookPresenter.new(books: Book.all)
   end
 end

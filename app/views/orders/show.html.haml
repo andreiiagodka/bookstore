@@ -3,7 +3,7 @@
     = t('order.cart.cart')
   - if @order.order_books.exists?
     .visible-xs
-      = render partial: 'orders/partials/mobile_cart_row', collection: order.order_books, as: :order_book
+      = render partial: 'orders/partials/mobile_cart_row', collection: order.order_books.decorate, as: :order_book
     .hidden-xs
       %table.table.table-hover
         %tr.no-hover
@@ -22,7 +22,7 @@
               = t('order.cart.subtotal')
           %th.col-close
         %tbody
-          = render partial: 'orders/partials/cart_row', collection: order.order_books, as: :order_book
+          = render partial: 'orders/partials/cart_row', collection: order.order_books.decorate, as: :order_book
     .general-order-wrap
       .row
         = render partial: 'coupons/coupon_form'

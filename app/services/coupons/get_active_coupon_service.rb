@@ -1,9 +1,9 @@
 class Coupons::GetActiveCouponService
-  def initialize(code)
-    @code = code
+  def initialize(params)
+    @params = params
   end
 
   def call
-    Coupon.active.find_by(code: @code)
+    Coupon.active.find_by(code: @params[:code])
   end
 end

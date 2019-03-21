@@ -13,6 +13,10 @@ class PagePresenter < Rectify::Presenter
     @get_categories ||= Category.all.decorate
   end
 
+  def get_books
+    @get_books ||= Book.all
+  end
+
   def temporary_password
     @password ||= Devise.friendly_token
   end

@@ -1,4 +1,4 @@
-class Coupons::DeactivateCouponService
+class Coupons::DeactivateService
   def initialize(coupon)
     @coupon = coupon
   end

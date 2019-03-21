@@ -4,18 +4,17 @@ class OrderBooksController < ApplicationController
   before_action :initialize_current_order_session, only: :create
 
   def create
-    order_book = OrderBooks::CreateOrUpdateService.new(current_order, order_book_params).call
-    if order_book.save
+    if OrderBooks::CreateService.new(current_order, order_book_params).call
       flash[:success] = t('message.success.order_book.create')
     else
-      flash[:danger] = order_book.errors.full_messages.to_sentence
+      flash[:danger] = @order_book.errors.full_messages.to_sentence
     end
 
     redirect_to @page_presenter.previous_url
   end
 
   def update
-    OrderBooks::ChangeBookQuantityService.new(@order_book, params[:quantity_action]).call
+    OrderBooks::UpdateQuantityService.new(@order_book, params[:quantity_action]).call
 
     redirect_to @page_presenter.previous_url
   end
@@ -37,6 +36,6 @@ class OrderBooksController < ApplicationController
   end
 
   def initialize_current_order_session
-    Orders::InitializeCurrentOrderSessionService.new(current_user, session).call
+    Orders::InitializeCurrentOrderSessionService.new(current_user, session).call unless current_order
   end
 end

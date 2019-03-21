@@ -2,7 +2,11 @@ class CouponsController < ApplicationController
   before_action :get_coupon
 
   def update
-    @coupon ? attach_order_to_coupon : flash[:danger] = t('message.error.coupon.used')
+    if @coupon
+      attach_order unless @coupon.order
+    else
+      flash[:danger] = t('message.error.coupon.used')
+    end
 
     return redirect_to @page_presenter.previous_url
   end
@@ -10,23 +14,18 @@ class CouponsController < ApplicationController
   private
 
   def coupon_params
-    params.require(:coupon).permit(:code, :order_id)
+    params.require(:coupon).permit(:code)
   end
 
   def get_coupon
-    @coupon = Coupons::GetActiveCouponService.new(coupon_params[:code]).call
+    @coupon = Coupons::GetActiveCouponService.new(coupon_params).call
   end
 
-  def attach_order_to_coupon
-    if @coupon.update(order_id: get_order.id)
+  def attach_order
+    if Coupons::AttachOrderService.new(@coupon, current_order).call
       flash[:success] = t('message.success.coupon.use')
     else
       flash[:danger] = @coupon.errors.full_messages.to_sentence
     end
-    Coupons::DeactivateCouponService.new(@acoupon).call
-  end
-
-  def get_order
-    @order = Order.find_by(id: coupon_params[:order_id])
   end
 end
