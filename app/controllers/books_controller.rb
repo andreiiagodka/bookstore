@@ -24,6 +24,6 @@ class BooksController < ApplicationController
   end
 
   def set_filtering_order
-    @filtering_order = Books::FilteringOrderService.new(params[:filter]).call
+    @filtering_order = Books::FilteringService.new(params[:filter]).call
   end
 end

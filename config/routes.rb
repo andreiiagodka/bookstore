@@ -7,11 +7,13 @@ Rails.application.routes.draw do
   resources :categories do
     resources :books, only: :index
   end
-  resources :reviews, only: :create
   resources :orders
+  resources :reviews, only: :create
   resources :order_books
   resources :coupons
   resources :checkout
-  resources :users
+  resources :users do
+    resources :orders, only: [:index, :show]
+  end
   resources :addresses
 end

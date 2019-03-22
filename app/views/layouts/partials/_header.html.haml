@@ -33,7 +33,7 @@
                 = t('layout.my_account')
               %ul#account.collapse.list-unstyled.pl-30.mb-10{'aria-expanded': "false"}
                 %li
-                  = link_to t('layout.orders')
+                  = link_to t('layout.orders'), user_orders_path(current_user)
                 %li
                   = link_to t('layout.settings'), user_path(current_user)
                 .divider
@@ -63,7 +63,7 @@
                 = t('layout.my_account')
               %ul.dropdown-menu
                 %li
-                  = link_to t('layout.orders')
+                  = link_to t('layout.orders'), user_orders_path(current_user)
                 %li
                   = link_to t('layout.settings'), user_path(current_user)
                 .divider

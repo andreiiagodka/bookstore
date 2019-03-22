@@ -1,5 +1,5 @@
-class Books::FilteringOrderService
-  include FilteringOrder
+class Books::FilteringService
+  include Filtering
 
   def initialize(filter)
     @filter = filter

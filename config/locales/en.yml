@@ -16,6 +16,9 @@ en:
     settings: Settings
     address: Address
     privacy: Privacy
+    orders:
+      title: My Orders
+      sort_by: Sort by
   address:
     cast:
       billing: Billing Address
