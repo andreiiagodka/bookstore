@@ -1,4 +1,6 @@
 class PagesController < ApplicationController
+  authorize_resource class: false
+
   LATEST_BOOKS_QUANTITY = 3
   BEST_SELLERS_QUANTITY = 4
 

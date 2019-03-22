@@ -5,7 +5,7 @@ class ReviewsController < ApplicationController
     if @review.save
       flash[:success] = t('message.success.review.create')
     else
-      flash[:danger] = review.errors.full_messages.to_sentence
+      flash[:danger] = @review.errors.full_messages.to_sentence
     end
 
     redirect_to @page_presenter.previous_url
