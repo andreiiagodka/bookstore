@@ -25,56 +25,21 @@
             %span.in-grey-600 Total
           %td
             %strong.font-16 €32.90
-    .general-cart-item
-      %table.table
-        %tr
-          %td.col-half
-            %span.in-grey-600 Number
-          %td.col-half
-            %span.general-order-number R25314582
-        %tr
-          %td
-            %span.in-grey-600 Completed at
-          %td
-            %span.in-grey-900.font-16.fw-300 2016-11-14
-        %tr
-          %td
-            %span.in-grey-600 Status
-          %td
-            %span.font-16.fw-300.text-success Delivered
-        %tr
-          %td
-            %span.in-grey-600 Total
-          %td
-            %strong.font-16 €32.90
   .hidden-xs.mb-res-50
     %table.table.table-hover
       %thead
         %tr
           %th
-            %span.in-grey-600 Number
+            %span.in-grey-600
+              = t('user.orders.table.number')
           %th
-            %span.in-grey-600 Completed at
+            %span.in-grey-600
+              = t('user.orders.table.completed_at')
           %th
-            %span.in-grey-600 Status
+            %span.in-grey-600
+              = t('user.orders.table.status')
           %th
-            %span.in-grey-600 Total
+            %span.in-grey-600
+              = t('user.orders.table.total')
       %tbody
-        %tr
-          %td
-            %span.general-order-number R25314582
-          %td
-            %span.in-grey-900.font-16.fw-300 2016-11-14
-          %td
-            %span.font-16.in-grey-900.fw-300 In Progress
-          %td
-            %strong.font-16 €32.90
-        %tr
-          %td
-            %span.general-order-number R25314582
-          %td
-            %span.in-grey-900.font-16.fw-300 2016-11-14
-          %td
-            %span.font-16.fw-300.text-success Delivered
-          %td
-            %strong.font-16 €32.90
+        = render partial: 'orders/partials/order_row', collection: @orders, as: :order

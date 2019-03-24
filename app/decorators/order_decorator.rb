@@ -1,5 +1,6 @@
 class OrderDecorator < Draper::Decorator
   CREATION_DATE_FORMAT = '%B %d, %Y'.freeze
+  COMPLETION_DATE_FORMAT = '%Y-%m-%d'.freeze
 
   delegate_all
 
@@ -25,6 +26,14 @@ class OrderDecorator < Draper::Decorator
 
   def creation_date
     updated_at.strftime(CREATION_DATE_FORMAT)
+  end
+
+  def completion_date
+    updated_at.strftime(COMPLETION_DATE_FORMAT)
+  end
+
+  def status_title
+    status.capitalize.gsub('_', ' ')
   end
 
   private

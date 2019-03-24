@@ -21,5 +21,5 @@
             = form.label :cvv, t('checkout.payment.cvv'), class: 'control-label input-label'
             = form.text_field :cvv, class: 'form-control', placeholder: t('checkout.payment.cvv'), required: true
             %i.fa.fa-question-circle.general-form-help{ 'data-toggle': 'tooltip', 'data-placement': :top, title: I18n.t('checkout.payment.cvv_hint') }
-      = render 'checkout/partials/order_summary'
+      = render 'checkout/partials/order_summary', order: @checkout.order
       = f.button :submit, t('button.save_and_continue'), class: 'btn btn-default center-block mb-20'

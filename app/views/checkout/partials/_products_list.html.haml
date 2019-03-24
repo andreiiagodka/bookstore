@@ -15,4 +15,4 @@
         %span.in-grey-600
           = t('order.cart.subtotal')
   %tbody
-    = render partial: 'checkout/partials/confirm/cart_row', collection: @checkout.order.order_books, as: :order_book
+    = render partial: 'checkout/partials/confirm/cart_row', collection: @checkout.order.order_books.decorate, as: :order_book

@@ -2,8 +2,9 @@
   %h3.general-subtitle
     = t('address.cast.' + type)
     %span.general-edit
-      = link_to wizard_path(:addresses) do
-        = t('checkout.confirm.edit')
+      - unless params[:user_id]
+        = link_to wizard_path(:addresses) do
+          = t('checkout.confirm.edit')
   %p.general-address
     = address.full_name
     %br

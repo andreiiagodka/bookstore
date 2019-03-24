@@ -1,6 +1,6 @@
 module Filtering
   DEFAULT_BOOK_FILTERING_ORDER = :created_at_desc
-  DEFAULT_ORDER_FILTERING_ORDER = :updated_at_desc
+  DEFAULT_ORDER_FILTERING_ORDER = :created_at_desc
 
   BOOK_FILTERING_ORDER = {
     created_at_desc: 'Newest first',
@@ -12,7 +12,7 @@ module Filtering
   }.freeze
 
   ORDER_FILTERING_ORDER = {
-    updated_at_desc: 'Newest first',
+    created_at_desc: 'All',
     in_progress: 'In progress',
     completed: 'Waiting for processing',
     in_delivery: 'In delivery',

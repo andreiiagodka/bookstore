@@ -15,6 +15,6 @@
   .hidden-xs.divider-lg.pt-20
     = render 'checkout/partials/products_list'
     .general-text-align
-      = render 'checkout/partials/order_summary'
+      = render 'checkout/partials/order_summary', order: @checkout.order
   .text-center
     = link_to t('button.back_to_store'), root_path, class: 'btn btn-default mb-20'
