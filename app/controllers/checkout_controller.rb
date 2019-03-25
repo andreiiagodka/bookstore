@@ -1,6 +1,8 @@
 class CheckoutController < ApplicationController
   include Wicked::Wizard
 
+  authorize_resource only: :update
+
   steps :authentication, :addresses, :delivery, :payment, :confirm, :complete
 
   def show

@@ -8,6 +8,7 @@ class Ability
       can :create, Review
       can :manage, User
       can :manage, Address
+      can :manage, :checkout
     end
 
     can :home, :page
