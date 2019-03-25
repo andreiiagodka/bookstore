@@ -1,5 +1,5 @@
-.flash
- -flash.each do |type, message|
-  .alert.alert-dismissable{class: "alert-#{type} text-center"}
-   %a.close{href: "#", 'data-dismiss': "alert", 'aria-label': "close"} &times;
-   =message
+%div.text-center
+  -flash.each do |type, message|
+    %div{'class': "alert alert-#{type == 'alert' ? 'danger' : 'success'}"}
+      %a{'href': "#", 'class': "close", 'data-dismiss': "alert", 'aria-label': "close"} &times
+      = message

@@ -5,10 +5,9 @@
     %p.general-password-text
       = t('devise.forgot_password_description')
   .general-form.field
-    = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
-      = devise_error_messages!
+    = simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }, defaults: { input_html: { class: "form-control" }}) do |f|
       .form-group.mb-30
-        = f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control', id: 'email', placeholder: t('devise.email')
+        = f.input :email, autofocus: true, autocomplete: "email", placeholder: t('devise.email')
       .text-center
         .actions
           = f.submit t('button.send_password_instructions'), class: 'btn btn-default mb-20'

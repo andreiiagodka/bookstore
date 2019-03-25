@@ -1,26 +1,14 @@
 %main.container.general-main-wrap
   .text-center
-    %h3.general-login-title
-      = t('devise.sign_up')
-    %a.general-login-icon{href: "#"}
-      - if devise_mapping.omniauthable?
-        - resource_class.omniauth_providers.each do |provider|
-          = link_to omniauth_authorize_path(resource_name, provider) do
-            %i.fa.fa-facebook-official.fa-lg
-    %p.general-login-text
-      = t('devise.or')
+    = render 'devise/shared/facebook_authentication', title: t('devise.sign_up')
   .general-form.field
-    = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-      = devise_error_messages!
+    = simple_form_for(resource, as: resource_name, url: registration_path(resource_name), defaults: { input_html: { class: "form-control" }}) do |f|
       .form-group.mb-30
-        = f.label :email, t('devise.email'), class: 'control-label input-label'
-        = f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control', id: 'email', placeholder: t('devise.email')
+        = f.input :email, autofocus: true, autocomplete: "email", placeholder: t('devise.email')
       .form-group.mb-30
-        = f.label :password, t('devise.password'), class: 'control-label input-label'
-        = f.password_field :password, autocomplete: "current-password", class: 'form-control', id: 'password', placeholder: t('devise.password')
+        = f.input :password, autocomplete: "current-password", placeholder: t('devise.password')
       .form-group.mb-30
-        = f.label :password_confirmation, t('devise.confirm_password'), class: 'control-label input-label'
-        = f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control', id: 'passconfirm_passwordword', placeholder: t('devise.confirm_password')
+        = f.input :password_confirmation, autocomplete: "new-password", placeholder: t('devise.confirm_password')
       .text-center
         .actions
           = f.submit t('devise.sign_up'), class: 'btn btn-default mb-20'
