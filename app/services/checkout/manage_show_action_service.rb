@@ -11,8 +11,8 @@ class Checkout::ManageShowActionService
   end
 
   def addresses
-    @billing_address = @order.addresses.billing.first_or_initialize
-    @shipping_address = @order.addresses.shipping.first_or_initialize
+    @billing_address = AddressForm.new(@order.addresses.billing.first&.attributes)
+    @shipping_address = AddressForm.new(@order.addresses.shipping.first&.attributes)
   end
 
   def delivery

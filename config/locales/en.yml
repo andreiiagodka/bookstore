@@ -147,7 +147,6 @@ en:
         update: Confirm email change or Log in again!
         destroy: Your account was successfully deleted!
       address:
-        create: "%{type} address was created successfully!"
         update: "%{type} address was updated successfully!"
       review:
         create: Thanks for Review! It will be published as soon as Admin will approve it.

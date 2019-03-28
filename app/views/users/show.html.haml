@@ -19,7 +19,10 @@
             %h3.general-subtitle.mt-0
               = t('address.cast.shipping')
       .row
-        = render 'addresses/partials/block'
+        .col-md-5.mb-40
+          = render 'addresses/partials/form', address: @billing, cast: :billing
+        .col-md-5.col-md-offset-1.mb-25
+          = render 'addresses/partials/form', address: @shipping, cast: :shipping
     #privacy.tab-pane.fade{role: "tabpanel"}
       .row.mb-60
         = render 'users/partials/email_block'

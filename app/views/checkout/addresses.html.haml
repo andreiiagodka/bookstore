@@ -1,6 +1,6 @@
 %main.container
   = render 'checkout/partials/header'
-  = simple_form_for @checkout.order, url: wizard_path, method: :put, validate: true do |f|
+  = simple_form_for @checkout.order, url: wizard_path, method: :put, validate: true, defaults: { input_html: { class: "form-control" }, wrapper_html: { class: 'form-group' }} do |f|
     .hidden-xs.hidden-sm
       .row
         .col-md-5
@@ -19,10 +19,10 @@
           %p.general-info-text
             = t('address.all_fields_required')
         = f.simple_fields_for :billing, @checkout.billing_address do |form|
-          = render 'addresses/partials/form', f: form, cast: :billing
+          = render 'addresses/partials/form_fields', f: form, cast: :billing
       .col-md-5.col-md-offset-1.mb-60{id: 'shipping_address_form'}
         = f.simple_fields_for :shipping, @checkout.shipping_address do |form|
-          = render 'addresses/partials/form', f: form, cast: :shipping
+          = render 'addresses/partials/form_fields', f: form, cast: :shipping
         .form-group.checkbox
           %label.checkbox-label
             = check_box_tag 'use_billing', true, false, id: 'use_billing', class: 'checkbox-input', hidden: true

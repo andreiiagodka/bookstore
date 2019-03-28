@@ -1,21 +1,7 @@
-.form-group
-  = f.label :first_name, t('address.first_name'), class: 'control-label input-label'
-  = f.text_field :first_name, class: 'form-control', placeholder: t('address.first_name'), required: true
-.form-group
-  = f.label :last_name, t('address.last_name'), class: 'control-label input-label'
-  = f.text_field :last_name, class: 'form-control', placeholder: t('address.last_name'), required: true
-.form-group
-  = f.label :country, t('address.country'), class: 'control-label input-label'
-  = f.country_select :country, {}, class: 'form-control', required: true
-.form-group
-  = f.label :city, t('address.city'), class: 'control-label input-label'
-  = f.text_field :city, class: 'form-control', placeholder: t('address.city'), required: true
-.form-group
-  = f.label :address, t('address.address'), class: 'control-label input-label'
-  = f.text_field :address, class: 'form-control', placeholder: t('address.address'), required: true
-.form-group
-  = f.label :zip, t('address.zip'), class: 'control-label input-label'
-  = f.text_field :zip, class: 'form-control', placeholder: t('address.zip'), required: true
-.form-group.mb-60
-  = f.label :phone, t('address.phone'), class: 'control-label input-label'
-  = f.text_field :phone, class: 'form-control', placeholder: t('address.phone'), required: true
+= simple_form_for(address, url: address.id ? address_path(address.id) : addresses_path, method: (address.id ? :patch : :post),
+validate: true, defaults: { input_html: { class: "form-control" }, wrapper_html: { class: 'form-group' }}) do |form|
+  .visible-xs.visible-sm
+    %h3.general-subtitle.mt-0
+    = t('address.cast.billing')
+  = render 'addresses/partials/form_fields', f: form, cast: cast
+  = form.button :submit, t('button.save'), class:"btn btn-default btn"
