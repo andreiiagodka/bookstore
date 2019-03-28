@@ -20,7 +20,7 @@ class Checkout::ManageShowActionService
   end
 
   def payment
-    @credit_card = @order.credit_card ? @order.credit_card : CreditCard.new
+    @credit_card = CreditCardForm.new(@order.credit_card&.attributes)
   end
 
   def confirm

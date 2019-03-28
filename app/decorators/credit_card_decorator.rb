@@ -15,6 +15,6 @@ class CreditCardDecorator < Draper::Decorator
   end
 
   def masked_chars_quantity
-    CreditCard::LENGTH[:number] - GROUPED_CHARS_QUANTITY
+    CreditCardForm::LENGTH[:number] - GROUPED_CHARS_QUANTITY
   end
 end

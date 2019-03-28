@@ -1,11 +1,11 @@
 class ReviewsController < ApplicationController
-  load_and_authorize_resource
+  authorize_resource
 
   def create
-    if @review.save
+    if ReviewForm.new(review_params).save
       flash[:success] = t('message.success.review.create')
     else
-      flash[:danger] = @review.errors.full_messages.to_sentence
+      flash[:danger] = t('message.error.general')
     end
 
     redirect_to @page_presenter.previous_url
@@ -14,6 +14,6 @@ class ReviewsController < ApplicationController
   private
 
   def review_params
-    params.require(:review).permit(:title, :body, :score, :book_id, :user_id)
+    params.require(:review_form).permit(:title, :body, :score, :book_id, :user_id)
   end
 end
