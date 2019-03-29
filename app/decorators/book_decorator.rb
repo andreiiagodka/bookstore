@@ -29,11 +29,11 @@ class BookDecorator < Draper::Decorator
   end
 
   def short_description
-   description[RANGES[:description][:short]]
+    description[RANGES[:description][:short]]
   end
 
   def medium_description
-   description[RANGES[:description][:medium]]
+    description[RANGES[:description][:medium]]
   end
 
   def end_of_description

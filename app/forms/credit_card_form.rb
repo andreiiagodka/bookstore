@@ -39,7 +39,8 @@ class CreditCardForm
   def save(object)
     return false unless valid?
 
-    object.credit_card ? object.credit_card.update(params) : object.update(credit_card: new_credit_card)
+    credit_card = object.credit_card
+    credit_card ? credit_card.update(params) : object.update(credit_card: new_credit_card)
   end
 
   private

@@ -1,10 +1,19 @@
 class CheckoutController < ApplicationController
   include Wicked::Wizard
 
-  steps :authentication, :addresses, :delivery, :payment, :confirm, :complete
+  STEPS = {
+    authentication: :authentication,
+    addresses: :addresses,
+    delivery: :delivery,
+    payment: :payment,
+    confirm: :confirm,
+    complete: :complete
+  }.freeze
+
+  steps STEPS[:authentication], STEPS[:addresses], STEPS[:delivery], STEPS[:payment], STEPS[:confirm], STEPS[:complete]
 
   def show
-    step == :authentication ? authentication : manage_show_action
+    authentication_step? ? authentication : manage_show_action
 
     render_wizard
   end
@@ -17,11 +26,15 @@ class CheckoutController < ApplicationController
 
   private
 
+  def authentication_step?
+    step == STEPS[:authentication]
+  end
+
   def authentication
-    if user_signed_in?
-      Orders::AttachUserService.new(current_order, current_user).call unless current_order.user
-      return jump_to(next_step)
-    end
+    return false unless user_signed_in?
+
+    Orders::AttachUserService.new(current_order, current_user).call unless current_order.user
+    return jump_to(next_step)
   end
 
   def manage_show_action

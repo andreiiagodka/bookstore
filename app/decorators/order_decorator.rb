@@ -33,12 +33,12 @@ class OrderDecorator < Draper::Decorator
   end
 
   def status_title
-    status.capitalize.gsub('_', ' ')
+    status.capitalize.tr('_', ' ')
   end
 
   private
 
   def count_discount_price
-    (subtotal_price/coupon.discount_percent).round
+    (subtotal_price / coupon.discount_percent).round
   end
 end

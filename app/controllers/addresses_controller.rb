@@ -10,12 +10,14 @@ class AddressesController < ApplicationController
   private
 
   def manage_address
-    if AddressForm.new(address_params).save(current_user)
+    address_form = AddressForm.new(address_params)
+    if address_form.save(current_user)
       flash[:success] = t('message.success.address.update', type: address_params[:cast].capitalize)
     else
-      flash[:danger] = t('message.error.general')
+      flash[:danger] = address_form.errors.full_messages.to_sentence
     end
-    redirect_to @page_presenter.previous_url
+
+    redirect_to @page_presenter.previous_url and return
   end
 
   def address_params

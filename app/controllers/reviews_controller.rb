@@ -8,7 +8,7 @@ class ReviewsController < ApplicationController
       flash[:danger] = t('message.error.general')
     end
 
-    redirect_to @page_presenter.previous_url
+    redirect_to @page_presenter.previous_url and return
   end
 
   private

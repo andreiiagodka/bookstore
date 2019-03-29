@@ -1,4 +1,4 @@
-class Coupons::GetActiveCouponService
+class Coupons::GetActiveCouponByCodeService
   def initialize(params)
     @params = params
   end

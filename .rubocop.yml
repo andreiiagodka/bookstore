@@ -1,21 +1,55 @@
-AllCops:
-  Rails: true
-  Exclude:
-    - db/schema.rb
-    - bin/*
-    - config.ru
-    - Rakefile
+require: rubocop-rspec
+
 Metrics/LineLength:
   Max: 120
-Metrics/MethodLength:
-  Max: 25
-Metrics/ClassLength:
-  Max: 120
-Style/Documentation:
+  Exclude:
+    - 'spec/**/*'
+
+Documentation:
   Enabled: false
+
+NamedSubject:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
 Style/ClassAndModuleChildren:
-  EnforcedStyle: compact
-Style/AndOr:
   Enabled: false
+
+Bundler/OrderedGems:
+  Enabled: false
+
+RSpec/MultipleExpectations:
+  Enabled: false
+
 Metrics/BlockLength:
+  ExcludedMethods:
+  Exclude:
+
+
+Metrics/MethodLength:
+  Exclude:
+
+
+AllCops:
+  Exclude:
+    - 'bin/**/*'
+    - 'config/**/*'
+    - 'db/migrate/**/*'
+    - 'db/schema.rb'
+    - 'db/seeds.rb'
+
+Style/UnneededInterpolation:
+  Exclude:
+
+
+Metrics/AbcSize:
+  Exclude:
+
+
+RSpec/MessageChain:
+  Enabled: false
+
+RSpec/AnyInstance:
   Enabled: false

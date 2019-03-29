@@ -3,8 +3,6 @@ class Addresses::ManageOrderAddressService
     @order = order
     @params = params
     @use_billing = use_billing
-    initialize_addresses
-    initialize_addresses_params
   end
 
   def call
@@ -14,29 +12,27 @@ class Addresses::ManageOrderAddressService
 
   private
 
-  def initialize_addresses
-    @billing = @order.addresses.billing
-    @shipping = @order.addresses.shipping
-  end
-
-  def initialize_addresses_params
-    @billing_params = address_params(:billing)
-    @shipping_params = address_params(set_type)
-  end
-
   def manage_billing_address
-    @billing.exists? ? @billing.update(@billing_params) : @billing.create(@billing_params)
+    address = get_address(:billing)
+    params = address_params(:billing)
+    address.exists? ? address.update(params) : address.create(params)
   end
 
   def manage_shipping_address
-    @shipping.exists? ? @shipping.update(@shipping_params) : @shipping.create(@shipping_params)
+    address = get_address(:shipping)
+    params = address_params(set_type)
+    address.exists? ? address.update(params) : address.create(params)
   end
 
-  def address_params(type)
-    @params.require(type).permit(:first_name, :last_name, :country, :city, :address, :zip, :phone)
+  def get_address(cast)
+    @order.addresses.public_send(cast)
   end
 
   def set_type
     @use_billing ? :billing : :shipping
+  end
+
+  def address_params(type)
+    @params.require(type).permit(:first_name, :last_name, :country, :city, :address, :zip, :phone)
   end
 end

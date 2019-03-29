@@ -20,9 +20,9 @@
               = t('address.cast.shipping')
       .row
         .col-md-5.mb-40
-          = render 'addresses/partials/form', address: @billing, cast: :billing
+          = render 'addresses/partials/form', address: AddressForm.new(current_user.addresses.billing.first&.attributes), cast: :billing
         .col-md-5.col-md-offset-1.mb-25
-          = render 'addresses/partials/form', address: @shipping, cast: :shipping
+          = render 'addresses/partials/form', address: AddressForm.new(current_user.addresses.shipping.first&.attributes), cast: :shipping
     #privacy.tab-pane.fade{role: "tabpanel"}
       .row.mb-60
         = render 'users/partials/email_block'

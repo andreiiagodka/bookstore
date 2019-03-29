@@ -2,7 +2,7 @@ class CreditCardDecorator < Draper::Decorator
   delegate_all
 
   GROUPED_CHARS_QUANTITY = 4
-  MASKING_CHAR = '*'
+  MASKING_CHAR = '*'.freeze
 
   def masked_number
     masked_part + ' ' + number.last(GROUPED_CHARS_QUANTITY)

@@ -13,7 +13,7 @@ class Checkout::CheckStepCompletionService
   end
 
   def delivery
-    @order.addresses.billing.exists? && @order.addresses.shipping.exists?
+    @order.addresses.billing && @order.addresses.shipping
   end
 
   def payment

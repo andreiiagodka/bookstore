@@ -1,8 +1,8 @@
 module BookImage
   extend ActiveSupport::Concern
 
-  COVERS_DIR = 'covers/'
-  DEFAULT_COVER = 'default.jpg'
+  COVERS_DIR = 'covers/'.freeze
+  DEFAULT_COVER = 'default.jpg'.freeze
 
   BOOK_IMAGE_SIZES = {
     main_cover: '555x380',

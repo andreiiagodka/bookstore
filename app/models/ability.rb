@@ -10,8 +10,6 @@ class Ability
       can :manage, Address
     end
 
-    can :home, :page
-
     can :manage, Book
     can :manage, Order
     can :manage, OrderBook
