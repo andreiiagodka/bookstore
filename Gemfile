@@ -3,6 +3,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.1'
 
+gem 'activeadmin'
+gem 'activeadmin_simplemde'
 gem 'devise'
 gem 'omniauth-facebook'
 gem 'faker', require: false
@@ -19,6 +21,7 @@ gem 'cancancan'
 gem 'wicked'
 gem 'country_select'
 gem 'virtus'
+gem 'pundit'
 gem 'rails', '~> 5.2.2'
 gem 'pg'
 gem 'puma', '~> 3.11'

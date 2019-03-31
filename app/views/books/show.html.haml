@@ -15,7 +15,7 @@
    %h1.mt-res-0
     = book.name
    %p.lead.small
-    = book.authors_joined_by_comma
+    = book.authors_as_string
    .row
     = simple_form_for(current_order.order_books.new, remote: true, method: :post) do |f|
      .col-xs-12.col-md-4

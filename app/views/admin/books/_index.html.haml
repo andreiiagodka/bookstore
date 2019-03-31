@@ -1,0 +1,14 @@
+- context.instance_eval do
+  - selectable_column
+  - column :cover do |book|
+    - book.cover_image(:cart)
+  - column :categories do |book|
+    - book.categories_as_string
+  - column :name
+  - column :authors do |book|
+    - book.authors_as_string
+  - column :description do |book|
+    - book.short_description
+  - column :price do |book|
+    - t('price', price: book.price)
+  - actions

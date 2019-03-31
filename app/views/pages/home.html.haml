@@ -17,7 +17,7 @@
                 %p.lead
                   = book.short_description
                 %p.lead.small
-                  = book.authors_joined_by_comma
+                  = book.authors_as_string
                 .general-align
                   = link_to order_books_path(order_book: {book_id: book.id, quantity: 1}), remote: true, method: :post do
                     %button.btn.btn-primary
