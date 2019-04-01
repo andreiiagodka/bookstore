@@ -3,8 +3,6 @@ class BookDecorator < Draper::Decorator
 
   delegate_all
 
-  decorates_association :reviews
-
   RANGES = {
     name: {
       short: 0..25
@@ -42,6 +40,10 @@ class BookDecorator < Draper::Decorator
 
   def end_of_description
     description[RANGES[:description][:end]]
+  end
+
+  def published_reviews
+    reviews.published
   end
 
   def cover_image(type, shadow: true)

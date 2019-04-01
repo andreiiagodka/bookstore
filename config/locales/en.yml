@@ -4,7 +4,12 @@ en:
     order:
       date_of_creation: Date of creation
       state: State
-      change_state: Change state 
+      change_state: Change state
+    review:
+      book: Book
+      date: Date
+      publish: Publish
+      unpublish: Unpublish
   layout:
     project_title: Bookstore
     home: Home

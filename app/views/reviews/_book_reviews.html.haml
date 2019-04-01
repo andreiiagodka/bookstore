@@ -1,8 +1,8 @@
 = render 'reviews/form' if user_signed_in?
 .mb-80
  %h3.in-gold-500.mb-25
-  = t('review.reviews', count: book.reviews.count)
-  - book.reviews.each do |review|
+  = t('review.reviews', count: book.published_reviews.count)
+  - book.published_reviews.each do |review|
    .general-message-wrap.divider-lg
    .clearfix
     %span.img-circle.logo-size.inlide-block.pull-left.logo-empty
@@ -10,7 +10,7 @@
     .ml-70
      %div
       .general-message-date.hidden-xs
-       = review.slash_date_format
+       = review.decorate.slash_date_format
       .max-240
        .general-message-verified.pull-right
         = t('review.verified_reviewer')

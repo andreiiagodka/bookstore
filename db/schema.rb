@@ -175,6 +175,7 @@ ActiveRecord::Schema.define(version: 2019_03_31_130630) do
     t.string "title"
     t.text "body"
     t.integer "score", default: 0
+    t.boolean "published", default: false
     t.bigint "user_id"
     t.bigint "book_id"
     t.datetime "created_at", null: false

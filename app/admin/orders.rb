@@ -11,7 +11,6 @@ ActiveAdmin.register Order do
   scope :delivered
   scope :canceled
 
-
   index do
     selectable_column
     column :number
