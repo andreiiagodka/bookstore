@@ -4,8 +4,6 @@ ActiveAdmin.register Book do
   permit_params :name, :price, :description, :publication_year, :height, :width, :depth, :material,
                 category_ids: [], authors_ids: []
 
-  includes :categories, :authors
-
   config.filters = false
 
   index do
