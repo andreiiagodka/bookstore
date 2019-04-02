@@ -90,7 +90,7 @@ RSpec.describe Admin::BooksController, type: :controller do
       end
 
       context 'with invalid params' do
-        it 'invalid_attributes return http success' do
+        it 'invalid_attributes respond with 200' do
           post :create, params: { book: invalid_attributes }
           is_expected.to respond_with 200
         end
