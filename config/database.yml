@@ -12,7 +12,10 @@ development:
 
 test:
   <<: *default
+  host: localhost
   database: bookstore_test
+  username: ruby_psql
+  password: <%= Rails.application.credentials[Rails.env.to_sym][:database_password] %>
 
 production:
   <<: *default

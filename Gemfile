@@ -49,12 +49,18 @@ group :development do
   gem 'overcommit'
   gem 'fasterer'
   gem 'brakeman'
+  gem 'rspec-rails'
 end
 
 group :test do
   gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
   gem 'chromedriver-helper'
+  gem 'rspec'
+  gem 'simplecov'
+  gem 'factory_bot_rails'
+  gem 'shoulda-matchers'
+  gem 'rails-controller-testing'
 end
 
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]

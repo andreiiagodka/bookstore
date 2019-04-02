@@ -1,6 +1,9 @@
 en:
   price: "€ %{price}"
   admin:
+    book:
+      categories: Categories
+      authors: Authors
     order:
       date_of_creation: Date of creation
       state: State
