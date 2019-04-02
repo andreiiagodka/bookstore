@@ -31,6 +31,9 @@ RSpec.describe Admin::AuthorsController, type: :controller do
 
       it 'should render the expected columns' do
         expect(page).to have_content author.name
+        expect(page).to have_content I18n.t('admin.actions.view')
+        expect(page).to have_content I18n.t('admin.actions.edit')
+        expect(page).to have_content I18n.t('admin.actions.delete')
       end
     end
 

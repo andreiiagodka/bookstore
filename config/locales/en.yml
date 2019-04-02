@@ -1,6 +1,10 @@
 en:
   price: "€ %{price}"
   admin:
+    actions:
+      view: View
+      edit: Edit
+      delete: Delete
     book:
       categories: Categories
       authors: Authors

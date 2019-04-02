@@ -35,6 +35,9 @@ RSpec.describe Admin::BooksController, type: :controller do
         expect(page).to have_content book.authors_as_string
         expect(page).to have_content book.short_description
         expect(page).to have_content I18n.t('price', price: book.price)
+        expect(page).to have_content I18n.t('admin.actions.view')
+        expect(page).to have_content I18n.t('admin.actions.edit')
+        expect(page).to have_content I18n.t('admin.actions.delete')
       end
     end
 
