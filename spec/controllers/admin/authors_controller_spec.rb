@@ -8,7 +8,7 @@ RSpec.describe Admin::AuthorsController, type: :controller do
     end
   end
 
-  describe 'authors CRUD' do
+  describe 'author CRUD' do
     let(:page) { Capybara::Node::Simple.new(response.body) }
     let!(:author) { create(:author) }
 

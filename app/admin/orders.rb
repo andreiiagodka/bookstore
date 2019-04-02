@@ -1,6 +1,8 @@
 ActiveAdmin.register Order do
   decorate_with OrderDecorator
 
+  actions :index, :edit, :update
+
   permit_params :status
 
   config.filters = false

@@ -12,6 +12,12 @@ en:
       date_of_creation: Date of creation
       state: State
       change_state: Change state
+      batch_actions:
+        in_progress: In Progress
+        completed: Completed
+        in_delivery: In Delivery
+        delivered: Delivered
+        canceled: Canceled
     review:
       book: Book
       date: Date

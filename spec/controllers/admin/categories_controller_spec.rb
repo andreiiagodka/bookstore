@@ -8,7 +8,7 @@ RSpec.describe Admin::CategoriesController, type: :controller do
     end
   end
 
-  describe 'categories CRUD' do
+  describe 'category CRUD' do
     let(:page) { Capybara::Node::Simple.new(response.body) }
     let!(:category) { create(:category) }
 

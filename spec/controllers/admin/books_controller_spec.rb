@@ -8,7 +8,7 @@ RSpec.describe Admin::BooksController, type: :controller do
     end
   end
 
-  describe 'books CRUD' do
+  describe 'book CRUD' do
     let(:page) { Capybara::Node::Simple.new(response.body) }
     let!(:book) { create(:book, :attach_cover, :attach_category, :attach_author).decorate }
 
