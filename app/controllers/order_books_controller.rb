@@ -10,7 +10,7 @@ class OrderBooksController < ApplicationController
       flash[:danger] = @order_book.errors.full_messages.to_sentence
     end
 
-    redirect_to @page_presenter.previous_url and return
+    redirect_to @page_presenter.previous_url
   end
 
   def update
@@ -20,7 +20,7 @@ class OrderBooksController < ApplicationController
       flash[:danger] = t('message.error.order_book.update_quantity')
     end
 
-    redirect_to @page_presenter.previous_url and return
+    redirect_to @page_presenter.previous_url
   end
 
   def destroy
@@ -30,7 +30,7 @@ class OrderBooksController < ApplicationController
       flash[:danger] = @order_book.errors.full_messages.to_sentence
     end
 
-    redirect_to @page_presenter.previous_url and return
+    redirect_to @page_presenter.previous_url
   end
 
   private
