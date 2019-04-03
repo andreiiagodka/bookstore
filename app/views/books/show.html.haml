@@ -17,7 +17,7 @@
    %p.lead.small
     = book.authors_joined_by_comma
    .row
-    = simple_form_for(current_order.order_books.new, remote: true, method: :post) do |f|
+    = simple_form_for(OrderBook.new, remote: true, method: :post) do |f|
      .col-xs-12.col-md-4
       %p.h1.in-gold-500.mt-10
        = t('price', price: book.price)
