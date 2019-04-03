@@ -1,3 +1,1 @@
-module BooksHelper
-  include Pagy::Frontend
-end
+module BooksHelper; end

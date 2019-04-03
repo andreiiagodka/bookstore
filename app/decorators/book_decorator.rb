@@ -44,6 +44,6 @@ class BookDecorator < Draper::Decorator
   end
 
   def image(input)
-    images[input].variant(resize: "#{IMAGE_SIZES[:image]}!").processed
+    images[input].variant(resize: "#{Books::ImageService::IMAGE_SIZES[:image]}!").processed
   end
 end

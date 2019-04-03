@@ -1,3 +1,1 @@
-module OrdersHelper
-  include Pagy::Frontend
-end
+module OrdersHelper; end
