@@ -21,6 +21,7 @@ en:
     review:
       book: Book
       date: Date
+      published: Published
       publish: Publish
       unpublish: Unpublish
   layout:

@@ -1,5 +1,5 @@
 require 'rails_helper'
-require 'pry'
+
 RSpec.describe Admin::OrdersController, type: :controller do
   describe "not admin user is not allowed to access admin panel" do
     it do

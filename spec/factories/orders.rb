@@ -1,8 +1,6 @@
 FactoryBot.define do
   factory :order do
     number { Orders::GenerateNumberService.new.call }
-    delivery
-    credit_card
   end
 
   trait :attach_book do
