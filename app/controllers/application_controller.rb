@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   private
 
   def initialize_page_presenter
-    @page_presenter = PagePresenter.new(request: request).attach_controller(self)
+    @page_presenter ||= PagePresenter.new(request: request).attach_controller(self)
   end
 
   def current_order

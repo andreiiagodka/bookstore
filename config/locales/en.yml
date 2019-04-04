@@ -1,5 +1,29 @@
 en:
   price: "€ %{price}"
+  admin:
+    actions:
+      view: View
+      edit: Edit
+      delete: Delete
+    book:
+      categories: Categories
+      authors: Authors
+    order:
+      date_of_creation: Date of creation
+      state: State
+      change_state: Change state
+      batch_actions:
+        in_progress: In Progress
+        completed: Completed
+        in_delivery: In Delivery
+        delivered: Delivered
+        canceled: Canceled
+    review:
+      book: Book
+      date: Date
+      published: Published
+      publish: Publish
+      unpublish: Unpublish
   layout:
     project_title: Bookstore
     home: Home

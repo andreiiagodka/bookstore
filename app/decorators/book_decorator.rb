@@ -1,8 +1,6 @@
 class BookDecorator < Draper::Decorator
   delegate_all
 
-  decorates_association :reviews
-
   RANGES = {
     name: {
       short: 0..25
@@ -14,8 +12,12 @@ class BookDecorator < Draper::Decorator
     }
   }.freeze
 
-  def authors_joined_by_comma
+  def authors_as_string
     authors.map(&:name).join(', ')
+  end
+
+  def categories_as_string
+    categories.map(&:name).join(', ')
   end
 
   def short_name
@@ -36,6 +38,10 @@ class BookDecorator < Draper::Decorator
 
   def end_of_description
     description[RANGES[:description][:end]]
+  end
+
+  def published_reviews
+    reviews.published
   end
 
   def cover_image(type, shadow: true)
