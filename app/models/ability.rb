@@ -1,7 +1,7 @@
 class Ability
   include CanCan::Ability
 
-  def initialize(user, order)
+  def initialize(user)
     user ||= User.new
 
     if user.persisted?
