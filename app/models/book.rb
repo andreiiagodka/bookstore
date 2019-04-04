@@ -10,7 +10,7 @@ class Book < ApplicationRecord
   has_many :order_books, dependent: :destroy
   has_many :orders, through: :order_books
 
-  scope :by_filtering_order, -> (order_filter) { public_send(order_filter) }
+  scope :by_filter, -> (filter) { public_send(filter) }
 
   scope :created_at_desc, -> { order('created_at desc') }
   scope :popularity_desc, -> { order('created_at desc') }

@@ -10,13 +10,17 @@ class OrderBooksController < ApplicationController
       flash[:danger] = @order_book.errors.full_messages.to_sentence
     end
 
-    redirect_to @page_presenter.previous_url and return
+    redirect_to @page_presenter.previous_url
   end
 
   def update
-    OrderBooks::UpdateQuantityService.new(@order_book, params[:quantity_action]).call
+    if OrderBooks::UpdateQuantityService.new(@order_book, params[:quantity_action]).call
+      flash[:success] = t('message.success.order_book.update_quantity')
+    else
+      flash[:danger] = t('message.error.order_book.update_quantity')
+    end
 
-    redirect_to @page_presenter.previous_url and return
+    redirect_to @page_presenter.previous_url
   end
 
   def destroy
@@ -25,8 +29,8 @@ class OrderBooksController < ApplicationController
     else
       flash[:danger] = @order_book.errors.full_messages.to_sentence
     end
-    
-    redirect_to @page_presenter.previous_url and return
+
+    redirect_to @page_presenter.previous_url
   end
 
   private

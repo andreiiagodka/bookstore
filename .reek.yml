@@ -16,8 +16,6 @@ detectors:
 
 directories:
   'app/services/':
-    TooManyInstanceVariables:
-      enabled: false
     DuplicateMethodCall:
       enabled: false
   'app/controllers/':

@@ -6,24 +6,13 @@ class BooksController < ApplicationController
   include Rectify::ControllerHelpers
   include Pagy::Backend
 
-  before_action :get_category_books, only: [:index]
-  before_action :set_filtering_order, only: [:index]
-
   decorates_assigned :selected_books, :book
 
   def index
-    @pagy, @selected_books = pagy(@scoped_books.by_filtering_order(@filtering_order), items: BOOKS_PER_PAGE)
+    @scoped_books = Books::GetCategoryBooksService.new(@books, params[:category_id]).call
+    @filtering_order = Books::FilteringService.new(params[:filter]).call
+    @pagy, @selected_books = pagy(@scoped_books.by_filter(@filtering_order), items: BOOKS_PER_PAGE)
   end
 
   def show; end
-
-  private
-
-  def get_category_books
-    @scoped_books = Books::GetCategoryBooksService.new(@books, params[:category_id]).call
-  end
-
-  def set_filtering_order
-    @filtering_order = Books::FilteringService.new(params[:filter]).call
-  end
 end

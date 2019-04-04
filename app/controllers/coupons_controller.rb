@@ -1,15 +1,19 @@
 class CouponsController < ApplicationController
-  def update
+  before_action :apply_coupon
+
+  def update; end
+
+  private
+
+  def apply_coupon
     if Coupons::ApplyCouponService.new(current_order, coupon_params).call
       flash[:success] = t('message.success.coupon.use')
     else
       flash[:danger] = t('message.error.coupon.used')
     end
 
-    redirect_to @page_presenter.previous_url and return
+    redirect_to @page_presenter.previous_url
   end
-
-  private
 
   def coupon_params
     params.require(:coupon).permit(:code)

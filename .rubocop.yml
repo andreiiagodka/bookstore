@@ -40,14 +40,6 @@ AllCops:
     - 'db/schema.rb'
     - 'db/seeds.rb'
 
-Style/UnneededInterpolation:
-  Exclude:
-
-
-Metrics/AbcSize:
-  Exclude:
-
-
 RSpec/MessageChain:
   Enabled: false
 

@@ -17,7 +17,7 @@ class AddressesController < ApplicationController
       flash[:danger] = address_form.errors.full_messages.to_sentence
     end
 
-    redirect_to @page_presenter.previous_url and return
+    redirect_to @page_presenter.previous_url
   end
 
   def address_params

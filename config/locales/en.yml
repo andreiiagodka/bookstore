@@ -178,6 +178,7 @@ en:
         use: Coupon used successfully!
       order_book:
         create: Book was added to cart!
+        update_quantity: Book's quantity was updated!
         delete: Book was deleted from cart!
     error:
       general: Something went wrong!
@@ -190,6 +191,8 @@ en:
         phone_field: Plus (+) at the beginning, must consist of 0-9 only no special symbols
       coupon:
         used: Already used or invalid coupon code.
+      order_book:
+        update_quantity: Book's quantity was not updated
       credit_card:
         name_field: Must consist of a-z, A-Z, no special symbols
         expire_date_field: Must have a month on the left of a slash /, the year on the right
