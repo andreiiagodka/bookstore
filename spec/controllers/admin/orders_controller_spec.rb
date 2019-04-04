@@ -1,5 +1,5 @@
 require 'rails_helper'
-
+require 'pry'
 RSpec.describe Admin::OrdersController, type: :controller do
   describe "not admin user is not allowed to access admin panel" do
     it do
@@ -15,6 +15,9 @@ RSpec.describe Admin::OrdersController, type: :controller do
     render_views
     login_admin
 
+    let(:valid_attributes) { { status: Order.statuses.drop(2).sample.first } }
+    let(:invalid_attributes) { { status: nil } }
+
     describe 'GET index' do
       before { get :index }
 
@@ -22,7 +25,7 @@ RSpec.describe Admin::OrdersController, type: :controller do
         is_expected.to respond_with 200
       end
 
-      it 'assigns the author' do
+      it 'assigns the order' do
         expect(assigns(:orders)).to include order
       end
 
@@ -51,12 +54,47 @@ RSpec.describe Admin::OrdersController, type: :controller do
         is_expected.to respond_with 200
       end
 
-      it 'assigns the author' do
+      it 'assigns the order' do
         expect(assigns(:order)).to eq(order)
       end
 
       it 'should render the form elements' do
         expect(page).to have_field 'order_status'
+      end
+    end
+
+    describe 'PUT update' do
+      context 'with valid params' do
+        before do
+          put :update, params: { id: order.id, order: valid_attributes }
+        end
+
+        it 'assigns the order' do
+          expect(assigns(:order)).to eq(order)
+        end
+
+        it 'responds with 302' do
+          is_expected.to respond_with 302
+          expect(response).to redirect_to(admin_orders_path)
+        end
+
+        it 'should update the order' do
+          order.reload
+          expect(order.status).to eq valid_attributes[:status]
+        end
+      end
+
+      context 'with invalid params' do
+        it 'responds with 302' do
+          put :update, params: { id: order.id, order: invalid_attributes }
+          is_expected.to respond_with 302
+        end
+
+        it 'does not change order status' do
+          expect do
+            put :update, params: { id: order.id, order: invalid_attributes }
+          end.not_to change { order.reload.status }
+        end
       end
     end
   end

@@ -153,7 +153,7 @@ RSpec.describe Admin::BooksController, type: :controller do
           expect(response).to redirect_to(admin_book_path(book))
         end
 
-        it 'should update the person' do
+        it 'should update the book' do
           book.reload
           expect(book.name).to eq valid_attributes[:name]
         end
