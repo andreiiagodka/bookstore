@@ -34,4 +34,4 @@ class Order < ApplicationRecord
       transitions from: :in_progress, to: :completed
     end
   end
-end
+end 

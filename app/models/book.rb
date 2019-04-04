@@ -6,9 +6,9 @@ class Book < ApplicationRecord
   has_many :authors, through: :book_authors
   has_many :book_categories, dependent: :destroy
   has_many :categories, through: :book_categories
-  has_many :reviews, dependent: :destroy
   has_many :order_books, dependent: :destroy
   has_many :orders, through: :order_books
+  has_many :reviews, dependent: :destroy
 
   scope :by_filter, -> (filter) { public_send(filter) }
 

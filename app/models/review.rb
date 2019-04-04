@@ -4,4 +4,4 @@ class Review < ApplicationRecord
 
   scope :published,   -> { where published: true }
   scope :unpublished, -> { where published: false }
-end
+end 
