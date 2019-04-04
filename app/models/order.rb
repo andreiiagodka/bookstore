@@ -11,7 +11,7 @@ class Order < ApplicationRecord
   has_many :books, through: :order_books
   has_many :addresses, as: :addressable, dependent: :destroy
 
-  scope :by_filtering_param, -> (filter_param) { public_send(filter_param) }
+  scope :by_filter, -> (filter) { public_send(filter) }
 
   scope :created_at_desc, -> { order('created_at desc') }
 

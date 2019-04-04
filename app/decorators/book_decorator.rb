@@ -1,6 +1,4 @@
 class BookDecorator < Draper::Decorator
-  include BookImage
-
   delegate_all
 
   RANGES = {
@@ -47,22 +45,11 @@ class BookDecorator < Draper::Decorator
   end
 
   def cover_image(type, shadow: true)
-    h.image_tag get_cover_image(type), class: get_class_list(shadow)
-  end
-
-  def main_cover
-    cover.variant(resize: "#{BOOK_IMAGE_SIZES[:main_cover]}!").processed
-  end
-
-  def slider_cover
-    cover.variant(resize: "#{BOOK_IMAGE_SIZES[:slider_cover]}!").processed
-  end
-
-  def cart_cover
-    cover.variant(resize: "#{BOOK_IMAGE_SIZES[:cart_cover]}!").processed
+    image_service = Books::ImageService.new(self)
+    h.image_tag image_service.get_cover(type), class: image_service.get_class_list(shadow)
   end
 
   def image(input)
-    images[input].variant(resize: "#{BOOK_IMAGE_SIZES[:image]}!").processed
+    images[input].variant(resize: "#{Books::ImageService::IMAGE_SIZES[:image]}!").processed
   end
 end
