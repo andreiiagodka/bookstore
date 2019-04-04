@@ -18,4 +18,6 @@ class Book < ApplicationRecord
   scope :name_desc, -> { order('name desc') }
   scope :price_asc, -> { order('price') }
   scope :price_desc, -> { order('price desc') }
+
+  validates :name, presence: true
 end

@@ -3,6 +3,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.1'
 
+gem 'activeadmin'
+gem 'activeadmin_simplemde'
 gem 'devise'
 gem 'omniauth-facebook'
 gem 'faker', require: false
@@ -19,6 +21,7 @@ gem 'cancancan'
 gem 'wicked'
 gem 'country_select'
 gem 'virtus'
+gem 'pundit'
 gem 'bootstrap-sass'
 gem 'rails', '~> 5.2.2'
 gem 'pg'
@@ -47,12 +50,18 @@ group :development do
   gem 'overcommit'
   gem 'fasterer'
   gem 'brakeman'
+  gem 'rspec-rails'
 end
 
 group :test do
   gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
   gem 'chromedriver-helper'
+  gem 'rspec'
+  gem 'simplecov'
+  gem 'factory_bot_rails'
+  gem 'shoulda-matchers'
+  gem 'rails-controller-testing'
 end
 
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
