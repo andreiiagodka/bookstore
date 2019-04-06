@@ -7,7 +7,7 @@ class ReviewForm
     body: 500
   }.freeze
 
-  SCORE = (1..5).freeze
+  SCORE_RANGE = (1..5).freeze
 
   attribute :title, String
   attribute :body, String
@@ -24,8 +24,8 @@ class ReviewForm
             length: { maximum: LENGTH[:body] }
 
   validates :score,
-            inclusion: { in: SCORE }
-            
+            inclusion: { in: SCORE_RANGE }
+
   def save
     return false unless valid?
 
