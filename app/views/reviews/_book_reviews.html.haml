@@ -19,7 +19,7 @@
      .mb-15
       - review.score.times do
        %i.fa.fa-star.rate-star
-      - (ReviewForm::SCORE.max - review.score).times do
+      - (ReviewForm::SCORE_RANGE.max - review.score).times do
        %i.fa.fa-star.rate-star.rate-empty
      %h4
       = review.title
