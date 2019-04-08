@@ -11,6 +11,7 @@ require 'capybara/rspec'
 require 'capybara/rails'
 require 'devise'
 require 'faker'
+require 'cancan/matchers'
 
 require "#{::Rails.root}/spec/support/macros/controller_macros.rb"
 Dir[File.dirname(__FILE__) + '/support/*.rb'].each { |file| require file }

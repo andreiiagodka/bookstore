@@ -29,4 +29,14 @@ FactoryBot.define do
       book.cover.attach(file)
     end
   end
+
+  trait :attach_images do
+    after(:create) do |book|
+      3.times do |index|
+        file_path = Rails.root.join('spec', 'support', 'assets', "test_image_#{index}.jpg")
+        file = Rack::Test::UploadedFile.new(file_path, 'image/png')
+        book.images.attach(file)
+      end
+    end
+  end
 end
