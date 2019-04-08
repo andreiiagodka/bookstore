@@ -1,16 +1,12 @@
 class BookDecorator < Draper::Decorator
   delegate_all
 
-  RANGES = {
-    name: {
-      short: 0..25
-    },
-    description: {
-      short: 0..150,
-      medium: 0..250,
-      end: 250..-1
-    }
+  DESCRIPTION_LENGTH = {
+    short: 150,
+    medium: 250
   }.freeze
+
+  DESCRIPTION_END_RANGE = (250...-1).freeze
 
   def authors_as_string
     authors.map(&:name).join(', ')
@@ -20,28 +16,20 @@ class BookDecorator < Draper::Decorator
     categories.map(&:name).join(', ')
   end
 
-  def short_name
-    name[RANGES[:name][:short]]
-  end
-
   def first_sentence_description
     description.split('.').first
   end
 
   def short_description
-    description[RANGES[:description][:short]]
+    description.first(DESCRIPTION_LENGTH[:short])
   end
 
   def medium_description
-    description[RANGES[:description][:medium]]
+    description.first(DESCRIPTION_LENGTH[:medium])
   end
 
   def end_of_description
-    description[RANGES[:description][:end]]
-  end
-
-  def published_reviews
-    reviews.published
+    description[DESCRIPTION_END_RANGE]
   end
 
   def cover_image(type, shadow: true)

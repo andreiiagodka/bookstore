@@ -10,4 +10,4 @@
       = link_to category_books_path(category_id: category), class: 'filter-link' do
         = category.name
         %span.badge.general-badge
-          = category.count_books
+          = category.books.count
