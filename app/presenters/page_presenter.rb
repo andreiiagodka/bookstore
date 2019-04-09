@@ -10,7 +10,7 @@ class PagePresenter < Rectify::Presenter
   end
 
   def get_categories
-    @get_categories ||= Category.all.decorate
+    @get_categories ||= Category.all
   end
 
   def get_books
