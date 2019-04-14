@@ -11,6 +11,6 @@ class CreditCards::ManageOrderCreditCardService
   private
 
   def credit_card_params
-    @params.require(:credit_card).permit(:number, :name, :expire_date, :cvv)
+    @params.fetch(:credit_card).slice(:number, :name, :expire_date, :cvv).to_enum.to_h
   end
 end

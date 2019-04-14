@@ -1,16 +1,10 @@
 class Deliveries::ManageOrderDeliveryService
   def initialize(order, params)
     @order = order
-    @params = params
+    @delivery_id = params[:delivery_id]
   end
 
   def call
-    @order.update(order_delivery_params)
-  end
-
-  private
-
-  def order_delivery_params
-    @params.permit(:delivery_id)
+    @order.update(delivery_id: @delivery_id)
   end
 end

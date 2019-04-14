@@ -8,5 +8,5 @@ RSpec.describe Coupons::GetActiveCouponByCodeService do
     { code: coupon.code }
   end
 
-  it { expect(subject.call).to eq coupon }
+  it { expect(get_active_coupon_by_code_service.call).to eq coupon }
 end
