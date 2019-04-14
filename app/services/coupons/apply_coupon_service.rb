@@ -1,8 +1,7 @@
 class Coupons::ApplyCouponService
   def initialize(order, params)
     @order = order
-    @params = params
-    @coupon = Coupons::GetActiveCouponByCodeService.new(@params).call
+    @coupon = Coupons::GetActiveCouponByCodeService.new(params).call
   end
 
   def call
