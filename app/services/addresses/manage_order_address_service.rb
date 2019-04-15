@@ -33,6 +33,6 @@ class Addresses::ManageOrderAddressService
   end
 
   def address_params(type)
-    @params.require(type).permit(:first_name, :last_name, :country, :city, :address, :zip, :phone)
+    @params.fetch(type).slice(:first_name, :last_name, :country, :city, :address, :zip, :phone).to_enum.to_h
   end
 end
