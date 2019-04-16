@@ -6,30 +6,24 @@ class Addresses::ManageOrderAddressService
   end
 
   def call
-    manage_billing_address
-    manage_shipping_address
+    Address.casts.keys.each do |cast|
+      address = get_address(cast.to_sym)
+      params = address_params(set_type(cast.to_sym))
+      address.exists? ? address.update(params) : address.create(params)
+    end
   end
 
   private
-
-  def manage_billing_address
-    address = get_address(:billing)
-    params = address_params(:billing)
-    address.exists? ? address.update(params) : address.create(params)
-  end
-
-  def manage_shipping_address
-    address = get_address(:shipping)
-    params = address_params(set_type)
-    address.exists? ? address.update(params) : address.create(params)
-  end
 
   def get_address(cast)
     @order.addresses.public_send(cast)
   end
 
-  def set_type
-    @use_billing ? :billing : :shipping
+  def set_type(cast)
+    case cast
+    when :billing then :billing
+    when :shipping then @use_billing ? :billing : :shipping
+    end
   end
 
   def address_params(type)
