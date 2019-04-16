@@ -25,7 +25,7 @@ class Books::ImageService
   end
 
   def get_cover(type)
-    @book.cover.attached? ? get_cover_by_type(type) : COVERS_DIR . DEFAULT_COVER
+    @book.cover.attached? ? get_cover_by_type(type) : COVERS_DIR + DEFAULT_COVER
   end
 
   def get_class_list(shadow)

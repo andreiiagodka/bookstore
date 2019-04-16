@@ -30,6 +30,6 @@ class Checkout::ManageUpdateActionService
   private
 
   def order_params
-    @params.require(:order)
+    @params.fetch(:order).to_enum.to_h
   end
 end
