@@ -25,4 +25,22 @@ RSpec.describe Books::ImageService do
       end
     end
   end
+
+  describe '#get_class_list' do
+    let(:image_classes) { Books::ImageService::IMAGE_CLASSES }
+
+    context 'shadow is required' do
+      let(:shadow) { true }
+      let(:class_list) { "#{image_classes[:shadow]} #{image_classes[:thubmnail]}" }
+
+      it { expect(image_service.get_class_list(shadow)).to eq class_list }
+    end
+
+    context 'shadow is not required' do
+      let(:shadow) { false }
+      let(:class_list) { " #{image_classes[:thubmnail]}" }
+
+      it { expect(image_service.get_class_list(shadow)).to eq class_list }
+    end
+  end
 end
