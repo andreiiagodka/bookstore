@@ -1,5 +1,9 @@
 require 'faker'
 
+user = User.new(email: 'user@example.com', password: 'password')
+user.skip_confirmation!
+user.save!
+
 30.times { Author.create(name: Faker::Book.author) }
 
 3.times { Category.create(name: Faker::Book.genre) }
