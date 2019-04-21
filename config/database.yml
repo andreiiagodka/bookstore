@@ -2,20 +2,17 @@ default: &default
   adapter: postgresql
   encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  host: localhost
+  username: <%= Rails.application.credentials[Rails.env.to_sym][:database][:user_name] %>
+  password: <%= Rails.application.credentials[Rails.env.to_sym][:database][:password] %>
 
 development:
   <<: *default
-  host: localhost
   database: bookstore_development
-  username: ruby_psql
-  password: <%= Rails.application.credentials[Rails.env.to_sym][:database_password] %>
 
 test:
   <<: *default
-  host: localhost
   database: bookstore_test
-  username: ruby_psql
-  password: <%= Rails.application.credentials[Rails.env.to_sym][:database_password] %>
 
 production:
   <<: *default
