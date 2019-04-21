@@ -1,15 +1,15 @@
 $(document).on('turbolinks:load', function() {
   $('.btn-minus-js').click(function() {
-    let input = $(this).parent().find('.book-quantity-js')
-    let quantity = Number(input.val())
+    let input_field = $(this).parent().find('.book-quantity-js')
+    let quantity = Number(input_field.val())
     if (quantity > 1) {
-      input.val(quantity - 1)
+      input_field.val(quantity - 1)
     }
   })
 
   $('.btn-plus-js').click(function() {
-    let input = $(this).parent().find('.book-quantity-js')
-    input.val(Number(input.val()) + 1)
+    let input_field = $(this).parent().find('.book-quantity-js')
+    input_field.val(Number(input_field.val()) + 1)
   })
 
   $('.read-more-js').click(function() {
