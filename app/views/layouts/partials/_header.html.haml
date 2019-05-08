@@ -24,7 +24,7 @@
             %a{type: "button", 'data-toggle': "collapse", href: "#menu", 'aria-expanded': "false", 'aria-controls': "menu"}
               = t('layout.shop')
             %ul#menu.collapse.list-unstyled.pl-30.mb-10{'aria-expanded': "false"}
-              - @page_presenter.get_categories.each do |category|
+              - CategoryPresenter.new.get_all_categories.each do |category|
                 %li
                   = link_to category.name, categories_path(id: category), css: 'collapse-link'
           - if user_signed_in?
@@ -54,7 +54,7 @@
             %ul.dropdown-menu
               %li
                 = link_to t('catalog.all'), books_path
-              - @page_presenter.get_categories.each do |category|
+              - CategoryPresenter.new.get_all_categories.each do |category|
                 %li
                   = link_to category.name, category_books_path(category_id: category)
           - if user_signed_in?
