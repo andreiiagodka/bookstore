@@ -52,6 +52,7 @@ group :development do
   gem 'fasterer'
   gem 'brakeman'
   gem 'rspec-rails'
+  gem 'traceroute'
 end
 
 group :test do
