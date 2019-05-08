@@ -54,7 +54,7 @@
                       = t('order.summary.order_total')
                   %td
                     %strong.font-18
-                      = t('price', price: order.total_price)
+                      = t('price', price: OrderPresenter.new(order).total_price)
               %button.btn.btn-default.mb-20.visible-xs-inline-block
                 = t('order.checkout')
       = link_to checkout_path(:authentication, destination: 'authentication') do
