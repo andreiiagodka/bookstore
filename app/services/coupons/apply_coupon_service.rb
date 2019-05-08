@@ -1,13 +1,27 @@
 class Coupons::ApplyCouponService
   def initialize(order, params)
     @order = order
-    @coupon = Coupons::GetActiveCouponByCodeService.new(params).call
+    @coupon = get_active_coupon(params)
   end
 
   def call
-    return false unless @coupon
+    return unless @coupon
 
+    apply_coupon
+    deactivate_coupon
+  end
+
+  private
+
+  def get_active_coupon(params)
+    Coupon.active.find_by(code: params[:code])
+  end
+
+  def apply_coupon
     @order.update(coupon: @coupon)
-    Coupons::DeactivateService.new(@coupon).call
+  end
+
+  def deactivate_coupon
+    @coupon.update(active: false)
   end
 end
