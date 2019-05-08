@@ -9,6 +9,7 @@ gem 'activeadmin_simplemde'
 gem 'devise'
 gem 'omniauth-facebook'
 gem 'faker', require: false
+gem 'font-awesome-rails'
 gem 'mini_magick'
 gem 'draper'
 gem 'rectify'
