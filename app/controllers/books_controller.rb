@@ -3,7 +3,6 @@ class BooksController < ApplicationController
 
   BOOKS_PER_PAGE = 12
 
-  include Rectify::ControllerHelpers
   include Pagy::Backend
 
   decorates_assigned :selected_books, :book

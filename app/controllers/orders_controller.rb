@@ -4,7 +4,6 @@ class OrdersController < ApplicationController
 
   ORDERS_PER_PAGE = 10
 
-  include Rectify::ControllerHelpers
   include Pagy::Backend
 
   decorates_assigned :order

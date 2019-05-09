@@ -4,5 +4,5 @@ class Coupon < ApplicationRecord
   scope :active,   -> { where active: true }
   scope :inactive, -> { where active: false }
 
-  validates :order_id, uniqueness: true, allow_nil: true
+  validates :order_id, uniqueness: true
 end

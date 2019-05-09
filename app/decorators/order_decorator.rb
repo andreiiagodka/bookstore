@@ -4,10 +4,6 @@ class OrderDecorator < Draper::Decorator
 
   delegate_all
 
-  def total_price
-    subtotal_price - discount_price + delivery_price
-  end
-
   def subtotal_price
     order_books.decorate.sum(&:subtotal_price)
   end

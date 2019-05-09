@@ -28,4 +28,4 @@
         = t('order.summary.order_total')
     %td
       %p.font-16
-        = t('price', price: order.total_price)
+        = t('price', price: OrderPresenter.new(order).total_price)
