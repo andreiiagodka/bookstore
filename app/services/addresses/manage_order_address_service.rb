@@ -9,7 +9,7 @@ class Addresses::ManageOrderAddressService
     Address.casts.keys.each do |cast|
       address = get_address(cast.to_sym)
       params = address_params(set_type(cast.to_sym))
-      address.exists? ? address.update(params) : address.create(params)
+      AddressForm.new(params).save(address)
     end
   end
 

@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   def show; end
 
   def update
-    if Users::UpdateConfidentialDataService.new(@user, user_params).call
+    if user_params[:email].present? ? @user.update(user_params) : @user.update_with_password(user_params)
       flash[:success] = t('message.success.user.update')
       redirect_to root_path and return
     else

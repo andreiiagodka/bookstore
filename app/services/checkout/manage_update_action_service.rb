@@ -6,7 +6,12 @@ class Checkout::ManageUpdateActionService
   end
 
   def call(step)
-    public_send(step)
+    case step
+    when CheckoutController::STEPS[:addresses] then addresses
+    when CheckoutController::STEPS[:delivery] then delivery
+    when CheckoutController::STEPS[:payment] then payment
+    when CheckoutController::STEPS[:confirm] then confirm
+    end
   end
 
   def addresses
@@ -14,22 +19,26 @@ class Checkout::ManageUpdateActionService
   end
 
   def delivery
-    Deliveries::ManageOrderDeliveryService.new(@order, order_params).call
+    @order.update(delivery_id: order_params[:delivery_id])
   end
 
   def payment
-    CreditCards::ManageOrderCreditCardService.new(@order, order_params).call
+    CreditCardForm.new(credit_card_params).save(@order) if credit_card_params
   end
 
   def confirm
     @order.complete!
     OrderMailer.completed_order(@order).deliver
-    Orders::ClearCurrentOrderSessionService.new(@session).call
+    @session.delete(:order_id)
   end
 
   private
 
   def order_params
     @params.fetch(:order)
+  end
+
+  def credit_card_params
+    order_params.fetch(:credit_card).slice(:number, :name, :expire_date, :cvv).to_enum.to_h
   end
 end

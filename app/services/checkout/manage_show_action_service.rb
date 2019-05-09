@@ -7,7 +7,13 @@ class Checkout::ManageShowActionService
   end
 
   def call(step)
-    public_send(step)
+    case step
+    when CheckoutController::STEPS[:addresses] then addresses
+    when CheckoutController::STEPS[:delivery] then delivery
+    when CheckoutController::STEPS[:payment] then payment
+    when CheckoutController::STEPS[:confirm] then confirm
+    when CheckoutController::STEPS[:complete] then complete
+    end
   end
 
   def addresses
