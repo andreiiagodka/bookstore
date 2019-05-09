@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
   load_and_authorize_resource
 
+  before_action :initialize_error_presenter
+
   def show; end
 
   def update
@@ -26,5 +28,9 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:email, :current_password, :password, :password_confirmation)
+  end
+
+  def initialize_error_presenter
+    @error_presenter ||= ErrorPresenter.new(@user).attach_controller(self)
   end
 end

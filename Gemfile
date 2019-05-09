@@ -9,6 +9,7 @@ gem 'activeadmin_simplemde'
 gem 'devise'
 gem 'omniauth-facebook'
 gem 'faker', require: false
+gem 'font-awesome-rails'
 gem 'mini_magick'
 gem 'draper'
 gem 'rectify'
@@ -52,6 +53,7 @@ group :development do
   gem 'fasterer'
   gem 'brakeman'
   gem 'rspec-rails'
+  gem 'traceroute'
 end
 
 group :test do
