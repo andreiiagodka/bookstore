@@ -33,7 +33,7 @@ class CheckoutController < ApplicationController
   def authentication
     return false unless user_signed_in?
 
-    Orders::AttachUserService.new(current_order, current_user).call unless current_order.user
+    current_order.update(user: current_user) unless current_order.user
     return jump_to(next_step)
   end
 

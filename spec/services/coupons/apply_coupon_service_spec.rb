@@ -19,6 +19,6 @@ RSpec.describe Coupons::ApplyCouponService do
   context 'when coupon is inactive' do
     let(:coupon) { create(:coupon, active: false) }
 
-    it { expect(apply_coupon_service.call).to eq false }
+    it { expect(apply_coupon_service.call).to eq nil }
   end
 end
