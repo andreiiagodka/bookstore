@@ -19,7 +19,7 @@ class Checkout::CheckStepCompletionService
   end
 
   def delivery
-    @order.addresses.billing && @order.addresses.shipping
+    !@order.addresses.billing.empty? && !@order.addresses.shipping.empty?
   end
 
   def payment
