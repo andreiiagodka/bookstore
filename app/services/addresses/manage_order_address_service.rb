@@ -7,9 +7,8 @@ class Addresses::ManageOrderAddressService
 
   def call
     Address.casts.keys.each do |cast|
-      address = get_address(cast.to_sym)
       params = address_params(set_type(cast.to_sym))
-      AddressForm.new(params).save(address)
+      AddressForm.new(params.merge(cast: cast)).save(@order)
     end
   end
 
