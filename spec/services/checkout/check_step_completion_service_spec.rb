@@ -16,7 +16,7 @@ RSpec.describe Checkout::CheckStepCompletionService do
     let(:step) { :delivery }
     let(:order) { create(:order, :attach_addresses) }
 
-    it { expect(check_step_completion_service.call(step)).to eq order.addresses.shipping }
+    it { expect(check_step_completion_service.call(step)).to eq true }
   end
 
   describe 'payment step' do
