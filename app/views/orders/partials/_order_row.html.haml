@@ -11,4 +11,4 @@
       = order.decorate.status_title
   %td
     %strong.font-16
-      = t('price', price: order.decorate.total_price)
+      = t('price', price: OrderPresenter.new(order).total_price)
