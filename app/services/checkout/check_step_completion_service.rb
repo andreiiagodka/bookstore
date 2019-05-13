@@ -6,6 +6,7 @@ class Checkout::CheckStepCompletionService
 
   def call(step)
     case step
+    when CheckoutController::STEPS[:authentication] then authentication
     when CheckoutController::STEPS[:addresses] then addresses
     when CheckoutController::STEPS[:delivery] then delivery
     when CheckoutController::STEPS[:payment] then payment
@@ -14,7 +15,12 @@ class Checkout::CheckStepCompletionService
     end
   end
 
+  def authentication
+    @user
+  end
+
   def addresses
+    @order.update(user: @user) unless @order.user
     @order.user
   end
 

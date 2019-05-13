@@ -14,6 +14,10 @@ class Checkout::ManageUpdateActionService
     end
   end
 
+  def authentication
+    @order.update(user: @user) unless @order.user
+  end
+
   def addresses
     Addresses::ManageOrderAddressService.new(@order, order_params, @params[:use_billing]).call
   end

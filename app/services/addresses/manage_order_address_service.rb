@@ -1,4 +1,9 @@
 class Addresses::ManageOrderAddressService
+  CASTS = {
+    billing: :billing,
+    shipping: :shipping
+  }.freeze
+
   def initialize(order, params, use_billing)
     @order = order
     @params = params
@@ -20,8 +25,8 @@ class Addresses::ManageOrderAddressService
 
   def set_type(cast)
     case cast
-    when :billing then :billing
-    when :shipping then @use_billing ? :billing : :shipping
+    when CASTS[:billing] then CASTS[:billing]
+    when CASTS[:shipping] then @use_billing ? CASTS[:billing] : CASTS[:shipping]
     end
   end
 
