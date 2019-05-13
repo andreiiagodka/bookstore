@@ -7,6 +7,6 @@
     .form-group.mb-30
       = f.label :email, t('devise.email'), class: 'control-label input-label'
       = f.email_field :email, type: 'email', class: 'form-control', placeholder: t('devise.email')
-      = f.hidden_field :password, value: @page_presenter.temporary_password
-      = f.hidden_field :password_confirmation, value: @page_presenter.temporary_password
+      = f.hidden_field :password, value: @checkout.temporary_password
+      = f.hidden_field :password_confirmation, value: @checkout.temporary_password
   = f.submit t('button.continue_to_checkout'), class: 'btn btn-default mb-20'

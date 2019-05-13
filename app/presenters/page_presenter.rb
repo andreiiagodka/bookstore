@@ -6,8 +6,4 @@ class PagePresenter < Rectify::Presenter
   def previous_url
     request.referer || root_path
   end
-
-  def temporary_password
-    @temporary_password ||= Devise.friendly_token
-  end
 end

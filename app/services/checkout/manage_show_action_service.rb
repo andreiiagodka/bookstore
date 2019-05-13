@@ -1,5 +1,5 @@
 class Checkout::ManageShowActionService
-  attr_reader :order, :billing_address, :shipping_address, :deliveries, :credit_card, :delivery
+  attr_reader :order, :temporary_password, :billing_address, :shipping_address, :deliveries, :credit_card, :delivery
 
   def initialize(order, user)
     @order = order
@@ -8,12 +8,17 @@ class Checkout::ManageShowActionService
 
   def call(step)
     case step
+    when CheckoutController::STEPS[:authentication] then authentication
     when CheckoutController::STEPS[:addresses] then addresses
     when CheckoutController::STEPS[:delivery] then delivery
     when CheckoutController::STEPS[:payment] then payment
     when CheckoutController::STEPS[:confirm] then confirm
     when CheckoutController::STEPS[:complete] then complete
     end
+  end
+
+  def authentication
+    @temporary_password = Devise.friendly_token
   end
 
   def addresses
