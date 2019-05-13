@@ -2,7 +2,7 @@
   = t('user.orders.sort_by')
 .dropdowns.dropdown.general-order-dropdown
   %a.dropdown-toggle.lead.small{href: "#", 'data-toggle': "dropdown", role: "button", 'aria-haspopup': "true", 'aria-expanded': "false"}
-    = Filtering::ORDER_FILTERING_ORDER[@filter.to_sym]
+    = params[:filter] ? Filtering::ORDER_FILTERING_ORDER[params[:filter].to_sym] : Filtering::ORDER_FILTERING_ORDER[Filtering::DEFAULT_ORDER_FILTERING_ORDER]
     %i.fa.fa-angle-down.dropdown-icon.pull-right
   %ul.dropdown-menu
     - Filtering::ORDER_FILTERING_ORDER.each do |filter_attribute, filter_name|
