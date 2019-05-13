@@ -1,11 +1,11 @@
-class Coupons::ApplyCouponService
+class Coupons::ManageCouponService
   def initialize(order, params)
     @order = order
     @coupon = get_active_coupon(params)
   end
 
-  def call
-    return unless @coupon
+  def apply
+    return if @order.coupon || !@coupon
 
     apply_coupon
     deactivate_coupon

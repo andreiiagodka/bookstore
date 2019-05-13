@@ -6,7 +6,7 @@ class CouponsController < ApplicationController
   private
 
   def apply_coupon
-    if !current_order.coupon && Coupons::ApplyCouponService.new(current_order, coupon_params).call
+    if Coupons::ManageCouponService.new(current_order, coupon_params).apply
       flash[:success] = t('message.success.coupon.use')
     else
       flash[:danger] = t('message.error.coupon.used')
