@@ -48,6 +48,15 @@ RSpec.describe CheckoutController, type: :controller do
   describe 'PUT update' do
     let(:order) { create(:order, user: user) }
 
+    context 'authentication step' do
+
+      it do
+        allow(controller).to receive(:current_user).and_return(user)
+        put :update, params: { id: CheckoutController::STEPS[:authentication]}
+        expect(order.user).to eq user
+      end
+    end
+
     context 'addresses step' do
       let(:address_form_params) do
         { billing: attributes_for(:address),
@@ -60,31 +69,31 @@ RSpec.describe CheckoutController, type: :controller do
         end
       end
 
-      context 'delivery step' do
-        let(:delivery) { create(:delivery) }
+    context 'delivery step' do
+      let(:delivery) { create(:delivery) }
 
-        it do
-          put :update, params: { id: CheckoutController::STEPS[:delivery], order: { delivery_id: delivery.id } }
-          expect(order.delivery).to eq delivery
-        end
+      it do
+        put :update, params: { id: CheckoutController::STEPS[:delivery], order: { delivery_id: delivery.id } }
+        expect(order.delivery).to eq delivery
+      end
+    end
+
+    context 'payment step' do
+      let(:credit_card_form_params) do
+        { credit_card: attributes_for(:credit_card) }
       end
 
-      context 'payment step' do
-        let(:credit_card_form_params) do
-          { credit_card: attributes_for(:credit_card) }
-        end
-
-        it do
-          put :update, params: { id: CheckoutController::STEPS[:payment], order: credit_card_form_params }
-          expect(order.credit_card).not_to eq nil
-        end
+      it do
+        put :update, params: { id: CheckoutController::STEPS[:payment], order: credit_card_form_params }
+        expect(order.credit_card).not_to eq nil
       end
+    end
 
-      context 'confirm step' do
-        it do
-          put :update, params: { id: CheckoutController::STEPS[:confirm] }
-          expect(order.completed?).to eq true
-        end
+    context 'confirm step' do
+      it do
+        put :update, params: { id: CheckoutController::STEPS[:confirm] }
+        expect(order.completed?).to eq true
       end
     end
   end
+end
