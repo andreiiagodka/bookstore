@@ -27,11 +27,11 @@ class CheckoutController < ApplicationController
   private
 
   def manage_show_action
-    unless Checkout::CheckStepCompletionService.new(current_order, current_user).call(step)
-      return jump_to(previous_step)
-    end
+    if user_signed_in?
+      return jump_to(next_step) if authentication_step?
 
-    return jump_to(next_step) if authentication_step? && user_signed_in?
+      return jump_to(previous_step) unless complete_step?
+    end
 
     @checkout = Checkout::ManageShowActionService.new(current_order, current_user)
     @checkout.call(step)
@@ -43,5 +43,9 @@ class CheckoutController < ApplicationController
 
   def authentication_step?
     step == STEPS[:authentication]
+  end
+
+  def complete_step?
+    Checkout::CheckStepCompletionService.new(current_order, current_user).call(step)
   end
 end
