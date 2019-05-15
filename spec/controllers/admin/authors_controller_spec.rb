@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Admin::AuthorsController, type: :controller do
-  describe "not admin user is not allowed to access admin panel" do
+  describe 'not admin user is not allowed to access admin panel' do
     it do
       get :index
       expect(subject).to redirect_to(admin_user_session_path)
@@ -29,7 +29,7 @@ RSpec.describe Admin::AuthorsController, type: :controller do
         expect(assigns(:authors)).to include author
       end
 
-      it 'should render the expected columns' do
+      it 'renders the expected columns' do
         expect(page).to have_content author.name
         expect(page).to have_content I18n.t('admin.actions.view')
         expect(page).to have_content I18n.t('admin.actions.edit')
@@ -48,7 +48,7 @@ RSpec.describe Admin::AuthorsController, type: :controller do
         expect(assigns(:author)).to be_a_new Author
       end
 
-      it 'should render the form elements' do
+      it 'renders the form elements' do
         expect(page).to have_field 'author_name'
       end
     end
@@ -73,7 +73,7 @@ RSpec.describe Admin::AuthorsController, type: :controller do
           expect(response).to redirect_to admin_author_path(Author.last)
         end
 
-        it 'should create the author' do
+        it 'creates the author' do
           post :create, params: { author: valid_attributes }
           expect(Author.last.name).to eq valid_attributes[:name]
         end
@@ -111,7 +111,7 @@ RSpec.describe Admin::AuthorsController, type: :controller do
         expect(assigns(:author)).to eq(author)
       end
 
-      it 'should render the form elements' do
+      it 'renders the form elements' do
         expect(page).to have_field 'author_name'
       end
     end
@@ -131,7 +131,7 @@ RSpec.describe Admin::AuthorsController, type: :controller do
           expect(response).to redirect_to(admin_author_path(author))
         end
 
-        it 'should update the person' do
+        it 'updates the person' do
           author.reload
           expect(author.name).to eq valid_attributes[:name]
         end
@@ -151,7 +151,7 @@ RSpec.describe Admin::AuthorsController, type: :controller do
       end
     end
 
-    describe "GET show" do
+    describe 'GET show' do
       before do
         get :show, params: { id: author.id }
       end
@@ -164,12 +164,12 @@ RSpec.describe Admin::AuthorsController, type: :controller do
         expect(assigns(:author)).to eq author
       end
 
-      it 'should render the form elements' do
+      it 'renders the form elements' do
         expect(page).to have_content(author.name)
       end
     end
 
-    describe "DELETE destroy" do
+    describe 'DELETE destroy' do
       it 'destroys the requested author' do
         expect {
           delete :destroy, params: { id: author.id }

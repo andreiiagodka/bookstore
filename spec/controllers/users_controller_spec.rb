@@ -6,19 +6,19 @@ RSpec.describe UsersController, type: :controller do
   before { sign_in(user) }
 
   describe 'PUT update' do
-    context 'update email' do
+    context 'when update email' do
       let(:email_params) do
         { id: user.id, user: { email: user.email } }
       end
 
       before { put :update, params: email_params }
 
-      it 'return redirect response' do
+      it 'returns redirect response' do
         expect(response).to have_http_status(302)
       end
     end
 
-    context 'update password' do
+    context 'when update password' do
       let(:new_password) { '123123' }
       let(:password_params) do
         { id: user.id, user: { current_password: user.password, password: new_password, password_confirmation: new_password } }
@@ -39,7 +39,7 @@ RSpec.describe UsersController, type: :controller do
 
     before { delete :destroy, params: params }
 
-    it 'return redirect response' do
+    it 'returns redirect response' do
       expect(response).to have_http_status(302)
     end
   end

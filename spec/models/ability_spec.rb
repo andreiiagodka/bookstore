@@ -14,7 +14,7 @@ RSpec.describe Ability, type: :model do
 
   describe 'when user is not logged in' do
     let(:user) { build(:user) }
-    
+
     it { is_expected.to be_able_to :read, Review }
     it { is_expected.to be_able_to :show, Order }
     it { is_expected.to be_able_to [:index, :show], Book }

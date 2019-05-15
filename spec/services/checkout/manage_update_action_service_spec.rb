@@ -35,7 +35,7 @@ RSpec.describe Checkout::ManageUpdateActionService do
   describe 'payment step' do
     let(:step) { :payment }
     let(:params) do
-      { order: { credit_card: attributes_for(:credit_card)  } }
+      { order: { credit_card: attributes_for(:credit_card) } }
     end
 
     it { expect(manage_update_action_service.call(step)).to eq true }

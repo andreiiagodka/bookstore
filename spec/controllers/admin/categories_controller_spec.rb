@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Admin::CategoriesController, type: :controller do
-  describe "not admin user is not allowed to access admin panel" do
+  describe 'not admin user is not allowed to access admin panel' do
     it do
       get :index
       expect(subject).to redirect_to(admin_user_session_path)
@@ -29,7 +29,7 @@ RSpec.describe Admin::CategoriesController, type: :controller do
         expect(assigns(:categories)).to include category
       end
 
-      it 'should render the expected columns' do
+      it 'renders the expected columns' do
         expect(page).to have_content category.name
         expect(page).to have_content I18n.t('admin.actions.view')
         expect(page).to have_content I18n.t('admin.actions.edit')
@@ -48,7 +48,7 @@ RSpec.describe Admin::CategoriesController, type: :controller do
         expect(assigns(:category)).to be_a_new Category
       end
 
-      it 'should render the form elements' do
+      it 'renders the form elements' do
         expect(page).to have_field 'category_name'
       end
     end
@@ -73,7 +73,7 @@ RSpec.describe Admin::CategoriesController, type: :controller do
           expect(response).to redirect_to admin_category_path(Category.last)
         end
 
-        it 'should create the category' do
+        it 'creates the category' do
           post :create, params: { category: valid_attributes }
           expect(Category.last.name).to eq valid_attributes[:name]
         end
@@ -111,7 +111,7 @@ RSpec.describe Admin::CategoriesController, type: :controller do
         expect(assigns(:category)).to eq(category)
       end
 
-      it 'should render the form elements' do
+      it 'renders the form elements' do
         expect(page).to have_field 'category_name'
       end
     end
@@ -131,7 +131,7 @@ RSpec.describe Admin::CategoriesController, type: :controller do
           expect(response).to redirect_to(admin_category_path(category))
         end
 
-        it 'should update the person' do
+        it 'updates the person' do
           category.reload
           expect(category.name).to eq valid_attributes[:name]
         end
@@ -151,7 +151,7 @@ RSpec.describe Admin::CategoriesController, type: :controller do
       end
     end
 
-    describe "GET show" do
+    describe 'GET show' do
       before do
         get :show, params: { id: category.id }
       end
@@ -164,12 +164,12 @@ RSpec.describe Admin::CategoriesController, type: :controller do
         expect(assigns(:category)).to eq category
       end
 
-      it 'should render the form elements' do
+      it 'renders the form elements' do
         expect(page).to have_content(category.name)
       end
     end
 
-    describe "DELETE destroy" do
+    describe 'DELETE destroy' do
       it 'destroys the requested category' do
         expect {
           delete :destroy, params: { id: category.id }

@@ -1,11 +1,11 @@
 %ul.list-inline.pt-10.mb-25.mr-240
-  - CategoryPresenter.new.get_all_categories.each_with_index do |category, index|
+  - CategoryPresenter.new.all_categories.each_with_index do |category, index|
     - if index == 0
       %li.mr-35
         = link_to books_path(filter: params[:filter]), class: 'filter-link' do
           = t('catalog.all')
           %span.badge.general-badge
-            = BookPresenter.new.get_all_books_amount
+            = BookPresenter.new.all_books_quantity
     %li.mr-35
       = link_to category_books_path(category_id: category), class: 'filter-link' do
         = category.name

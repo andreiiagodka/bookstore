@@ -4,5 +4,5 @@ class Address < ApplicationRecord
   enum cast: {
     billing: 0,
     shipping: 1
-  } 
+  }
 end

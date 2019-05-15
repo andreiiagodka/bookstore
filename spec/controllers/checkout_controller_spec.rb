@@ -10,7 +10,7 @@ RSpec.describe CheckoutController, type: :controller do
     let(:delivery) { create(:delivery) }
     let(:credit_card) { create(:credit_card) }
 
-    context 'response with 200' do
+    context 'when responses with 200' do
       CheckoutController::STEPS.values.each do |step|
         if step == :complete
           it "#{step}" do
@@ -31,7 +31,7 @@ RSpec.describe CheckoutController, type: :controller do
       end
     end
 
-    context 'response with 302' do
+    context 'when responses with 302' do
       CheckoutController::STEPS.values.each do |step|
         before do
           allow(controller).to receive(:current_user).and_return(user)
@@ -48,28 +48,27 @@ RSpec.describe CheckoutController, type: :controller do
   describe 'PUT update' do
     let(:order) { create(:order, user: user) }
 
-    context 'authentication step' do
-
+    context 'when authentication step' do
       it do
         allow(controller).to receive(:current_user).and_return(user)
-        put :update, params: { id: CheckoutController::STEPS[:authentication]}
+        put :update, params: { id: CheckoutController::STEPS[:authentication] }
         expect(order.user).to eq user
       end
     end
 
-    context 'addresses step' do
+    context 'when addresses step' do
       let(:address_form_params) do
         { billing: attributes_for(:address),
           shipping: attributes_for(:address, cast: 'shipping') }
-        end
-
-        it do
-          put :update, params: { id: CheckoutController::STEPS[:addresses], order: address_form_params }
-          expect(order.addresses).not_to eq nil
-        end
       end
 
-    context 'delivery step' do
+      it do
+        put :update, params: { id: CheckoutController::STEPS[:addresses], order: address_form_params }
+        expect(order.addresses).not_to eq nil
+      end
+    end
+
+    context 'when delivery step' do
       let(:delivery) { create(:delivery) }
 
       it do
@@ -78,7 +77,7 @@ RSpec.describe CheckoutController, type: :controller do
       end
     end
 
-    context 'payment step' do
+    context 'when payment step' do
       let(:credit_card_form_params) do
         { credit_card: attributes_for(:credit_card) }
       end
@@ -89,7 +88,7 @@ RSpec.describe CheckoutController, type: :controller do
       end
     end
 
-    context 'confirm step' do
+    context 'when confirm step' do
       it do
         put :update, params: { id: CheckoutController::STEPS[:confirm] }
         expect(order.completed?).to eq true

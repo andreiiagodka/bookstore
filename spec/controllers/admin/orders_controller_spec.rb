@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Admin::OrdersController, type: :controller do
-  describe "not admin user is not allowed to access admin panel" do
+  describe 'not admin user is not allowed to access admin panel' do
     it do
       get :index
       expect(subject).to redirect_to(admin_user_session_path)
@@ -29,14 +29,14 @@ RSpec.describe Admin::OrdersController, type: :controller do
         expect(assigns(:orders)).to include order
       end
 
-      it 'should render the expected columns' do
+      it 'renders the expected columns' do
         expect(page).to have_content order.number
         expect(page).to have_content I18n.t('admin.order.date_of_creation')
         expect(page).to have_content I18n.t('admin.order.state')
         expect(page).to have_content I18n.t('admin.order.change_state')
       end
 
-      it 'should render the expected batch actions' do
+      it 'renders the expected batch actions' do
         expect(page).to have_content I18n.t('admin.order.batch_actions.in_progress')
         expect(page).to have_content I18n.t('admin.order.batch_actions.completed')
         expect(page).to have_content I18n.t('admin.order.batch_actions.in_delivery')
@@ -58,7 +58,7 @@ RSpec.describe Admin::OrdersController, type: :controller do
         expect(assigns(:order)).to eq(order)
       end
 
-      it 'should render the form elements' do
+      it 'renders the form elements' do
         expect(page).to have_field 'order_status'
       end
     end
@@ -78,7 +78,7 @@ RSpec.describe Admin::OrdersController, type: :controller do
           expect(response).to redirect_to(admin_orders_path)
         end
 
-        it 'should update the order' do
+        it 'updates the order' do
           order.reload
           expect(order.status).to eq valid_attributes[:status]
         end

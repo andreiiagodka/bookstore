@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Admin::BooksController, type: :controller do
-  describe "not admin user is not allowed to access admin panel" do
+  describe 'not admin user is not allowed to access admin panel' do
     it do
       get :index
       expect(subject).to redirect_to(admin_user_session_path)
@@ -29,7 +29,7 @@ RSpec.describe Admin::BooksController, type: :controller do
         expect(assigns(:books)).to include book
       end
 
-      it 'should render the expected columns' do
+      it 'renders the expected columns' do
         expect(page).to have_content book.categories_as_string
         expect(page).to have_content book.name
         expect(page).to have_content book.authors_as_string
@@ -52,7 +52,7 @@ RSpec.describe Admin::BooksController, type: :controller do
         expect(assigns(:book)).to be_a_new Book
       end
 
-      it 'should render the form elements' do
+      it 'renders the form elements' do
         expect(page).to have_field 'book_name'
         expect(page).to have_field 'book_description'
         expect(page).to have_field 'book_price'
@@ -86,7 +86,7 @@ RSpec.describe Admin::BooksController, type: :controller do
           expect(response).to redirect_to admin_book_path(Book.last)
         end
 
-        it 'should create the book' do
+        it 'creates the book' do
           post :create, params: { book: valid_attributes }
           expect(Book.last.name).to eq valid_attributes[:name]
         end
@@ -124,7 +124,7 @@ RSpec.describe Admin::BooksController, type: :controller do
         expect(assigns(:book)).to eq(book)
       end
 
-      it 'should render the form elements' do
+      it 'renders the form elements' do
         expect(page).to have_field 'book_name'
         expect(page).to have_field 'book_description'
         expect(page).to have_field 'book_price'
@@ -153,7 +153,7 @@ RSpec.describe Admin::BooksController, type: :controller do
           expect(response).to redirect_to(admin_book_path(book))
         end
 
-        it 'should update the book' do
+        it 'updates the book' do
           book.reload
           expect(book.name).to eq valid_attributes[:name]
         end
@@ -173,7 +173,7 @@ RSpec.describe Admin::BooksController, type: :controller do
       end
     end
 
-    describe "GET show" do
+    describe 'GET show' do
       before do
         get :show, params: { id: book.id }
       end
@@ -186,7 +186,7 @@ RSpec.describe Admin::BooksController, type: :controller do
         expect(assigns(:book)).to eq book
       end
 
-      it 'should render the form elements' do
+      it 'renders the form elements' do
         expect(page).to have_content(book.name)
         expect(page).to have_content(book.description)
         expect(page).to have_content(book.price)
@@ -198,7 +198,7 @@ RSpec.describe Admin::BooksController, type: :controller do
       end
     end
 
-    describe "DELETE destroy" do
+    describe 'DELETE destroy' do
       it 'destroys the requested book' do
         expect {
           delete :destroy, params: { id: book.id }

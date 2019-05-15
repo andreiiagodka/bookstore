@@ -1,5 +1,5 @@
 class CategoryPresenter < Rectify::Presenter
-  def get_all_categories
-    @get_all_categories ||= Category.all
+  def all_categories
+    @all_categories ||= Category.all
   end
 end

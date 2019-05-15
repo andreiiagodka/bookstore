@@ -7,12 +7,12 @@ class Orders::GetUserOrdersService
   end
 
   def call
-    @user.orders.public_send(get_filter)
+    @user.orders.public_send(define_filter)
   end
 
   private
 
-  def get_filter
+  def define_filter
     ORDER_FILTERING_ORDER.include?(@filter&.to_sym) ? @filter : DEFAULT_ORDER_FILTERING_ORDER
   end
 end

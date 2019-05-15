@@ -1,5 +1,6 @@
 class Checkout::ManageShowActionService
-  attr_reader :order, :temporary_password, :billing_address, :shipping_address, :deliveries, :credit_card, :delivery
+  attr_reader :order, :temporary_password, :billing_address, :shipping_address,
+              :deliveries, :credit_card, :order_delivery
 
   def initialize(order, user)
     @order = order
@@ -37,7 +38,7 @@ class Checkout::ManageShowActionService
   def confirm
     @billing_address = @order.addresses.billing.first.decorate
     @shipping_address = @order.addresses.shipping.first.decorate
-    @delivery = @order.delivery
+    @order_delivery = @order.delivery
     @credit_card = @order.credit_card.decorate
   end
 
