@@ -7,13 +7,7 @@ RSpec.describe OrdersController, type: :controller do
   before { sign_in(user) }
 
   describe 'GET index' do
-    let(:filter_param) { Filtering::BOOK_FILTERING_ORDER.keys[0].to_s }
-
-    before { get :index, params: { filter: filter_param } }
-
-    it 'assigns @filtering_param' do
-      expect(assigns(:filtering_param)).to eq(filter_param)
-    end
+    before { get :index }
 
     it 'returns success response' do
       expect(response).to have_http_status(200)
