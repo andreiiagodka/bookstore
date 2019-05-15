@@ -1,5 +1,5 @@
 require 'rails_helper'
-require 'pry'
+
 RSpec.describe OrderBooks::UpdateQuantityService do
   subject(:update_quantity_service) { described_class.new(order_book, quantity_action) }
 

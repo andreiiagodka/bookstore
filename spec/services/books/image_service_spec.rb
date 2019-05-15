@@ -1,5 +1,5 @@
 require 'rails_helper'
-require 'pry'
+
 RSpec.describe Books::ImageService do
   subject(:image_service) { described_class.new(book) }
 
