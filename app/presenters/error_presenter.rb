@@ -5,7 +5,7 @@ class ErrorPresenter < Rectify::Presenter
     @entity = entity
   end
 
-  def set_error_class(param)
+  def error_class(param)
     ERROR_CLASS unless valid_param?(param)
   end
 

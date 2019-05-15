@@ -1,5 +1,4 @@
 ActiveAdmin.register Review do
-
   actions :index, :show
 
   scope :published

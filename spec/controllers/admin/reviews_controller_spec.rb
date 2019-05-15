@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Admin::ReviewsController, type: :controller do
-  describe "not admin user is not allowed to access admin panel" do
+  describe 'not admin user is not allowed to access admin panel' do
     it do
       get :index
       expect(subject).to redirect_to(admin_user_session_path)
@@ -26,7 +26,7 @@ RSpec.describe Admin::ReviewsController, type: :controller do
         expect(assigns(:reviews)).to include review
       end
 
-      it 'should render the expected columns' do
+      it 'renders the expected columns' do
         expect(page).to have_content review.book.name
         expect(page).to have_content review.title
         expect(page).to have_content I18n.t('admin.review.date')
@@ -48,7 +48,7 @@ RSpec.describe Admin::ReviewsController, type: :controller do
         expect(assigns(:review)).to eq review
       end
 
-      it 'should render the form elements' do
+      it 'renders the form elements' do
         expect(page).to have_content review.title
         expect(page).to have_content review.body
         expect(page).to have_content review.score
@@ -68,7 +68,7 @@ RSpec.describe Admin::ReviewsController, type: :controller do
         expect(response).to redirect_to(admin_review_path(review))
       end
 
-      it 'should publish the review' do
+      it 'publishes the review' do
         review.reload
         expect(review.published).to eq true
       end
@@ -84,7 +84,7 @@ RSpec.describe Admin::ReviewsController, type: :controller do
         expect(response).to redirect_to(admin_review_path(review))
       end
 
-      it 'should unpublish the review' do
+      it 'unpublishes the review' do
         review.reload
         expect(review.published).to eq false
       end

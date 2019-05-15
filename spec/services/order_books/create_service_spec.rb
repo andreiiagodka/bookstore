@@ -8,7 +8,7 @@ RSpec.describe OrderBooks::CreateService do
   let(:random_number) { rand(10) }
   let(:params) { { book_id: order_book.book.id, quantity: random_number } }
 
-  context 'update book quantity' do
+  context 'when update book quantity' do
     before { allow(order).to receive_message_chain(:order_books, :find_by).and_return(order_book) }
 
     it { expect(create_service.call).to eq true }
@@ -21,10 +21,9 @@ RSpec.describe OrderBooks::CreateService do
     it 'changes book quantity by given number' do
       expect { create_service.call }.to change(order_book, :quantity).by(random_number)
     end
-
   end
 
-  context 'create order book' do
+  context 'when create order book' do
     before { allow(order).to receive_message_chain(:order_books, :find_by).and_return(nil) }
 
     it do

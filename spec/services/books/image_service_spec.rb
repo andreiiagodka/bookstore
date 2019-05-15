@@ -6,7 +6,7 @@ RSpec.describe Books::ImageService do
   let(:book) { create(:book, :attach_cover) }
 
   describe '#get_cover' do
-    context 'book has a cover' do
+    context 'when book has a cover' do
       Books::ImageService::COVER_TYPES.values.each do |type|
         it "type is #{type}" do
           expect(image_service.get_cover(type)).to be_a ActiveStorage::Variant
@@ -14,7 +14,7 @@ RSpec.describe Books::ImageService do
       end
     end
 
-    context 'book does not have a cover' do
+    context 'when book does not have a cover' do
       let(:book) { create(:book) }
       let(:default_cover_path) { Books::ImageService::COVERS_DIR + Books::ImageService::DEFAULT_COVER }
 
@@ -29,14 +29,14 @@ RSpec.describe Books::ImageService do
   describe '#get_class_list' do
     let(:image_classes) { Books::ImageService::IMAGE_CLASSES }
 
-    context 'shadow is required' do
+    context 'when shadow is required' do
       let(:shadow) { true }
       let(:class_list) { "#{image_classes[:shadow]} #{image_classes[:thubmnail]}" }
 
       it { expect(image_service.get_class_list(shadow)).to eq class_list }
     end
 
-    context 'shadow is not required' do
+    context 'when shadow is not required' do
       let(:shadow) { false }
       let(:class_list) { " #{image_classes[:thubmnail]}" }
 

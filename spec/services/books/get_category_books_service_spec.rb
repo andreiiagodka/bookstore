@@ -8,7 +8,7 @@ RSpec.describe Books::GetCategoryBooksService do
   let(:category) { create(:category, books: category_books) }
   let(:filter) { Filtering::BOOK_FILTERING_ORDER.keys.drop(1).sample }
 
-  context 'category id and filter are set' do
+  context 'when category id and filter are set' do
     let(:params) { { category_id: category.id, filter: filter } }
 
     it do

@@ -4,7 +4,7 @@ RSpec.describe Orders::InitializeCurrentOrderSessionService do
   subject(:initialize_current_order_session_service) { described_class.new(user, session) }
 
   let(:user) { create(:user) }
-  let(:session) { Hash.new }
+  let(:session) { {} }
 
   before { initialize_current_order_session_service.call }
 

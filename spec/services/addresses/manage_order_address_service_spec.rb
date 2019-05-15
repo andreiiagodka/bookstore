@@ -6,7 +6,7 @@ RSpec.describe Addresses::ManageOrderAddressService do
   describe 'create addresses' do
     let(:order) { create(:order) }
 
-    context 'use_billing param is not present' do
+    context 'when use_billing param is not present' do
       let(:params) do
         { billing: attributes_for(:address, :billing),
           shipping: attributes_for(:address, :shipping) }
@@ -22,7 +22,7 @@ RSpec.describe Addresses::ManageOrderAddressService do
       end
     end
 
-    context 'use_billing param is present' do
+    context 'when use_billing param is present' do
       let(:params) do
         { billing: attributes_for(:address, :billing) }
       end
@@ -37,7 +37,7 @@ RSpec.describe Addresses::ManageOrderAddressService do
   describe 'update addresses' do
     let(:order) { create(:order, :attach_addresses) }
 
-    context 'use_billing param is not present' do
+    context 'when use_billing param is not present' do
       let(:params) do
         { billing: attributes_for(:address, :billing),
           shipping: attributes_for(:address, :shipping) }
@@ -50,7 +50,7 @@ RSpec.describe Addresses::ManageOrderAddressService do
       it { expect(order.addresses.shipping.first.address).to eq params[:shipping][:address] }
     end
 
-    context 'use_billing param is present' do
+    context 'when use_billing param is present' do
       let(:params) do
         { billing: attributes_for(:address, :billing) }
       end

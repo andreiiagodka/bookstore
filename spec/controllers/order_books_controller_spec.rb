@@ -5,8 +5,10 @@ RSpec.describe OrderBooksController, type: :controller do
   let(:order) { create(:order) }
   let(:order_book) { create(:order_book) }
 
-  before { allow(controller).to receive(:current_user).and_return(user) }
-  before { allow(controller).to receive(:current_order).and_return(order) }
+  before do
+    allow(controller).to receive(:current_user).and_return(user)
+    allow(controller).to receive(:current_order).and_return(order)
+  end
 
   describe 'POST create' do
     let(:params) { { order_book: attributes_for(:order_book) } }

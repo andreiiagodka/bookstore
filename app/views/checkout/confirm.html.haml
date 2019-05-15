@@ -3,7 +3,7 @@
   .row.mb-20
     = render 'checkout/partials/confirm/address_information', type: 'shipping', address: @checkout.shipping_address
     = render 'checkout/partials/confirm/address_information', type: 'billing', address: @checkout.billing_address
-    = render 'checkout/partials/confirm/delivery_information', delivery: @checkout.delivery
+    = render 'checkout/partials/confirm/delivery_information', delivery: @checkout.order_delivery
     = render 'checkout/partials/confirm/credit_card_information', credit_card: @checkout.credit_card
   .hidden-xs.divider-lg.pt-20
     = render 'checkout/partials/products_list'

@@ -1,13 +1,13 @@
 class ApplicationController < ActionController::Base
   include Rectify::ControllerHelpers
 
-  before_action :initialize_page_presenter
+  before_action :page_presenter
 
   helper_method :current_order
 
   private
 
-  def initialize_page_presenter
+  def page_presenter
     @page_presenter ||= PagePresenter.new(request: request).attach_controller(self)
   end
 

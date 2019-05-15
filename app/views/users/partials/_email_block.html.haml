@@ -2,7 +2,7 @@
   %p.in-gold-500.font-18.mb-25
     = t('devise.subtitle.email')
   = simple_form_for(current_user, url: user_path, method: :put, defaults: { input_html: { class: "form-control" }}) do |f|
-    .form-group.mb-35{class: (@error_presenter.set_error_class(:email))}
+    .form-group.mb-35{class: (@error_presenter.error_class(:email))}
       = f.input :email, autocomplete: "email", class: 'form-control', id: 'email', placeholder: t('devise.email')
       = render 'users/partials/errors_list', errors: @error_presenter.get_param_errors(:email)
     .general-text-align

@@ -5,7 +5,7 @@ RSpec.describe OrderBooks::UpdateQuantityService do
 
   let(:quantity_actions) { OrderBooks::UpdateQuantityService::QUANTITY_ACTION }
 
-  context 'increment order book quantity' do
+  context 'when increment order book quantity' do
     let(:order_book) { create(:order_book) }
     let(:quantity_action) { quantity_actions[:increment] }
 
@@ -17,7 +17,7 @@ RSpec.describe OrderBooks::UpdateQuantityService do
     end
   end
 
-  context 'decrement order book quantity' do
+  context 'when decrement order book quantity' do
     let(:order_book) { create(:order_book, quantity: 2) }
     let(:quantity_action) { quantity_actions[:decrement] }
 
@@ -29,7 +29,7 @@ RSpec.describe OrderBooks::UpdateQuantityService do
     end
   end
 
-  context 'decrement when quantity equals 1' do
+  context 'when decrement when quantity equals 1' do
     let(:order_book) { create(:order_book, quantity: 1) }
     let(:quantity_action) { quantity_actions[:decrement] }
 

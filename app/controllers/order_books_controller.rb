@@ -1,9 +1,9 @@
 class OrderBooksController < ApplicationController
   load_and_authorize_resource
 
+  before_action :initialize_current_order_session, only: :create
+
   def create
-    Orders::InitializeCurrentOrderSessionService.new(current_user, session).call unless current_order
-    
     if OrderBooks::CreateService.new(current_order, order_book_params).call
       flash[:success] = t('message.success.order_book.create')
     else
@@ -37,5 +37,9 @@ class OrderBooksController < ApplicationController
 
   def order_book_params
     params.require(:order_book).permit(:quantity, :book_id)
+  end
+
+  def initialize_current_order_session
+    Orders::InitializeCurrentOrderSessionService.new(current_user, session).call unless current_order
   end
 end

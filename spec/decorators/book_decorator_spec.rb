@@ -17,7 +17,7 @@ RSpec.describe BookDecorator do
 
   describe 'description' do
     let(:length) { BookDecorator::DESCRIPTION_LENGTH }
-    let(:end_range) { BookDecorator::DESCRIPTION_END_RANGE}
+    let(:end_range) { BookDecorator::DESCRIPTION_END_RANGE }
 
     it '#first_sentence_description' do
       expect(book.first_sentence_description).to eq book.description.split('.').first

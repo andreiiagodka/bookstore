@@ -12,7 +12,7 @@ class Addresses::ManageOrderAddressService
 
   def call
     Address.casts.keys.each do |cast|
-      params = address_params(set_type(cast.to_sym))
+      params = address_params(define_type(cast.to_sym))
       AddressForm.new(params.merge(cast: cast)).save(@order)
     end
   end
@@ -23,7 +23,7 @@ class Addresses::ManageOrderAddressService
     @order.addresses.public_send(cast)
   end
 
-  def set_type(cast)
+  def define_type(cast)
     case cast
     when CASTS[:billing] then CASTS[:billing]
     when CASTS[:shipping] then @use_billing ? CASTS[:billing] : CASTS[:shipping]

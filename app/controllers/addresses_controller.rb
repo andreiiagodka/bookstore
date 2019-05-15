@@ -12,7 +12,7 @@ class AddressesController < ApplicationController
   def manage_address
     address_form = AddressForm.new(address_params)
     if address_form.save(current_user)
-      flash[:success] = t('message.success.address.update', type: address_params[:cast].capitalize)
+      flash[:success] = t('message.success.address.update', type: address_params[:cast])
     else
       flash[:danger] = address_form.errors.full_messages.to_sentence
     end
