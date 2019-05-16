@@ -39,12 +39,8 @@ jobs:
       - run:
           name: install dependencies
           command: |
-            gem install bundler:2.0.1
-            bundle install --jobs=4 --retry=3 --path vendor/bundle
-      - run:
-          name: install npm dependencies
-          command: |
-            npm ci
+            bundle install
+
       - save_cache:
           paths:
             - ./vendor/bundle
