@@ -14,8 +14,8 @@ jobs:
           RAILS_ENV: test
       - image: postgres:9.4
         environment:
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: postgres
+          POSTGRES_USER: ruby_psql
+          POSTGRES_PASSWORD: ruby
           POSTGRES_DB: bookstore_test
 
     working_directory: ~/repo
@@ -29,7 +29,7 @@ jobs:
           - v1-dependencies-{{ checksum "Gemfile.lock" }}
           # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
-            
+
       - restore_cache:
           keys:
           - v1-dependencies-{{ checksum "package-lock.json" }}
