@@ -1,0 +1,12 @@
+= form_for(User.new, url: user_registration_path, html: { class: 'general-form' }) do |f|
+  .mb-40
+    %p.mb-5
+      = t('devise.quick_register')
+    %p.general-info-text.font-12.mb-20
+      = t('checkout.authentication.quick_register_description')
+    .form-group.mb-30
+      = f.label :email, t('devise.email'), class: 'control-label input-label'
+      = f.email_field :email, type: 'email', class: 'form-control', placeholder: t('devise.email')
+      = f.hidden_field :password, value: @checkout.temporary_password
+      = f.hidden_field :password_confirmation, value: @checkout.temporary_password
+  = f.submit t('button.continue_to_checkout'), class: 'btn btn-default mb-20'

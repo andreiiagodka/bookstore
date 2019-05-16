@@ -1,0 +1,54 @@
+require: rubocop-rspec
+
+Metrics/LineLength:
+  Max: 120
+  Exclude:
+    - 'spec/**/*'
+
+Documentation:
+  Enabled: false
+
+NamedSubject:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Style/SymbolProc:
+  Exclude:
+    - 'app/admin/*'
+
+Bundler/OrderedGems:
+  Enabled: false
+
+RSpec/MultipleExpectations:
+  Enabled: false
+
+Metrics/BlockLength:
+  ExcludedMethods: ['describe', 'ActiveAdmin.register']
+
+Metrics/CyclomaticComplexity:
+  Exclude:
+    - 'app/services/checkout/check_step_completion_service.rb'
+    - 'app/services/checkout/manage_show_action_service.rb'
+
+Metrics/MethodLength:
+  Exclude:
+    - 'app/models/ability.rb'
+
+AllCops:
+  Exclude:
+    - 'bin/**/*'
+    - 'config/**/*'
+    - 'db/migrate/**/*'
+    - 'db/schema.rb'
+    - 'db/seeds.rb'
+
+RSpec/MessageChain:
+  Enabled: false
+
+RSpec/AnyInstance:
+  Enabled: false

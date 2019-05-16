@@ -1,0 +1,12 @@
+= form_for(User.new, url: user_session_path, html: { class: 'general-form' }) do |f|
+  .mb-40
+    %p.mb-15
+      = t('checkout.authentication.log_in_with_password')
+    .form-group.mb-30
+      = f.label :email, t('devise.email'), class: 'control-label input-label'
+      = f.email_field :email, type: 'email', class: 'form-control', placeholder: t('devise.email')
+    .form-group.mb-30
+      = f.label :password, t('devise.password'), class: 'control-label input-label'
+      = f.password_field :password, type: 'password', class: 'form-control', placeholder: t('devise.password')
+      = link_to t('devise.forgot_password'), new_user_password_path, class: 'help-block in-gold-500'
+  = f.submit t('checkout.authentication.log_in_with_password'), class: 'btn btn-default mb-20'

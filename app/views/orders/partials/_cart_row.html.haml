@@ -1,0 +1,20 @@
+%tr
+  %td
+    .general-img-wrap-table
+      %img.cart-img-shadow.pull-left
+        = link_to book_path(order_book.book) do
+          = order_book.book.decorate.cover_image(:cart)
+  %td
+    %p.title
+      = link_to order_book.book.name, book_path(order_book.book)
+  %td
+    %span.font-16.in-gold-500
+      = t('price', price: order_book.book.price)
+  %td
+    = render 'orders/partials/quantity_field', order_book: order_book
+  %td
+    %span.font-16.in-gold-500
+      = t('price', price: order_book.subtotal_price)
+  %td
+    = link_to order_book_path(order_book), remote: true, method: :delete, class: 'close general-cart-close' do
+      %span{'aria-hidden': "true"} &times;

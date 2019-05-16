@@ -1,0 +1,7 @@
+= simple_form_for(address, url: address.id ? address_path(address.id) : addresses_path, method: (address.id ? :patch : :post),
+ defaults: { input_html: { class: "form-control" }, wrapper_html: { class: 'form-group' }}, validate: true) do |form|
+  .visible-xs.visible-sm
+    %h3.general-subtitle.mt-0
+    = t('address.cast.billing')
+  = render 'addresses/partials/form_fields', f: form, cast: cast
+  = form.button :submit, t('button.save'), class:"btn btn-default btn"

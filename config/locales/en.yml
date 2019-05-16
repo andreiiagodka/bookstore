@@ -1,33 +1,202 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# The following keys must be escaped otherwise they will not be retrieved by
-# the default I18n backend:
-#
-# true, false, on, off, yes, no
-#
-# Instead, surround them with single quotes.
-#
-# en:
-#   'true': 'foo'
-#
-# To learn more, please read the Rails Internationalization guide
-# available at http://guides.rubyonrails.org/i18n.html.
-
 en:
-  hello: "Hello world"
+  price: "€ %{price}"
+  admin:
+    actions:
+      view: View
+      edit: Edit
+      delete: Delete
+    book:
+      categories: Categories
+      authors: Authors
+    order:
+      date_of_creation: Date of creation
+      state: State
+      change_state: Change state
+      batch_actions:
+        in_progress: In Progress
+        completed: Completed
+        in_delivery: In Delivery
+        delivered: Delivered
+        canceled: Canceled
+    review:
+      book: Book
+      date: Date
+      published: Published
+      publish: Publish
+      unpublish: Unpublish
+  layout:
+    project_title: Bookstore
+    home: Home
+    shop: Shop
+    my_account: My account
+    orders: Orders
+    settings: Settings
+    log_in: Log in
+    sign_up: Sign up
+    log_out: Log out
+    email: support@bookstore.com
+    phone: (555)-555-5555
+  user:
+    settings: Settings
+    address: Address
+    privacy: Privacy
+    order:
+      title: "Order %{number}"
+    orders:
+      title: My Orders
+      sort_by: Sort by
+      table:
+        number: Number
+        completed_at: Completed at
+        status: Status
+        total: Total
+  address:
+    cast:
+      billing: Billing Address
+      shipping: Shipping Address
+    first_name: First Name
+    last_name: Last Name
+    address: Address
+    country: Country
+    city: City
+    zip: Zip
+    phone: Phone
+    all_fields_required: All fields are required
+    use_billing: Use Billing Adress
+  home:
+    welcome: Welcome to our amazing Bookstore!
+    about_us: We pore through hundreds of new books each month and select the five best we can find to share with our members.
+    best_sellers: Best Sellers
+  catalog:
+    title: Catalog
+    all: All
+  book:
+    back: Back to results
+    description: Description
+    read_more: Read more
+    publication_year: Year of publication
+    dimensions: Dimensions
+    dimensions_params: "H:%{height} x W:%{width} x D:%{depth}"
+    material: Material
+    dots: . . .
+  review:
+    reviews: Reviews (%{count})
+    verified_reviewer: Verified Reviewer
+    write_review: Write a Review
+    title: Title
+    review: Review
+    post: Post
+  order:
+    checkout: Checkout
+    cart:
+      cart: Cart
+      book: Book
+      price: Price
+      quantity: Quantity
+      subtotal: Subtotal
+    coupon:
+      enter_code: Enter Your Coupon Code
+    summary:
+      order_summary: Order Summary
+      subtotal: "Subtotal:"
+      coupon: "Coupon:"
+      delivery: "Delivery:"
+      order_total: "Order Total:"
+  checkout:
+    title: Checkout
+    authentication:
+      returning_customer: Returning Customer
+      log_in_with_password: Log In with Password
+      new_customer: New Customer
+      quick_register: Quik Register
+      quick_register_description: You’ll be able to create password later
+    delivery:
+      title: Delivery
+      service: Service
+      days: Days
+      price: Price
+      days_quantity: "%{days_quantity} days"
+    payment:
+      credit_card: Credit Card
+      card_number: Card Number
+      name_on_card: Name on Card
+      expire_date_format: MM / YY
+      cvv: CVV
+      cvv_hint: 3-digit security code, usually found on the back of your card. American Express cards has 4-digit code, located on the front
+    confirm:
+      edit: Edit
+      phone: "Phone %{phone}"
+      payment_information: Payment Information
+    complete:
+      thankful_message: Thank You for your Order!
+      sent_email_message: "An order confirmation has been sent to %{email}"
+      order_number: "Order %{number}"
+  button:
+    get_started: Get Started
+    buy_now: Buy Now
+    add_to_cart: Add to Cart
+    apply_coupon: Apply Coupon
+    send_password_instructions: Send password instructions
+    change_password: Change password
+    continue_to_checkout: Continue to Checkout
+    save_and_continue: Save and Continue
+    save: Save
+    remove_account: Please Remove My Account
+    place_order: Place Order
+    back_to_store: Back to Store
+  devise:
+    log_in: Log In
+    sign_up: Sign up
+    or: or
+    email: Enter Email
+    password: Enter Password
+    confirm_password: Enter Confirm Password
+    current_password: Enter Current Password
+    forgot_password: Forgot password?
+    remember_me: Remember me
+    dont_have_account: Dont have an account?
+    have_account: Do you have an account?
+    forgot_password: Forgot your password?
+    forgot_password_description: We'll email you instructions on how to reset it
+    cancel: Cancel
+    change_password: Change your password
+    go_back: Go back
+    remove_account_approve: I understand that all data will be lost
+    subtitle:
+      email: Email
+      remove_account: Remove Account
+  message:
+    success:
+      user:
+        update: Confirm email change or Log in again!
+        destroy: Your account was successfully deleted!
+      address:
+        update: "%{type} address was updated successfully!"
+      review:
+        create: Thanks for Review! It will be published as soon as Admin will approve it.
+      coupon:
+        use: Coupon used successfully!
+      order_book:
+        create: Book was added to cart!
+        update_quantity: Book's quantity was updated!
+        delete: Book was deleted from cart!
+    error:
+      general: Something went wrong!
+      user:
+        current_password: is not correct
+      address:
+        text_field: Must consist of only a-z and A-Z characters without special symbols
+        address_field: Must consist of a-z, A-Z, 0-9,’,’, ‘-’, ‘ ’ only, no special symbols
+        zip_field: Must consist of 0-9 only,’-’ no special symbols
+        phone_field: Plus (+) at the beginning, must consist of 0-9 only no special symbols
+      coupon:
+        used: Already used or invalid coupon code.
+      order_book:
+        update_quantity: Book's quantity was not updated
+      credit_card:
+        name_field: Must consist of a-z, A-Z, no special symbols
+        expire_date_field: Must have a month on the left of a slash /, the year on the right
+  mailer:
+    order:
+      subject: Completed Order
+      message: "Your order %{number} has been completed!"

@@ -1,0 +1,13 @@
+%ul.steps.list-inline
+  - wizard_steps.drop(1).each_with_index do |wizard_step, index|
+    %li{class: "step #{'active' if wizard_step == step || past_step?(wizard_step)}"}
+      = link_to @checkout.order.completed? ? root_path : wizard_path(wizard_step) do
+        %span.step-number
+          - if past_step?(wizard_step)
+            %i.fa.fa-check.step-icon
+          - else
+            = index + 1
+        %span.step-text.hidden-xs
+          = wizard_step.capitalize
+      - if wizard_step != wizard_steps.last
+        %li.step-divider

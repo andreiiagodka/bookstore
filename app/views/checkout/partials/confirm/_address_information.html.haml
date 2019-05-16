@@ -1,0 +1,19 @@
+.col-sm-3
+  %h3.general-subtitle
+    = t('address.cast.' + type)
+    %span.general-edit
+      - unless params[:user_id]
+        = link_to wizard_path(:addresses) do
+          = t('checkout.confirm.edit')
+  %p.general-address
+    = address.full_name
+    %br
+    = address.address.address
+    %br
+    = address.city
+    %br
+    = address.country
+    %br
+    = address.zip
+    %br
+    = t('checkout.confirm.phone', phone: address.phone)

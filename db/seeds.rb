@@ -1,7 +1,56 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+require 'faker'
+
+user = User.new(email: 'user@example.com', password: 'password')
+user.skip_confirmation!
+user.save!
+
+30.times { Author.create(name: Faker::Book.author) }
+
+3.times { Category.create(name: Faker::Book.genre) }
+
+17.times {
+  book = Book.create(
+    name: Faker::Book.title,
+    price: Faker::Number.decimal(2),
+    description: Faker::Lorem.paragraph_by_chars(Faker::Number.between(300, 350), false),
+    publication_year: Faker::Number.between(2000, Time.now.year),
+    height: Faker::Number.decimal(2),
+    width: Faker::Number.decimal(2),
+    depth: Faker::Number.decimal(2),
+    material: Faker::Science.element
+  )
+  book.authors << Author.all.shuffle.first(rand(1..3))
+  book.categories << Category.all.shuffle.first
+  cover = "#{rand(1..17)}.jpg"
+  book.cover.attach(
+    io: File.open(Rails.root.join('app', 'assets', 'images', 'covers', cover)),
+    filename: cover
+  )
+  (1..17).to_a.shuffle.first(3).each do |image_number|
+    image = "#{image_number}.jpg"
+    book.images.attach(
+      io: File.open(Rails.root.join('app', 'assets', 'images', 'covers', image)),
+      filename: image
+    )
+  end
+  rand(1..3).times {
+    book.reviews.create(
+      title: Faker::Lorem.word,
+      body: Faker::Lorem.sentence,
+      score: Faker::Number.between(1, 5),
+      user_id: User.all.shuffle.first.id
+    )
+  }
+}
+
+10.times { |index| Coupon.create(code: index.to_s * 4) }
+
+['Nova Poshta', 'Ukr Poshta', 'Dimex', 'Express Mail', 'FedEx', 'DHL'].each do |name|
+  Delivery.create(
+    name: name,
+    days: Faker::Number.between(1, 14),
+    price: Faker::Number.decimal(2)
+  )
+end
+
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?

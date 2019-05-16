@@ -1,0 +1,31 @@
+%p.in-gold-500.font-18
+  = t('order.summary.order_summary')
+%table.general-summary-table
+  %tr
+    %td
+      %p.font-16
+        = t('order.summary.subtotal')
+    %td
+      %p.font-16
+        = t('price', price: order.subtotal_price)
+  %tr
+    %td
+      %p.font-16
+        = t('order.summary.coupon')
+    %td
+      %p.font-16
+        = t('price', price: order.discount_price)
+  %tr
+    %td
+      %p.font-16
+        = t('order.summary.delivery')
+    %td
+      %p.font-16
+        = t('price', price: order.delivery_price)
+  %tr
+    %td
+      %p.font-16
+        = t('order.summary.order_total')
+    %td
+      %p.font-16
+        = t('price', price: OrderPresenter.new(order).total_price)

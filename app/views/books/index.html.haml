@@ -1,0 +1,15 @@
+%main.container
+  %h1.general-title-margin
+    = t('catalog.title')
+  .hidden-xs.clearfix
+    .dropdowns.pull-right
+      .dropdown.width-240
+        = render partial: 'books/partials/filters_list'
+    = render partial: 'books/partials/categories_list'
+  .dropdowns.mb-25.visible-xs
+    = render partial: 'books/partials/filters_list'
+  .mb-120
+    .row
+      = render partial: 'books/partials/book', collection: selected_books, as: :book
+  .text-center
+    = pagy_nav_bootstrap(@pagy).html_safe

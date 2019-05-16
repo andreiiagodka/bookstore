@@ -1,0 +1,13 @@
+%main.container.general-main-wrap
+  = render 'checkout/partials/header'
+  .row.mb-20
+    = render 'checkout/partials/confirm/address_information', type: 'shipping', address: @checkout.shipping_address
+    = render 'checkout/partials/confirm/address_information', type: 'billing', address: @checkout.billing_address
+    = render 'checkout/partials/confirm/delivery_information', delivery: @checkout.order_delivery
+    = render 'checkout/partials/confirm/credit_card_information', credit_card: @checkout.credit_card
+  .hidden-xs.divider-lg.pt-20
+    = render 'checkout/partials/products_list'
+    .general-text-align
+      = render 'checkout/partials/order_summary', order: @checkout.order
+  = simple_form_for @checkout.order, url: wizard_path, method: :put do |f|
+    = f.button :submit, t('button.place_order'), class: 'btn btn-default center-block mb-20'

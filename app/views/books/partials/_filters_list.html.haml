@@ -1,0 +1,7 @@
+%a.dropdown-toggle.lead.small{href: "#", 'data-toggle': "dropdown", role: "button", 'aria-haspopup': "true", 'aria-expanded': "false"}
+  = params[:filter] ? Filtering::BOOK_FILTERING_ORDER[params[:filter].to_sym] : Filtering::ORDER_FILTERING_ORDER[Filtering::DEFAULT_BOOK_FILTERING_ORDER]
+  %i.fa.fa-angle-down.dropdown-icon.pull-right
+%ul.dropdown-menu
+  - Filtering::BOOK_FILTERING_ORDER.each do |filter_attribute, filter_name|
+    %li
+      = link_to filter_name, @page_presenter.current_url(filter: filter_attribute)

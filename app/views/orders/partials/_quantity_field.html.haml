@@ -1,0 +1,6 @@
+.input-group
+  = link_to order_book_path(id: order_book, quantity_action: :decrement), class: 'input-link', method: :patch do
+    %i.fa.fa-minus.line-height-40
+  %input.form-control.quantity-input{value: order_book.quantity}
+  = link_to order_book_path(id: order_book, quantity_action: :increment), class: 'input-link', method: :patch do
+    %i.fa.fa-plus.line-height-40
