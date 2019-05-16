@@ -5,6 +5,9 @@
 version: 2
 jobs:
   build:
+    branches:
+      only:
+        - develop
     docker:
       - image: circleci/ruby:2.5.1-node-browsers
         environment:
