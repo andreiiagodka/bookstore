@@ -7,13 +7,14 @@ jobs:
   build:
     docker:
       # specify the version you desire here
-      - image: circleci/ruby:2.5.1-node-browsers
+      - image: circleci/ruby:2.6.0-node
         environment:
           PGHOST: localhost
           PGUSER: bookstore
           RAILS_ENV: test
       - image: postgres:9.4
         environment:
+          BUNDLER_VERSION: 2.0.1
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
           POSTGRES_DB: bookstore_test
