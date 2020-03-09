@@ -49,7 +49,6 @@ group :development do
   gem 'rubocop-rspec'
   gem 'pry-rails'
   gem 'reek'
-  gem 'overcommit'
   gem 'fasterer'
   gem 'brakeman'
   gem 'rspec-rails'
