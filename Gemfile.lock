@@ -474,7 +474,7 @@ DEPENDENCIES
   activeadmin
   activeadmin_simplemde
   aws-sdk-s3
-  bootsnap
+  bootsnap (>= 1.1.0)
   bootstrap-sass
   brakeman
   byebug
