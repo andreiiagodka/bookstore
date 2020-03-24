@@ -26,3 +26,18 @@ module "vpc" {
 
   project_name = var.project_name
 }
+
+module "ecr" {
+  source = "./ecr"
+
+  project_name = var.project_name
+}
+
+module "elb" {
+  source = "./elb"
+
+  project_name = var.project_name
+  default_subnet_ids = module.vpc.default_subnet_ids
+  security_groups = module.vpc.load_balancer_security_groups
+  default_vpc_id = module.vpc.default_vpc_id
+}
