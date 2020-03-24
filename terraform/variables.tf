@@ -1,7 +1,7 @@
-variable "project_name" {
-  description = "Project Name"
+variable "region" {
+  description = "Region for AWS provider"
 }
 
-variable "region" {
-  description = "Region for AWS"
+variable "project_name" {
+  description = "Project Name"
 }
