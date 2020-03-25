@@ -9,3 +9,7 @@ output "default_subnet_ids" {
 output "load_balancer_security_groups" {
   value = [aws_security_group.load_balancer.id]
 }
+
+output "cluster_instance_security_groups" {
+  value = [aws_security_group.cluster_instance.id]
+}
