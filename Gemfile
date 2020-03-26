@@ -35,6 +35,7 @@ gem 'coffee-rails', '~> 4.2'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
+gem 'sidekiq', '~> 4.1', '>= 4.1.2'
 
 group :development, :test do
   gem 'byebug'
@@ -49,7 +50,6 @@ group :development do
   gem 'rubocop-rspec'
   gem 'pry-rails'
   gem 'reek'
-  gem 'overcommit'
   gem 'fasterer'
   gem 'brakeman'
   gem 'rspec-rails'
