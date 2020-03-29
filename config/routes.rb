@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
 
+  # aws load balancer health check
+  get 'health_check', to: proc { [200, {}, ['health_check']] }
+
   get '/users', to: redirect('/users/sign_up')
   root 'pages#home'
 
